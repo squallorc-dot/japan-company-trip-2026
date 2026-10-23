@@ -5,13 +5,12 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.23-02', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.23-03', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
  warning:'旅行社可能調整路線及集合時間；網站內的自由行時刻是規劃參考。電車班次、天氣、營業狀態請於旅行當天再次確認。',
  sources:[
-   {label:'公司第三梯次 5 日行程（提供之 PDF）',url:null},
    {label:'長榮航空',url:'https://www.evaair.com/zh-tw/index.html'},
    {label:'hotel MONday Premium 豐洲',url:'https://hotel-monday.com/toyosu/'},
    {label:'花石和飯店',url:'https://hana-isawa.com/'},
@@ -26,7 +25,7 @@ export const guide = {
   {day:5,code:'BR197',from:'成田國際機場 NRT',to:'桃園國際機場 TPE',depart:'14:00',arrive:'17:05',note:'以航空公司與團體最後公告為準'}
  ],
  hotels:[
-  {id:'monday',nights:'12/2–12/3｜連住兩晚',title:'hotel MONday Premium TOYOSU',address:'東京都江東區東雲1-2-11',search:'hotel MONday Premium Toyosu, 1-2-11 Shinonome, Tokyo',url:'https://hotel-monday.com/toyosu/',desc:'東雲地區，飯店對面 AEON 食品區全天營業。豐洲站需步行一段距離；免費接駁車官方註明團體預訂不適用，請以步行或當日交通為準。',notes:['大浴場可於晚間使用，實際開放時間請以現場為準','12/3 清晨出發，建議前晚準備早餐、交通卡與暖衣','前台可詢問飯店周邊路線與巴士']},
+  {id:'monday',nights:'12/2–12/3｜連住兩晚',title:'東京豐洲 MONday Premium 飯店',address:'東京都江東區東雲1-2-11',search:'hotel MONday Premium Toyosu, 1-2-11 Shinonome, Tokyo',url:'https://hotel-monday.com/toyosu/',desc:'東雲地區，飯店對面 AEON 食品區全天營業。豐洲站需步行一段距離；免費接駁車官方註明團體預訂不適用，請以步行或當日交通為準。',notes:['大浴場可於晚間使用，實際開放時間請以現場為準','12/3 清晨出發，建議前晚準備早餐、交通卡與暖衣','前台可詢問飯店周邊路線與巴士']},
   {id:'hana',nights:'12/4｜一晚',title:'ホテル花いさわ（花石和）',address:'山梨県笛吹市石和町松本1409',search:'ホテル花いさわ 山梨県笛吹市石和町松本1409',url:'https://hana-isawa.com/',desc:'人資確認的石和溫泉住宿，當晚公司安排會席料理／飯店晚餐。適合溫泉放鬆；家庭貸切湯池須確認團體住宿是否可用。',notes:['泡湯前先確認浴場規範、時間及毛巾提供方式','石和櫻花溫泉通 2026/11/15–2027/1/31 17:00–22:00 點燈','飯店餐敘時間與隔日出發時間依導遊公告']},
   {id:'hedistar',nights:'12/5｜一晚',title:'THE HEDISTAR HOTEL NARITA',address:'千葉県成田市東町168-1',search:'THE HEDISTAR HOTEL NARITA, 168-1 Azumacho, Narita',url:'https://hedistarhotel.com/tw/',desc:'成田市區飯店，步行可到 AEON TOWN 成田富里與成田站方向，適合最後一晚超市採買；隔天既定行程會走新勝寺與表參道。',notes:['整理最後購物行李，液體與免稅品依航空／海關規則','成田山表參道多數觀光商店晚上已休息','12/6 上午公司集合時間仍待旅行社確認']}
  ],
@@ -40,7 +39,7 @@ export const guide = {
   lalaport:{title:'LaLaport 豐洲',ja:'アーバンドック ららぽーと豊洲',map:'アーバンドック ららぽーと豊洲',type:'購物／海景',site:'https://mitsui-shopping-park.com/lalaport/toyosu/',hours:'商店多至 21:00，餐廳依店家不同',tips:['大型商場、日用品、餐廳與港灣散步','晚到時比跨城前往銀座更省力']},
   ariake:{title:'有明 Garden',ja:'有明ガーデン',map:'有明ガーデン, 江東区有明2-1-8',type:'購物／燈飾',site:'https://www.shopping-sumitomo-rd.com/ariake/shopping',hours:'專門店常見至 21:00，活動點燈請確認 2026 官方資訊',tips:['適合冬季夜晚逛大型商場與戶外燈飾','從東雲周邊可利用電車或短程計程車，不保證步行最省時']},
   aeonToyosu:{title:'AEON 東雲',ja:'イオン東雲店',map:'イオン東雲店, 東京都江東区東雲1-9-10',type:'超市',site:'https://www.aeon.com/',hours:'食品區 24 小時；其他樓層依店鋪',tips:['飯店附近買早餐、飲料、零食與日用品']},
-  hotelMonday:{title:'MONday 豐洲飯店',ja:'hotel MONday Premium TOYOSU',map:'hotel MONday Premium Toyosu, Tokyo',type:'住宿',site:'https://hotel-monday.com/toyosu/',tips:['團體預訂通常不適用飯店免費接駁車']},
+  hotelMonday:{title:'東京豐洲 MONday 飯店',ja:'hotel MONday Premium TOYOSU',map:'hotel MONday Premium Toyosu, Tokyo',type:'住宿',site:'https://hotel-monday.com/toyosu/',tips:['團體預訂通常不適用飯店免費接駁車']},
   ofuna:{title:'大船站／湘南單軌',ja:'大船駅・湘南モノレール',map:'大船駅, 神奈川県鎌倉市',type:'轉乘',site:'https://www.shonan-monorail.co.jp/',tips:['依車站指示前往湘南單軌月台','懸掛式列車約 14 分鐘至湘南江之島','如 Google Maps 推薦其他快速路線，仍以體驗單軌為優先']},
   shonan:{title:'湘南江之島站',ja:'湘南江の島駅',map:'湘南江の島駅, 藤沢市',type:'鐵道',site:'https://www.shonan-monorail.co.jp/',tips:['單軌終點離江之島海蠟燭仍須較長步行與上坡','先往江之島方向，不等於一下車就到山頂']},
   enoshima:{title:'江之島・海蠟燭',ja:'江の島・江の島シーキャンドル',map:'江の島シーキャンドル, 藤沢市',type:'海景／神社',site:'https://enoshima-seacandle.com/',hours:'海蠟燭通常 09:00 起；Escar 約 08:50 起，請再查營業日',tips:['先逛江島神社、仲見世通，晴天可登海蠟燭望相模灣與富士山','Escar 僅上行，下坡仍需步行，預留階梯與橋樑時間','此次只排白天，不等到夜間燈飾','若陰天能見度差，可略過觀景塔、增加海邊散步']},
@@ -216,6 +215,3 @@ export const guide = {
   {id:'narita',label:'12/6 機場集合／報到時刻與行李規則',type:'待確認'}
  ]
 };
-
-
-

@@ -127,3 +127,196 @@
  .right-rail .sidebox:last-child{display:none}
 }
 @media screen and (max-width:790px){.read-size-button{display:none}}
+
+/* ═══════════════════════════════════════════════════════════════
+   2026/10/23 · Winter travel editorial redesign
+   Warm travel stories × readable timeline. All typography is fluid.
+   This block supersedes the compact original UI on screen only.
+   ═══════════════════════════════════════════════════════════════ */
+@media screen{
+ :root{--paper:#f8f6f2;--card:#fffefa;--ink:#25353c;--muted:#52666c;--line:#e9e6e0;--navy:#243d4b;--navy2:#37576a;--coral:#c2604d;--coral-dark:#a74738;--mint:#477e77;--soft:#f7f4ed;--shadow:0 11px 30px rgba(58,50,40,.045);--max:1460px}
+ html{scroll-padding-top:24px}body{font-size:16px;line-height:1.72;color:var(--ink);background:var(--paper)}
+ .topbar{background:rgba(255,254,251,.98);border-color:#eae5de;height:78px}
+ .brand-mark{background:#f4e1d5;color:#a84837;border-radius:14px;font-size:23px}
+ .brand-name b{font-size:17px;letter-spacing:.02em}.brand-name small{font-size:13px;letter-spacing:.04em}
+ .date-pill{font-size:13px;background:#f4eee8;color:#70564b;letter-spacing:.03em}
+ .read-size-button{background:#fffaf6;border-color:#eadbd4;color:#8c493b;min-height:43px;font-size:15px;padding:9px 15px}
+ .icon-button{width:44px;height:44px;border-radius:13px}
+ .hero{min-height:310px;background:linear-gradient(112deg,#203a47,#496b70);padding-top:38px;padding-bottom:39px}
+ .hero:after{background:linear-gradient(90deg,rgba(25,41,48,.96),rgba(30,49,55,.86) 40%,rgba(30,49,55,.22) 100%)}
+ .hero-inner{max-width:710px}
+ .hero h1{font-family:ui-serif,'Noto Serif TC','Songti TC','PMingLiU',serif;font-weight:800;letter-spacing:.07em;font-size:clamp(36px,3.8vw,57px);line-height:1.32;margin:13px 0 11px}
+ .hero-sub{font-size:17px;line-height:1.75;max-width:565px;color:#fffbf2}
+ .hero-meta{margin-top:22px;gap:12px 19px;font-size:14px;color:#f6ece1}
+ .hero-photo-wrap{position:absolute;inset:0 0 0 35%;z-index:-2;background:linear-gradient(100deg,#60747b,#c09c8c) url('./assets/hero.svg') center/cover}
+ .hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.88;object-position:center}
+ .hero-photo-credit{position:absolute;right:22px;bottom:15px;color:#fff9e9;font-size:12px;text-shadow:0 2px 8px #0009;z-index:2}
+ .workspace{gap:28px;padding-top:35px}
+ .sidebar{top:15px;padding-top:17px}
+ .sidebar-eyebrow,.eyebrow{letter-spacing:.11em;font-size:12px}
+ .sidebar-title{font-size:27px}
+ .sidebar-card{background:#efece3;border-radius:17px}
+ .sidebar-card p{font-size:15px;line-height:1.9}
+ .sidebar-foot{font-size:13px}
+ .day-nav-item{padding:14px 11px}
+ .day-nav-item b{font-size:16px}.day-nav-item small{font-size:13px}
+ .intro-heading{margin-bottom:22px}.intro-heading h2{font-size:clamp(27px,2.5vw,35px)}
+ .intro-heading p{font-size:16px}
+ .day-kind{font-size:14px}
+ .fact-strip{padding:19px 15px;margin-bottom:20px;background:#fffefa}
+ .fact-strip small{font-size:13px}.fact-strip strong{font-size:15px}
+ .plan-panel,.timeline-section,.sidebox,.flight-card,.hotel-card,.route-card,.sources-card{background:#fffefa;border-color:var(--line)}
+ .plan-panel{padding:22px 23px}.section-top h3{font-size:21px}
+ .plan-options{gap:9px}.plan-option{font-size:15px;padding:12px 14px;background:#faf9f6;line-height:1.45}
+ .plan-desc b{font-size:16px}.plan-desc p{font-size:15px;color:#526469}
+ .button,.text-link{font-size:15px}.button{padding:11px 15px}
+ .notice strong,.toolbar>span{font-size:15px}.notice p{font-size:14px;line-height:1.75;color:#705f45}
+ .timeline-section{padding:25px 26px 14px}
+ .event-top{gap:9px}.event-time{font-size:16px;letter-spacing:0}.event-tag{font-size:13px}
+ .event-title{font-size:20px;line-height:1.45}.event-title-button{min-height:35px}
+ .event-desc{font-size:16px;line-height:1.85;color:#4c6268;margin:6px 20px 10px 0}
+ .event-meta{font-size:13px;line-height:1.65;color:#6a7d80}
+ .event-body{padding-bottom:25px}.event-extra{padding:17px 17px 18px;background:#f7f8f4}
+ .hours,.event-tips,.minor{font-size:15px;line-height:1.85}
+ .mini-action{font-size:14px;padding:10px 12px}
+ .sidebox h3{font-size:19px}.sidebox p,.highlight-list li{font-size:15px;line-height:1.8}
+ .page-heading h2{font-size:34px}.page-heading p{font-size:16px;line-height:1.75}
+ .overview-card{padding:17px 19px;gap:18px;align-items:center}
+ .overview-index{min-width:61px}.overview-index b{font-size:36px}.overview-index small{font-size:11px}
+ .overview-text h3{font-size:19px}.overview-text p{font-size:15px}.overview-text>span{font-size:12px}.overview-text>small{font-size:13px}
+ .overview-summary b{font-size:16px}.overview-summary span{font-size:15px}
+ .route-info b,.return-hotel strong{font-size:17px}.route-info small,.route-info p{font-size:15px}
+ .info-subhead{font-size:21px}.flight-top,.hotel-heading small{font-size:14px}.flight-time small,.flight-card p{font-size:14px}
+ .hotel-heading h3{font-size:21px}.hotel-heading p,.hotel-card>p,.hotel-card ul{font-size:16px;line-height:1.85}
+ .check-text,.check-caption,.sources-card p{font-size:16px}.check-status,.sources-card a{font-size:14px}
+ .footer{font-size:14px;gap:18px}.footer button{font-size:15px}
+ .footer-sign{display:flex;flex-direction:column;gap:4px}.footer-sign b{font-family:ui-serif,'Noto Serif TC','PMingLiU',serif;font-size:19px;color:#45565c}.footer-sign span{font-size:14px}
+ .photo-credit-details{font-size:13px;color:#607378;max-width:570px}.photo-credit-details summary{cursor:pointer;padding:9px 0}.photo-credit-list{display:grid;gap:5px;max-height:165px;overflow:auto}.photo-credit-list a:hover{text-decoration:underline}
+ .compare-card-head b{font-size:17px}.compare-card-head small,.compare-card ol{font-size:14px}.compare-card p{font-size:14px}
+ /* Photography and travel editorial */
+ .scene-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(175px,37%);align-items:stretch;gap:15px;background:linear-gradient(110deg,#f6ede3,#fff8ef);border:1px solid #f0e1d4;border-radius:18px;padding:16px 16px 16px 22px;margin:0 0 19px;min-height:190px;overflow:hidden}
+ .scene-intro-copy{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:3px 0}
+ .scene-intro-copy .eyebrow{color:#a86147}.scene-intro-copy strong{font-family:ui-serif,'Noto Serif TC','PMingLiU',serif;font-size:clamp(19px,1.55vw,24px);line-height:1.4;color:#34494e;margin:8px 0 6px}
+ .scene-intro-copy p{margin:0 0 10px;font-size:15px;line-height:1.7;color:#556363}
+ .scene-intro-copy a{font-size:14px;font-weight:800;color:#a64d3d;display:inline-flex;gap:5px;align-items:center}
+ .scene-photo,.scene-intro-photo,.story-primary-photo,.story-secondary-photo,.event-photo{margin:0;min-width:0}
+ .scene-frame{width:100%;height:100%;min-height:140px;position:relative;background:linear-gradient(130deg,#8fa5a5,#dec6b5);overflow:hidden;border-radius:13px}
+ .scene-frame:before{content:'旅途的風景';position:absolute;inset:0;display:grid;place-items:center;color:#fffaf0;font-family:ui-serif,'Noto Serif TC',serif;font-size:19px;text-shadow:0 1px 12px #30474e5c}
+ .scene-frame img{position:absolute;z-index:1;width:100%;height:100%;object-fit:cover;inset:0;transition:transform .4s}
+ .scene-frame:hover img{transform:scale(1.025)}
+ .scene-intro-photo .scene-frame{min-height:159px}.scene-intro-photo figcaption{font-size:11px;color:#746a63;margin-top:6px}
+ .story-section{margin:26px 0 22px;padding:28px 27px;border-radius:20px;border:1px solid #ece1d3;background:#fffefa;box-shadow:var(--shadow);scroll-margin-top:25px}
+ .story-heading{margin-bottom:18px}.story-heading h3{font-family:ui-serif,'Noto Serif TC','PMingLiU',serif;font-size:28px;letter-spacing:.02em;margin:4px 0}.story-heading p{font-size:15px;margin:0;color:#6b7878}
+ .story-feature{display:grid;grid-template-columns:minmax(0,46%) minmax(0,1fr);gap:22px;align-items:center}
+ .story-feature-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-height:205px}
+ .story-primary-photo{grid-column:1/-1}.story-feature-images:has(.story-secondary-photo) .story-primary-photo{grid-column:auto}
+ .story-primary-photo .scene-frame,.story-secondary-photo .scene-frame{height:220px}.story-feature-images figcaption{font-size:11px;color:#68797a;margin-top:6px}
+ .story-copy{padding:3px 0}.story-kicker{font-size:12px;color:#b65d49;font-weight:900;letter-spacing:.06em}.story-copy h4{font-size:21px;font-family:ui-serif,'Noto Serif TC',serif;margin:8px 0 12px;line-height:1.4}.story-copy p{font-size:16px;line-height:1.9;color:#465e63;margin:0 0 15px}
+ .story-note{display:flex;gap:10px;align-items:start;background:#fbf2e8;border-radius:12px;padding:13px 15px;color:#7b5b47;font-size:14px;line-height:1.75}.story-note .i{flex-shrink:0;margin-top:2px}
+ .resources-heading{margin:27px 0 13px}.resources-heading h4{font-size:19px;margin:0 0 5px}.resources-heading p{font-size:14px;color:#677c7e;margin:0}
+ .resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .resource-card{border:1px solid #eee5db;border-radius:13px;overflow:hidden;background:#fffdf9;display:flex;flex-direction:column;min-width:0;transition:transform .15s,border-color .15s}
+ .resource-card:hover{transform:translateY(-2px);border-color:#d7a392}
+ .resource-thumb{height:125px;position:relative;overflow:hidden;background:linear-gradient(130deg,#779698,#b8caca)}
+ .resource-thumb img{width:100%;height:100%;object-fit:cover}.resource-thumb span{position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:#152b38b9;color:#fff;font-size:12px;font-weight:800}
+ .resource-content{padding:13px 15px;display:flex;flex-direction:column;gap:5px;flex:1}
+ .resource-type{font-size:12px;color:#ac6350;font-weight:850}.resource-content strong{font-size:15px;line-height:1.55;color:#34474d}.resource-open{font-size:13px;font-weight:800;color:#537b76;margin-top:auto;padding-top:7px;display:flex;align-items:center;gap:4px}
+ .event-photo{margin-bottom:13px;max-width:460px}.event-photo .scene-frame{height:165px;min-height:165px}.event-photo figcaption{font-size:12px;color:#69807f;margin-top:5px}
+ .overview-card-photo{width:155px;height:105px;flex:0 0 155px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#8daca6,#dbbba4);position:relative}
+ .overview-card-photo:before{content:'日本的風景';position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-family:ui-serif,'Noto Serif TC',serif}
+ .overview-card-photo img{position:relative;width:100%;height:100%;object-fit:cover}
+ /* Large mode on every viewport */
+ :root[data-read-size="large"]{--read-scale:1.12}
+ :root[data-read-size="large"] .event-title{font-size:calc(20px * var(--read-scale))}
+ :root[data-read-size="large"] .event-desc,:root[data-read-size="large"] .story-copy p,:root[data-read-size="large"] .hotel-card>p{font-size:calc(16px * var(--read-scale))}
+ :root[data-read-size="large"] .plan-option,:root[data-read-size="large"] .mini-action,:root[data-read-size="large"] .sidebar-card p{font-size:calc(15px * var(--read-scale))}
+}
+@media screen and (min-width:791px){
+ .workspace{grid-template-columns:214px minmax(0,1fr);gap:26px}
+ .content-grid{grid-template-columns:minmax(0,1fr) minmax(215px,248px);gap:22px}
+ .page-section{max-width:1120px}
+}
+@media screen and (min-width:791px) and (max-width:1250px){
+ .content-grid{display:block}
+ .right-rail{position:static;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:20px}
+ .right-rail .sidebox:last-child{display:none}
+}
+@media screen and (max-width:790px){
+ .topbar{padding:0 17px;height:67px}
+ .top-actions{gap:7px}.read-size-button{display:inline-flex;font-size:15px;padding:7px 10px;min-height:40px}.read-size-label{display:none}
+ .hero{min-height:255px;padding:31px 19px 26px}
+ .hero:after{background:linear-gradient(90deg,rgba(25,41,48,.95),rgba(30,49,55,.73) 57%,rgba(30,49,55,.34) 100%)}
+ .hero-photo-wrap{left:17%;opacity:.92}
+ .hero h1{font-size:36px}.hero-sub{font-size:16px;max-width:490px;line-height:1.7}
+ .hero-meta{font-size:13px}.hero-photo-credit{right:12px;bottom:8px;font-size:10px}
+ .workspace{padding:23px 17px 112px}
+ .day-tabs{gap:7px}.day-tab{min-height:54px;padding:9px 3px}.day-tab span{font-size:12px}.day-tab b{font-size:15px}
+ .intro-heading h2{font-size:29px}.intro-heading p{font-size:16px}
+ .fact-strip strong{font-size:15px}.fact-strip small{font-size:13px}
+ .section-top h3{font-size:21px}
+ .plan-option{font-size:15px;min-height:44px}.plan-desc b{font-size:16px}.plan-desc p{font-size:15px}
+ .toolbar .button{font-size:14px;min-height:41px}.toolbar>span{font-size:15px}
+ .timeline-section{padding:21px 18px 10px}.event-title{font-size:19px}.event-desc{font-size:16px}.event-time{font-size:16px}.event-meta{font-size:14px}.event-tag{font-size:13px}.event-tips,.hours{font-size:15px}.mini-action{font-size:14px;min-height:42px}
+ .sidebox h3{font-size:19px}.sidebox p,.highlight-list li{font-size:15px}
+ .overview-text h3{font-size:18px}.overview-text p{font-size:15px}.overview-text>small{font-size:13px}
+ .page-heading h2{font-size:30px}.page-heading p{font-size:16px}
+ .footer{padding-bottom:120px}
+}
+@media screen and (max-width:540px){
+ .brand-name b{font-size:14px}.brand-name small{font-size:11px}
+ .hero{min-height:239px;padding:25px 18px 30px}.hero h1{font-size:31px}.hero-sub{font-size:15px}.hero-meta>span{font-size:12px}
+ .workspace{padding:18px 13px 110px}
+ .intro-heading h2{font-size:26px}.intro-heading p{font-size:15px}.day-kind{font-size:13px}
+ .fact-strip{padding:14px 12px;gap:11px}.fact-strip small{font-size:12px}.fact-strip strong{font-size:14px;line-height:1.55}
+ .day-tab span{font-size:11px}.day-tab b{font-size:14px}
+ .scene-intro{grid-template-columns:minmax(0,1fr) minmax(103px,38%);gap:10px;padding:13px;min-height:158px}
+ .scene-intro-copy .eyebrow{font-size:10px;letter-spacing:.04em}.scene-intro-copy strong{font-size:18px;margin:4px 0}.scene-intro-copy p{font-size:13px;line-height:1.5;margin-bottom:6px}.scene-intro-copy a{font-size:12px}
+ .scene-intro-photo .scene-frame{min-height:135px}.scene-intro-photo figcaption{font-size:10px}
+ .plan-panel{padding:17px 14px}.section-top h3{font-size:20px}.section-top .button{font-size:13px}
+ .plan-option{padding:11px 12px;font-size:15px;min-height:44px}.plan-desc b{font-size:15px}.plan-desc p{font-size:14px}
+ .notice{padding:13px}.notice strong{font-size:14px}.notice p{font-size:13px}
+ .toolbar{gap:6px}.toolbar>span{font-size:14px}.toolbar>div{flex-shrink:0}.toolbar .button{font-size:12px;padding:9px 11px}
+ .timeline-section{padding:19px 14px 10px}.event-title{font-size:18px;line-height:1.5}.event-desc{font-size:15px;line-height:1.85;color:#40585e}.event-time{font-size:15px}.event-meta{font-size:12px}.event-tag{font-size:12px}
+ .event-extra{padding:12px}.event-tips,.hours,.minor{font-size:14px}.mini-action{font-size:14px;padding:10px}.event-body{padding-bottom:23px}
+ .story-section{padding:20px 15px;margin-top:18px}.story-heading h3{font-size:23px}.story-heading p{font-size:14px}
+ .story-feature{grid-template-columns:1fr;gap:12px}.story-feature-images{min-height:0}
+ .story-primary-photo .scene-frame,.story-secondary-photo .scene-frame{height:183px}
+ .story-copy h4{font-size:20px;margin:6px 0}.story-copy p{font-size:15px}.story-note{font-size:14px}
+ .resources-heading h4{font-size:17px}.resources-heading p{font-size:14px}
+ .resource-grid{grid-template-columns:1fr;gap:10px}.resource-video{display:grid;grid-template-columns:125px minmax(0,1fr)}.resource-thumb{height:100%;min-height:135px}.resource-content strong{font-size:15px}
+ .overview-card{padding:13px 12px;gap:9px}.overview-index{min-width:43px}.overview-index b{font-size:27px}.overview-index small{font-size:10px}
+ .overview-card-photo{width:80px;height:86px;flex-basis:80px}.overview-text h3{font-size:16px}.overview-text p{font-size:14px}.overview-text>span{font-size:11px}.overview-text>small{font-size:12px}
+ .overview-summary b{font-size:14px}.overview-summary span{font-size:13px}
+ .route-info b{font-size:16px}.route-info small,.route-info p{font-size:14px}.return-hotel strong{font-size:15px}
+ .hotel-heading h3{font-size:19px}.hotel-card>p,.hotel-card ul{font-size:15px}.hotel-heading p{font-size:13px}
+ .check-text{font-size:15px}.check-status{font-size:11px}.flight-time small,.flight-card p{font-size:14px}
+ .bottom-nav button{font-size:12px;min-height:51px}.bottom-nav button .i{width:23px;height:23px}
+ .footer{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+ :root[data-read-size="large"] .event-desc,:root[data-read-size="large"] .story-copy p{font-size:17px}
+ :root[data-read-size="large"] .event-title{font-size:20px}
+ :root[data-read-size="large"] .plan-option{font-size:16px}
+}
+@media print{.scene-intro,.story-section,.photo-credit-details,.read-size-button,.hero-photo-wrap{display:none!important}}
+@media screen{
+ .hotel-en{font-size:13px!important;letter-spacing:.015em;color:#718181!important;margin:3px 0 7px!important}
+}
+@media screen and (max-width:790px){
+ .hero.hero-compact{min-height:173px;padding:20px 19px}
+ .hero.hero-compact h1{font-size:29px;margin:5px 0}
+ .hero.hero-compact .hero-sub{display:none}
+ .hero.hero-compact .hero-meta{margin-top:11px}
+ .hero.hero-compact .hero-meta>span:last-child{display:none}
+ .hero.hero-compact .hero-photo-credit{display:none}
+}
+@media screen and (max-width:540px){
+ .hero.hero-compact{min-height:149px;padding:17px 17px}
+ .hero.hero-compact h1{font-size:26px;line-height:1.22;margin:5px 0}
+ .hero.hero-compact .eyebrow{font-size:10px}
+ .hero.hero-compact .hero-meta{font-size:12px;margin-top:6px}
+ .intro-heading{margin:4px 3px 12px}
+ .intro-heading h2{font-size:24px;line-height:1.27;margin:5px 0}
+ .intro-heading p{font-size:14px}
+ .intro-heading .day-kind{margin-top:7px;padding:5px 9px}
+ .fact-strip{padding:11px 10px;margin-bottom:12px}
+ .day-tabs{margin:10px 0 12px}
+}

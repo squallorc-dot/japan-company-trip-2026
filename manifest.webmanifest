@@ -1,20 +1,16 @@
 {
   "id": "./",
-  "name": "2026 東京・湘南・富士五日｜互動旅遊手冊",
+  "name": "家葦的日本旅行｜2026 冬日五日手冊",
   "short_name": "日本旅遊 2026",
   "description": "公司行程與夫妻自由行完整互動手冊",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f8f8f5",
-  "theme_color": "#102a37",
+  "theme_color": "#243d4b",
   "lang": "zh-TW",
   "icons": [
-    {
-      "src": "./assets/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
+    {"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }
