@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-01', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-02', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -138,13 +138,13 @@ export const guide = {
     item('21:20–22:00','返回豐洲飯店','hotelMonday','transit','由有樂町站搭有樂町線回豐洲，步行回飯店。',{origin:'有楽町駅',destination:'豊洲駅',status:'estimate'})
    ],'建議飯店約 18:00 前辦完入住；若延遲，改選 B／C。'),
    option('B','LaLaport 豐洲','近距離購物＋海邊走走',[
-    item('18:30 前後','飯店 → LaLaport 豐洲','lalaport','transit','步行或依現場天氣選擇短程交通。',{origin:'hotel MONday Premium TOYOSU',destination:'アーバンドック ららぽーと豊洲',status:'estimate'}),
+    item('18:30 前後','飯店 → LaLaport 豐洲','lalaport','transit','以步行為優先；如時間太晚或天氣不佳，可改飯店周邊採買。',{origin:'hotel MONday Premium TOYOSU',destination:'アーバンドック ららぽーと豊洲',mode:'walking',status:'estimate'}),
     item('18:45–20:30','商場、餐廳與日用品','lalaport','self','挑有興趣店家慢慢逛，商店通常至 21:00。',{status:'estimate'}),
     item('20:30–21:30','晚餐＋港灣夜景','lalaport','self','天氣太冷可取消海邊散步。',{status:'estimate'}),
     item('21:30 後','返回飯店／AEON','aeonToyosu','self','順路買第二天早起需要的早餐與飲料。',{status:'estimate'})
    ],'較少轉乘，適合中度疲累或時間不夠跑銀座。'),
    option('C','有明 Garden','大型商場＋冬季燈飾',[
-    item('18:15–18:45','飯店 → 有明 Garden','ariake','transit','電車或短程計程車；出發前查現場交通。',{origin:'hotel MONday Premium TOYOSU',destination:'有明ガーデン',status:'estimate'}),
+    item('18:15–18:45','飯店 → 有明 Garden','ariake','transit','以步行到車站及鐵道為優先，先查實際轉乘；若抵達太晚可改逛豐洲或休息。',{origin:'hotel MONday Premium TOYOSU',destination:'有明ガーデン',status:'estimate'}),
     item('18:45–20:45','逛街、晚餐','ariake','self','商場與餐飲；冬季燈飾依官方公告與天候。',{status:'estimate'}),
     item('20:45–21:30','燈飾＋回飯店','ariake','self','不必特別跑遠，提早休息準備隔天。',{status:'estimate'})
    ],'適合抵達較晚、想體驗新商場與燈飾。'),
@@ -155,7 +155,7 @@ export const guide = {
   ],
   2:[
    option('A','湘南完整版＋川崎','雙特色鐵道・海景・小町通・橫濱・購物',[
-    item('06:15–07:50','豐洲 → 大船','ofuna','transit','飯店步行至豐洲站，有樂町線至有樂町／JR 轉乘到大船。早出發減少尖峰擁擠。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
+    item('06:15–07:50','豐洲 → 大船','ofuna','transit','飯店先步行到豐洲站，搭有樂町線至有樂町，再轉 JR 到大船；注意 Google Maps 可能列出公車。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
     item('07:50–08:20','湘南單軌 → 湘南江之島','shonan','transit','搭懸掛式湘南單軌約 14 分鐘；含候車緩衝。',{origin:'大船駅 湘南モノレール',destination:'湘南江の島駅',status:'estimate'}),
     item('08:20–10:45','江之島神社・海蠟燭','enoshima','self','步行上島、神社、白天觀景塔；09:00 才開始登塔。行程緊湊，需控制停留。',{status:'estimate'}),
     item('10:45–11:30','江之電 江之島 → 鎌倉','enoden','transit','先走回江之電江之島站，再搭沿海段往鎌倉；中途不下車。',{origin:'江ノ島駅',destination:'鎌倉駅',status:'estimate'}),

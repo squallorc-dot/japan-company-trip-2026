@@ -364,3 +364,37 @@
 /* One-click cache recovery link for browsers and LINE in-app WebView. */
 .site-refresh{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:10px;background:#e7f0ed;color:#285f58;font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap}
 .site-refresh:hover,.site-refresh:focus-visible{background:#d5e5df;color:#174d45}
+
+
+/* 2026.10.24-02 | Travel usability refinements (kept separate for safe rollback).
+   Preserve the four existing bottom navigation labels; no captions or new tab. */
+@media screen {
+  .today-shortcut,.overview-today{display:inline-flex;align-items:center;gap:7px;min-height:44px;margin:8px 0}
+  .today-indicator{display:inline-flex;align-items:center;background:#e9f2ed;color:#325d52;border:1px solid #c7ded3;border-radius:30px;padding:7px 12px;font-size:13px;font-weight:800}
+  .event-quick-route{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin:9px 0 12px}
+  .event-quick-route>span{font-size:12px;color:#52686b}
+  .event-quick-route a{min-height:43px;display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid #e2c3b8;background:#fff7f2;color:#8e3c2d;border-radius:11px;font-weight:800;font-size:14px;line-height:1.4}
+  .event-quick-route a:hover{background:#fae9df;border-color:#bc8172}
+  .event-quick-route a:focus-visible{outline:3px solid #f5a38f;outline-offset:3px}
+  .route-method,.plan-traits span,.compare-traits span{display:inline-flex;align-items:center;border-radius:50px;background:#f0f4f0;color:#365f59;padding:4px 10px;font-size:12px;font-weight:750}
+  .route-method{margin:3px 0}
+  .plan-traits,.compare-traits{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:7px}
+  .compare-traits{margin:8px 0}
+  .route-go,.button-primary{background:var(--coral-dark);border-color:var(--coral-dark);color:white}
+  .route-go{min-width:44px;min-height:44px;justify-content:center;align-items:center}
+  .event-meta,.route-info small{color:#53666b}
+  .bottom-nav button{color:#536569}
+  .bottom-nav button.active{color:#a74738}
+  .modal-backdrop .modal{overscroll-behavior:contain}
+  body.dialog-open{overflow:hidden}
+}
+@media screen and (max-width:790px){
+  .today-shortcut{min-height:42px;margin:8px 4px 5px}
+  .event-quick-route>span{flex-basis:100%}
+  .event-quick-route a{min-width:160px;justify-content:center}
+  .route-card{align-items:center}
+  .route-method{font-size:12px}
+}
+@media print {
+  .event-quick-route,.today-shortcut,.today-indicator,.overview-today,.plan-traits,.compare-traits,.route-method{display:none!important}
+}
