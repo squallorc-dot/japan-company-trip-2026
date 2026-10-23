@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.23-03`。
+- 版本：`2026.10.24-01`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -20,23 +20,20 @@ python -m http.server 8080
 
 瀏覽 http://localhost:8080/ 。
 
-## 建立全新 GitHub 儲存庫並發布
+## 正式網站與部署
 
-1. GitHub 登入 `squallorc-dot`，進入 https://github.com/new 。
-2. 建立新的公開儲存庫，建議名稱 **`japan-company-trip-2026`**，不要選用現有的 `2026` 或 `TTAA`。
-3. 將此資料夾的**所有檔案與子資料夾**（包含 `.github/workflows/deploy.yml`）上傳到新儲存庫根目錄。
-4. GitHub → Settings → Pages → Build and deployment → Source: **GitHub Actions**。
-5. 在 Actions 查看 Publish Japan Trip Website 的部署狀態；首次如果未自動觸發可手動執行 `workflow_dispatch`。
-6. 成功後網站會位於：`https://squallorc-dot.github.io/japan-company-trip-2026/`。
-
-此網址**只是依建議儲存庫名稱推算的未來網址**，在 GitHub 新儲存庫成立且部署成功前不會存在。
+- 正式網站：https://squallorc-dot.github.io/japan-company-trip-2026/
+- GitHub 儲存庫：https://github.com/squallorc-dot/japan-company-trip-2026
+- 已在 GitHub Pages 上線；透過 `main` 分支的 GitHub Actions 發布。
+- 發布時先驗證行程資料及程式語法，再由專案內的原始照片產生社群封面、驗證中繼標籤，最後發布網頁。
+- 原本的 `2026` 東京行程網站與 `TTAA` 儲存庫都維持獨立。
 
 ## 後續維護（由 ChatGPT 協助）
 
 - 行程、景點、飯店、方案、備案：主要修改 `data.js`。
 - UI／UX、文字與排版：`styles.css`、`app.js`。
 - 圖示與封面：`assets/`。
-- 每次修改發布時：更新 `data.js` 的 `guide.version`、`version.json` 的 `version`、`sw.js` 的 `CACHE_NAME`，確保手機離線快取會更新。
+- 每次修改發布時：同步更新 `data.js`、`version.json`、`sw.js`、`index.html`、`app.js` 與 `refresh.html` 的版本識別，確保手機與 LINE 不混讀新舊資料。
 - 旅行社尚未公告的停留／集合時間標記「待確認」，不要自行補上精確時刻。
 - **公開儲存庫不應存放護照、訂位代碼、員工名單、私人聯絡資訊。** PDF 來源只保存在私人電腦，沒有打包到網站。
 
@@ -57,12 +54,12 @@ python -m http.server 8080
 網站公開頁僅顯示有用的景點／飯店／交通官網；版本與來源資料保留在儲存庫供維護，不公開團體 PDF。
 
 ## 實景圖片與素材來源
-實景圖片連結與攝影者／授權標記集中於 `media.js`。網站頁尾「照片鳴謝」保留連往每張照片授權頁面的入口；照片大多是過往景觀，不代表此次旅遊期間的現場影像。YouTube 影片採縮圖與外部連結，不複製影片。
+實景圖片與作者／授權標記集中於 `media.js` 與 `assets/photos/credits.json`。六張主要實景照片已儲存於 `assets/photos/`，可供離線閱讀；網站頁尾保留照片來源。照片為過往景觀，不代表旅行當下的天氣。YouTube 影片僅連結至原影片。
 
 ## 影音與預覽卡片
 - 5 天各附一支已確認存在的具體 YouTube 影片，卡片可直接在 YouTube 開啟，避免嵌入播放器失效。
 - 影片封面優先讀取 YouTube 原始縮圖，載入失敗改顯示 `assets/video-poster-{day}.svg`，不會留下白框。
-- 景點圖片相關作者與授權資訊在頁尾「參考資訊與圖片出處」保留；外部實景照片離線不保證顯示。
+- 照片作者與授權資訊保留於頁尾及 `assets/photos/credits.json`；網站內六張主要照片均為本地 WebP。
 ## 行程網頁出現舊版時
 手機瀏覽器及 LINE 內建瀏覽器可能保留較舊的 Service Worker。直接打開下列網站專用更新入口：
 https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
@@ -70,5 +67,12 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 更新頁只 unregister 本專案作用範圍的 Service Worker，並刪除名稱以 `japan-trip-2026-` 開頭的 CacheStorage。保留 LocalStorage 方案/字級/行前勾選。其他 GitHub Pages 專案不受影響。
 最新版 HTML 引用含版本參數的 CSS、JS；`app.js` 內的兩個 ES 模組匯入亦使用相同版本參數。每次後續內容更新須同步提高 `index.html`、`app.js`、`sw.js`、`version.json` 的版本，確保 LINE 與手機不再混讀不同版本。此頁面需要連網執行，無法取代離線閱讀功能。
 
-## HTML、LINE 分享及索引政策（2026.10.23-09）
-靜態首頁設置 Title／Description／OG／Twitter Card／Canonical；分享預覽圖為 `assets/og-cover.jpg`（1200×630），由 `scripts/build-social-image.py` 利用專案內取得授權的景點照片產生。手冊主要由親友以網址分享，設定 `noindex, nofollow, noarchive`，此設定並非密碼保護，公開網址仍可存取。網站互動切換在客戶端完成，LINE 分享顯示網站通用預覽，不為各 Day 自動生成各自 OG 卡。後續若正式改成公開旅遊攻略再評估是否允許搜尋索引。
+## HTML、LINE 分享及索引政策（2026.10.24-01）
+
+- 網站 Title／Description／OG／Twitter Card／Canonical 皆為靜態 HTML，讓 LINE／Facebook 不必執行 JavaScript 即可取得分享卡片。
+- OG 分享封面為「富士山＋新倉山忠靈塔」單張實景，使用 `assets/photos/fuji.webp`，不加文字；以 `scripts/build-social-image.py` 在 GitHub Actions 發布階段裁成 1200×630 的 `assets/og-cover.jpg`。
+- **注意：儲存庫中既有的 `assets/og-cover.jpg` 舊三景拼貼只是舊產物；正式網站發布流程會先覆蓋產生單張新封面。** 將來若需要在原始碼中也同步二進位 JPEG，可於本機執行 `python scripts/build-social-image.py` 後一起提交。
+- 分享標題：`2026 日本冬日旅行｜東京・湘南・富士`。
+- 分享說明：`12/2–12/6，從東京街道到湘南海風，再和富士山相遇。五天的風景，也有兩個人的自由時光。`。
+- OG 圖片 URL 附版本參數，以避免 LINE／Facebook 繼續使用舊三景快取。全站維持 `noindex, nofollow, noarchive`；這不是密碼保護，持有網址的人仍可存取。
+- 網站互動切換在客戶端完成，Day 1／Day 2 方案可隨網址分享，但不同日期仍共用同一張 OG 封面。
