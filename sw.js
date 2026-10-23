@@ -1,32 +1,68 @@
-const CACHE_NAME = 'japan-trip-2026-v20261023-05';
+// Offline-first installation, online-first reading. The complete itinerary remains available offline.
+const CACHE_NAME = 'japan-trip-2026-v20261023-06';
 const OFFLINE_FILES = [
   './','./index.html','./styles.css','./data.js','./app.js','./media.js','./manifest.webmanifest','./version.json',
-  './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/hero.svg','./assets/video-poster-1.svg','./assets/video-poster-2.svg','./assets/video-poster-3.svg','./assets/video-poster-4.svg','./assets/video-poster-5.svg'
+  './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/hero.svg',
+  './assets/video-poster-1.svg','./assets/video-poster-2.svg','./assets/video-poster-3.svg',
+  './assets/video-poster-4.svg','./assets/video-poster-5.svg'
 ];
+const isAppDocument = request => request.mode === 'navigate' ||
+  /\.(?:html|js|css|json|webmanifest)$/.test(new URL(request.url).pathname);
+
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(OFFLINE_FILES)));
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    // Re-fetch the newly published application files, not copies from browser HTTP cache.
+    await cache.addAll(OFFLINE_FILES.map(path => new Request(path, { cache: 'reload' })));
+    // Also migrate older versions that cannot correctly activate waiting workers.
+    await self.skipWaiting();
+  })());
 });
+
 self.addEventListener('activate', event => {
-  event.waitUntil(Promise.all([
-    caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('japan-trip-2026-') && key !== CACHE_NAME).map(key => caches.delete(key)))),
-    self.clients.claim()
-  ]));
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith('japan-trip-2026-') && key !== CACHE_NAME)
+      .map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
+
 self.addEventListener('message', event => {
   if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
 });
+
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
-  const url = new URL(event.request.url);
-  if (url.pathname.endsWith('/version.json')) {
-    event.respondWith(fetch(event.request).catch(() => caches.match('./version.json')));
+  const request = event.request;
+  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
+
+  if (isAppDocument(request)) {
+    // Online: get new itinerary/code first. Offline: use the copy saved during installation.
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      try {
+        const response = await fetch(request, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Network responded ' + response.status);
+        if (response.type === 'basic') await cache.put(request, response.clone());
+        return response;
+      } catch {
+        return (await cache.match(request)) ||
+          (request.mode === 'navigate' ? await cache.match('./index.html') : undefined) ||
+          Response.error();
+      }
+    })());
     return;
   }
-  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-    if(response.ok && response.type === 'basic') {
-      const clone = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-    }
-    return response;
-  }).catch(() => event.request.mode === 'navigate' ? caches.match('./index.html') : Response.error())));
+
+  // Icons and other non-changing local assets work offline without extra network requests.
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    try {
+      const response = await fetch(request);
+      if (response.ok && response.type === 'basic') await cache.put(request, response.clone());
+      return response;
+    } catch { return Response.error(); }
+  })());
 });

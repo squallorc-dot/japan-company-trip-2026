@@ -131,7 +131,7 @@ app.addEventListener('click', async ev => {const element=ev.target.closest('[dat
  if(action==='read-size'){state.readSize=state.readSize==='large'?'normal':'large';save('trip-read-size',state.readSize);document.documentElement.dataset.readSize=state.readSize;render();return;}
  if(action==='share'){await share();return;}
  if(action==='copy'){const text=element.dataset.copy||'';try{await navigator.clipboard.writeText(text);toast('地址已複製');}catch{window.prompt('複製地址',text);}return;}
- if(action==='update'){if(navigator.serviceWorker?.controller)navigator.serviceWorker.controller.postMessage({type:'SKIP_WAITING'});location.reload();return;}
+ if(action==='update'){const registration=await navigator.serviceWorker?.getRegistration('./');if(registration?.waiting){reloadAfterWorkerActivation=true;registration.waiting.postMessage({type:'SKIP_WAITING'});}else{location.reload();}return;}
  if(action==='dismiss-update'){state.updateAvailable=false;render();return;}
 });
 app.addEventListener('change',ev=>{const input=ev.target;if(input?.dataset.action==='check'){let a={};try{a=JSON.parse(stored('trip-checked','{}'));}catch{}a[input.dataset.id]=input.checked;save('trip-checked',JSON.stringify(a));}});
@@ -139,12 +139,41 @@ window.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&state.modal){state.
 window.addEventListener('popstate',()=>{const p=new URLSearchParams(location.search);const d=Number(p.get('day'));if(d>=1&&d<=5)state.day=d;state.view=p.get('view')||'schedule';render();});
 render();
 setInterval(()=>{if(actualToday)render();},60_000);
+// Users should see online updates without manually clearing the browser's PWA cache.
+// When a new worker takes control, offer a reload instead of wiping reading preferences.
+let reloadAfterWorkerActivation=false;
 if('serviceWorker' in navigator && location.protocol!=='file:'){
  window.addEventListener('load',async()=>{
   try {
-    const r=await navigator.serviceWorker.register('./sw.js',{scope:'./'});
-    r.addEventListener('updatefound',()=>{const w=r.installing;w?.addEventListener('statechange',()=>{if(w.state==='installed'&&navigator.serviceWorker.controller){state.updateAvailable=true;render();}});});
-    navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload());
+    const wasControlled=!!navigator.serviceWorker.controller;
+    let hasHadController=wasControlled;
+    const r=await navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'});
+    const showUpdate=()=>{if(!state.updateAvailable){state.updateAvailable=true;render();}};
+    if(r.waiting && hasHadController) showUpdate();
+    r.addEventListener('updatefound',()=>{
+      const worker=r.installing;
+      worker?.addEventListener('statechange',()=>{
+        if(worker.state==='installed' && navigator.serviceWorker.controller) showUpdate();
+      });
+    });
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{
+      if(!hasHadController){hasHadController=true;return;}
+      if(reloadAfterWorkerActivation){location.reload();return;}
+      showUpdate();
+    });
+    let lastCheck=0;
+    const checkUpdates=()=>{
+      if(!navigator.onLine || Date.now()-lastCheck<60_000) return;
+      lastCheck=Date.now();
+      r.update().catch(()=>{}); // Still displays the offline itinerary if disconnected.
+    };
+    checkUpdates();
+    window.addEventListener('online',checkUpdates);
+    window.addEventListener('focus',checkUpdates);
+    document.addEventListener('visibilitychange',()=>{
+      if(document.visibilityState==='visible')checkUpdates();
+    });
+    setInterval(checkUpdates,15*60_000);
   }catch(e){console.warn('離線快取未啟用',e);}
  });
 }

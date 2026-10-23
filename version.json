@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.23-05",
+  "version": "2026.10.23-06",
   "updated": "2026-10-23",
-  "summary": "Day 2 改用 Jane Travel 橫濱、鎌倉、江之島旅行影片及 YouTube 原版縮圖"
+  "summary": "修復 PWA 舊快取：線上載入最新版、離線保留行程、新版更新提醒與啟用"
 }

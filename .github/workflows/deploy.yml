@@ -20,6 +20,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate itinerary data
         run: node scripts/validate-data.mjs
+      - name: Check application and service worker syntax
+        run: |
+          node --check app.js
+          node --check media.js
+          node --check sw.js
       - uses: actions/configure-pages@v5
         with:
           enablement: true
