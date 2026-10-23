@@ -398,3 +398,20 @@
 @media print {
   .event-quick-route,.today-shortcut,.today-indicator,.overview-today,.plan-traits,.compare-traits,.route-method{display:none!important}
 }
+
+/* 2026.10.24-03 | Expandable transit guide: same source in itinerary and transport */
+@media screen {
+.transit-guide{margin:10px 0;border:1px solid #dfebe4;border-radius:12px;background:#f7faf7;overflow:hidden}
+.transit-guide summary{cursor:pointer;padding:12px 14px;color:#305f56;font-size:14px;font-weight:800;line-height:1.5;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.transit-guide summary:focus-visible{outline:3px solid #c2604d;outline-offset:-3px}
+.transit-guide[open] summary .i{transform:rotate(180deg)}
+.transit-guide-body{padding:0 15px 14px;color:#3e555b;font-size:14px;line-height:1.8}
+.transit-guide-body ol{padding-left:23px;margin:2px 0 12px}
+.transit-guide-body li{padding:4px 0}
+.transit-guide-body p{margin:9px 0}
+.transit-guide-body small{display:block;color:#516b70;margin-top:12px;font-size:12px;line-height:1.65}
+.transit-guide-body a,.route-reference{color:#8d4535;display:inline-flex;align-items:center;gap:6px;font-weight:800;text-decoration:underline;text-underline-offset:3px;min-height:40px}
+.route-reference{font-size:13px}
+.route-info{min-width:0}
+}
+@media print{.transit-guide{display:none!important}.route-reference{display:none!important}}
