@@ -1,14 +1,14 @@
 // 行程照片採用可公開展示的照片連結；著作權與圖片頁面可在頁尾「影像與參考資訊」查看。
-// 部分照片為過往實景，並非 2026 年活動的現場照片。外部圖片需有網路才會載入。
+// 所有主要照片皆存於 assets/photos/，可供離線閱讀；已縮放轉 WebP，詳見 credits.json。
 const commons = file => 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file).replace(/%2F/g,'/')+'?width=1280';
 const credit = (file,author,license) => ({author,license,source:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file).replace(/%2F/g,'/')});
 export const scenes = {
- meiji:{title:'東京的第一站，從綠意與鳥居開始',location:'明治神宮',image:commons('Torii of Meiji Shrine.jpg'),alt:'明治神宮參道上的木造鳥居',credit:credit('Torii of Meiji Shrine.jpg','Christophe95','CC BY-SA 4.0')},
- enoshima:{title:'沿著海風，去看看湘南的藍',location:'江之島・海蠟燭',image:commons('EnoshimaSeaCandle.jpg'),alt:'江之島白天的海蠟燭觀景塔實景',credit:credit('EnoshimaSeaCandle.jpg','Maksym Grinenko','CC BY-SA 4.0')},
- hakone:{title:'湖上的紅色鳥居，和冬天的山景',location:'箱根神社・蘆之湖',image:commons('Hakone-jinja torii - Hakone, Japan -DSC05709.jpg'),alt:'蘆之湖岸邊的箱根神社平和鳥居',credit:credit('Hakone-jinja torii - Hakone, Japan -DSC05709.jpg','Daderot','CC0 1.0')},
- fuji:{title:'期待富士山從雲層中露出來',location:'新倉山淺間公園・忠靈塔',image:'https://images.unsplash.com/photo-1779887609927-734b1cf1a768?auto=format&fit=crop&w=1400&q=82',alt:'新倉山忠靈塔與晴朗的富士山',credit:{author:'Takashi Miyazaki',license:'Unsplash License',source:'https://unsplash.com/photos/_VCtujeQNSY'}},
- narita:{title:'在老街的屋簷下，收藏旅行最後一天',location:'成田山新勝寺',image:commons('Naritasan Shinshoji Temple.jpg'),alt:'成田山新勝寺的建築景觀',credit:credit('Naritasan Shinshoji Temple.jpg','Manish Prabhune','CC BY 2.0')},
- yokohama:{title:'橫濱的冬夜，有聖誕市集的溫度',location:'橫濱紅磚倉庫',image:commons('Yokohama Red Brick Warehouse 20191207 2006.jpg'),alt:'橫濱紅磚倉庫過往冬季燈飾',credit:credit('Yokohama Red Brick Warehouse 20191207 2006.jpg','Pcs34560','Public Domain')}
+ meiji:{title:'東京的第一站，從綠意與鳥居開始',location:'明治神宮',image:'./assets/photos/meiji.webp',alt:'明治神宮參道上的木造鳥居',credit:credit('Torii of Meiji Shrine.jpg','Christophe95','CC BY-SA 4.0')},
+ enoshima:{title:'沿著海風，去看看湘南的藍',location:'江之島・海蠟燭',image:'./assets/photos/enoshima.webp',alt:'江之島白天的海蠟燭觀景塔實景',credit:credit('EnoshimaSeaCandle.jpg','Maksym Grinenko','CC BY-SA 4.0')},
+ hakone:{title:'湖上的紅色鳥居，和冬天的山景',location:'箱根神社・蘆之湖',image:'./assets/photos/hakone.webp',alt:'蘆之湖岸邊的箱根神社平和鳥居',credit:credit('Hakone-jinja torii - Hakone, Japan -DSC05709.jpg','Daderot','CC0 1.0')},
+ fuji:{title:'期待富士山從雲層中露出來',location:'新倉山淺間公園・忠靈塔',image:'./assets/photos/fuji.webp',alt:'新倉山忠靈塔與晴朗的富士山',credit:{author:'Takashi Miyazaki',license:'Unsplash License',source:'https://unsplash.com/photos/_VCtujeQNSY'}},
+ narita:{title:'在老街的屋簷下，收藏旅行最後一天',location:'成田山新勝寺',image:'./assets/photos/narita.webp',alt:'成田山新勝寺的建築景觀',credit:credit('Naritasan Shinshoji Temple.jpg','Manish Prabhune','CC BY 2.0')},
+ yokohama:{title:'橫濱的冬夜，有聖誕市集的溫度',location:'橫濱紅磚倉庫',image:'./assets/photos/yokohama.webp',alt:'橫濱紅磚倉庫過往冬季燈飾',credit:credit('Yokohama Red Brick Warehouse 20191207 2006.jpg','Pcs34560','Public Domain')}
 };
 export const dayScenes={1:'meiji',2:'enoshima',3:'hakone',4:'fuji',5:'narita'};
 export const inspirations = {

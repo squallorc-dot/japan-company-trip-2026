@@ -1,0 +1,80 @@
+[
+  {
+    "id": "meiji",
+    "subject": "明治神宮",
+    "file": "meiji.webp",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Torii_of_Meiji_Shrine.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Torii_of_Meiji_Shrine.jpg/1280px-Torii_of_Meiji_Shrine.jpg",
+    "author": "Christophe95",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modification": "Downscaled to max. 1400px, converted to WebP for web delivery",
+    "original_dimensions": "1280x973",
+    "webp_bytes": 275236
+  },
+  {
+    "id": "enoshima",
+    "subject": "江之島海蠟燭",
+    "file": "enoshima.webp",
+    "source_page": "https://commons.wikimedia.org/wiki/File:EnoshimaSeaCandle.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/EnoshimaSeaCandle.jpg/1280px-EnoshimaSeaCandle.jpg",
+    "author": "Maksym Grinenko",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "modification": "Downscaled to max. 1400px, converted to WebP for web delivery",
+    "original_dimensions": "1280x853",
+    "webp_bytes": 111292
+  },
+  {
+    "id": "hakone",
+    "subject": "箱根神社",
+    "file": "hakone.webp",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Hakone-jinja_torii_-_Hakone%2C_Japan_-DSC05709.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Hakone-jinja_torii_-_Hakone%2C_Japan_-DSC05709.jpg/1280px-Hakone-jinja_torii_-_Hakone%2C_Japan_-DSC05709.jpg",
+    "author": "Daderot",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "modification": "Downscaled to max. 1400px, converted to WebP for web delivery",
+    "original_dimensions": "1280x853",
+    "webp_bytes": 313870
+  },
+  {
+    "id": "fuji",
+    "subject": "新倉山忠靈塔",
+    "file": "fuji.webp",
+    "source_page": "https://unsplash.com/photos/_VCtujeQNSY",
+    "original_url": "https://images.unsplash.com/photo-1779887609927-734b1cf1a768?auto=format&fit=crop&w=1400&q=82",
+    "author": "Takashi Miyazaki (原網站記錄，作者尚待複核)",
+    "license": "Unsplash License",
+    "license_url": "https://unsplash.com/license",
+    "modification": "Downscaled to max. 1400px, converted to WebP for web delivery",
+    "original_dimensions": "1400x934",
+    "webp_bytes": 179968
+  },
+  {
+    "id": "narita",
+    "subject": "成田山新勝寺",
+    "file": "narita.webp",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Naritasan_Shinshoji_Temple.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Naritasan_Shinshoji_Temple.jpg/1280px-Naritasan_Shinshoji_Temple.jpg",
+    "author": "Manish Prabhune",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "modification": "Downscaled to max. 1400px, converted to WebP for web delivery",
+    "original_dimensions": "1280x756",
+    "webp_bytes": 202814
+  },
+  {
+    "id": "yokohama",
+    "subject": "橫濱紅磚倉庫",
+    "file": "yokohama.webp",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Yokohama_Red_Brick_Warehouse_20191207_2006.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Yokohama_Red_Brick_Warehouse_20191207_2006.jpg/1280px-Yokohama_Red_Brick_Warehouse_20191207_2006.jpg",
+    "author": "Pcs34560",
+    "license": "Public domain",
+    "license_url": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+    "modification": "Downscaled to max. 1400px, converted to WebP for web delivery",
+    "original_dimensions": "1280x853",
+    "webp_bytes": 305350
+  }
+]

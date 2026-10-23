@@ -1,10 +1,12 @@
 // Offline-first installation, online-first reading. The complete itinerary remains available offline.
-const CACHE_NAME = 'japan-trip-2026-v20261023-06';
+const CACHE_NAME = 'japan-trip-2026-v20261023-07';
 const OFFLINE_FILES = [
   './','./index.html','./styles.css','./data.js','./app.js','./media.js','./manifest.webmanifest','./version.json',
   './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/hero.svg',
   './assets/video-poster-1.svg','./assets/video-poster-2.svg','./assets/video-poster-3.svg',
-  './assets/video-poster-4.svg','./assets/video-poster-5.svg'
+  './assets/video-poster-4.svg','./assets/video-poster-5.svg',
+  './assets/photos/meiji.webp','./assets/photos/enoshima.webp','./assets/photos/hakone.webp',
+  './assets/photos/fuji.webp','./assets/photos/narita.webp','./assets/photos/yokohama.webp'
 ];
 const isAppDocument = request => request.mode === 'navigate' ||
   /\.(?:html|js|css|json|webmanifest)$/.test(new URL(request.url).pathname);
