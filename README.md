@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-02`。
+- 版本：`2026.10.24-03`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -87,3 +87,11 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - 旅行日每分鐘只更新當日時間小區塊，不重新繪製整個畫面。
 - 來源資料和個人方案仍分別由 `data.js` 與本機 LocalStorage 管理；保留既有 OG 圖片與社群設定。
 - 尚需手機／LINE／離線實機回歸測試；不要把 GitHub 部署成功等同於所有裝置已驗證。
+
+
+## 2026.10.24-03｜交通指南與還原
+- 本輪修改前備份：`backup-pre-transit-20261024`，基礎提交 `2fe3a7914630a959c4f7de6850a9612995291968`。
+- `data.js` 的 `transportGuides` 是自由行轉乘方向、站號、出口、步行、候車與官方資訊的共用資料來源。
+- 行程卡片及「交通」頁使用同一份指南，不新增底部選單；Google Maps 另外保留最快大眾運輸路線參考，可能含公車，亦可能跳過湘南單軌或江之電。
+- 交通出發時刻與出口資訊以本次查核所見為參考，實際 12 月 3 日出發班次、臨時月台變動與末班仍須出發前核實。
+- 公司遊覽車安排保持不變；景點順序與 Day 1／Day 2 備案數量不變。
