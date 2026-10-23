@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#243d4b"/>
+<title>更新日本旅遊手冊</title>
+<style>
+  :root{font-family:system-ui,-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:#253f46;background:#f9f5ef}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
+  main{width:min(440px,100%);padding:30px 24px;background:white;border:1px solid #e8e3d9;border-radius:22px;box-shadow:0 15px 45px #23363d12;text-align:center}
+  .mark{display:grid;place-items:center;width:62px;height:62px;margin:auto auto 14px;border-radius:19px;background:#153c47;color:white;font-size:27px}
+  h1{font-size:24px;line-height:1.4;margin:0 0 12px}
+  p{font-size:16px;line-height:1.8;color:#546b6d;margin:0 0 22px}
+  .btn{border:0;background:#bd5f4e;color:#fff;border-radius:12px;display:block;width:100%;padding:15px 16px;font-size:17px;font-weight:750;text-decoration:none}
+  .info{margin:15px 0 0;color:#75847f;font-size:13px;line-height:1.65}
+</style>
+</head>
+<body>
+<main>
+  <div class="mark" aria-hidden="true">旅</div>
+  <h1>更新日本旅遊手冊</h1>
+  <p id="status" role="status" aria-live="polite">正在檢查舊版快取，準備打開最新行程……</p>
+  <a class="btn" id="open-new" href="./?fresh=20261023-08">開啟最新版旅遊手冊</a>
+  <div class="info">僅整理這個旅遊專案的離線快取；不清除其他 GitHub 網站資料，也不刪除你的方案選擇。</div>
+</main>
+<script>
+(async function(){
+  var status=document.getElementById('status');
+  var open=document.getElementById('open-new');
+  var target=new URL('./',location.href);
+  var qs=new URLSearchParams(location.search);
+  target.searchParams.set('fresh','20261023-08');
+  ['day','view','plan1','plan2'].forEach(function(key){
+    var v=qs.get(key); if(v)target.searchParams.set(key,v);
+  });
+  open.href=target.href;
+  var errors=0;
+  try {
+    if('serviceWorker' in navigator) {
+      var regs=await navigator.serviceWorker.getRegistrations();
+      var expected=new URL('./',location.href).href;
+      var ours=regs.filter(function(r){return r.scope===expected;});
+      var removed=await Promise.allSettled(ours.map(function(r){return r.unregister();}));
+      errors+=removed.filter(function(x){return x.status==='rejected';}).length;
+    }
+  } catch(e){errors++;}
+  try {
+    if('caches' in window) {
+      var keys=await caches.keys();
+      var ours=keys.filter(function(k){return k.indexOf('japan-trip-2026-')===0;});
+      var removed=await Promise.allSettled(ours.map(function(k){return caches.delete(k);}));
+      errors+=removed.filter(function(x){return x.status==='rejected';}).length;
+    }
+  } catch(e){errors++;}
+  status.textContent=errors
+    ? '已嘗試更新。若 LINE 的瀏覽器有限制，請按下方按鈕開啟新版。'
+    : '舊版旅遊快取已整理，現在為你開啟最新版。';
+  setTimeout(function(){location.replace(target.href);},650);
+})();
+</script>
+</body>
+</html>

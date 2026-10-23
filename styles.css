@@ -361,3 +361,6 @@
 }
 
 @media screen{.photo-credit-list strong{font-size:13px;color:#596d70;margin-top:9px;letter-spacing:.03em}.photo-credit-list strong:first-child{margin-top:0}}
+/* One-click cache recovery link for browsers and LINE in-app WebView. */
+.site-refresh{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:10px;background:#e7f0ed;color:#285f58;font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap}
+.site-refresh:hover,.site-refresh:focus-visible{background:#d5e5df;color:#174d45}

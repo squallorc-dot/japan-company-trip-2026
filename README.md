@@ -63,3 +63,9 @@ python -m http.server 8080
 - 5 天各附一支已確認存在的具體 YouTube 影片，卡片可直接在 YouTube 開啟，避免嵌入播放器失效。
 - 影片封面優先讀取 YouTube 原始縮圖，載入失敗改顯示 `assets/video-poster-{day}.svg`，不會留下白框。
 - 景點圖片相關作者與授權資訊在頁尾「參考資訊與圖片出處」保留；外部實景照片離線不保證顯示。
+## 行程網頁出現舊版時
+手機瀏覽器及 LINE 內建瀏覽器可能保留較舊的 Service Worker。直接打開下列網站專用更新入口：
+https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
+
+更新頁只 unregister 本專案作用範圍的 Service Worker，並刪除名稱以 `japan-trip-2026-` 開頭的 CacheStorage。保留 LocalStorage 方案/字級/行前勾選。其他 GitHub Pages 專案不受影響。
+最新版 HTML 引用含版本參數的 CSS、JS；`app.js` 內的兩個 ES 模組匯入亦使用相同版本參數。每次後續內容更新須同步提高 `index.html`、`app.js`、`sw.js`、`version.json` 的版本，確保 LINE 與手機不再混讀不同版本。此頁面需要連網執行，無法取代離線閱讀功能。
