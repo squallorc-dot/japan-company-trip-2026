@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "2026 東京・湘南・富士五日｜互動旅遊手冊",
+  "short_name": "日本旅遊 2026",
+  "description": "公司行程與夫妻自由行完整互動手冊",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f8f5",
+  "theme_color": "#102a37",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
