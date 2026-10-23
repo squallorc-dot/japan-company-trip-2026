@@ -320,3 +320,44 @@
  .fact-strip{padding:11px 10px;margin-bottom:12px}
  .day-tabs{margin:10px 0 12px}
 }
+
+/* 2026-10-23 Video/Caption usability pass: preserve image space, prioritize direct video playback. */
+@media screen {
+  /* A previously stretched photo frame covered its following figcaption in grid layouts. */
+  .scene-intro{overflow:visible;align-items:stretch}
+  .scene-intro-photo{display:flex;flex-direction:column;min-height:0;align-self:stretch;overflow:visible;gap:8px}
+  .scene-intro-photo .scene-frame{flex:1 1 auto;height:auto;min-height:142px}
+  .scene-intro-photo figcaption{flex:0 0 auto;display:block;position:relative;z-index:2;margin:0;padding:0 2px;line-height:1.55;white-space:normal;overflow:visible;font-size:13px;color:#536b70}
+  .story-feature-images figure{min-height:0;overflow:visible}
+  .story-feature-images figcaption{font-size:12px;line-height:1.5;overflow:visible}
+  /* Each actual YouTube video has its own large poster and an obvious play affordance. */
+  .resource-card.resource-video{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,46%) minmax(0,1fr);align-items:stretch;min-height:205px}
+  .resource-video .resource-thumb{height:100%;min-height:205px;aspect-ratio:16/9;position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(130deg,#1e4f60 0%,#5a8586 58%,#b38d72 100%)}
+  .resource-video .resource-thumb img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:1}
+  .resource-video .resource-thumb .video-play-icon{position:relative;z-index:3;display:grid;place-items:center;width:62px;height:62px;padding-left:4px;border-radius:50%;background:rgba(190,65,48,.96);box-shadow:0 6px 25px #16283373;color:white;font-size:24px;transition:transform .16s ease,background .16s ease}
+  .resource-video:hover .video-play-icon,.resource-video:focus-visible .video-play-icon{transform:scale(1.07);background:#ae3e32}
+  .resource-video .resource-thumb .video-channel{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:9px 12px;background:linear-gradient(0deg,#102c3ede,transparent);color:white;font-size:13px;font-weight:750;text-shadow:0 1px 3px #102833b8}
+  .resource-video .resource-content{padding:21px 22px;gap:11px;justify-content:center}
+  .resource-video .resource-content strong{font-size:18px;line-height:1.55}
+  .resource-video .resource-open{color:#a94e42;font-size:15px;font-weight:850;min-height:24px}
+  .resource-video:focus-visible{outline:3px solid #d98b70;outline-offset:3px}
+  .resources-heading h4{font-size:20px}
+  .resource-card:not(.resource-video){min-height:155px}
+}
+@media screen and (max-width:790px){
+ .resource-card.resource-video{grid-template-columns:minmax(0,1fr);min-height:0}
+ .resource-video .resource-thumb{height:auto;min-height:0;width:100%;aspect-ratio:16/9}
+ .resource-video .resource-content{padding:16px 17px;gap:7px}
+ .resource-video .resource-content strong{font-size:17px}
+}
+@media screen and (max-width:540px){
+ .scene-intro{grid-template-columns:minmax(0,1fr) minmax(115px,40%);gap:12px;min-height:0}
+ .scene-intro-photo .scene-frame{min-height:124px}
+ .scene-intro-photo figcaption{font-size:12px;line-height:1.55}
+ .resource-video .resource-thumb{aspect-ratio:16/9;min-height:0}
+ .resource-video .resource-thumb .video-play-icon{width:56px;height:56px;font-size:22px}
+ .resource-video .resource-content strong{font-size:17px}
+ .resource-video .resource-open{font-size:15px}
+}
+
+@media screen{.photo-credit-list strong{font-size:13px;color:#596d70;margin-top:9px;letter-spacing:.03em}.photo-credit-list strong:first-child{margin-top:0}}
