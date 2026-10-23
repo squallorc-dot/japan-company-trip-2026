@@ -69,3 +69,6 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 
 更新頁只 unregister 本專案作用範圍的 Service Worker，並刪除名稱以 `japan-trip-2026-` 開頭的 CacheStorage。保留 LocalStorage 方案/字級/行前勾選。其他 GitHub Pages 專案不受影響。
 最新版 HTML 引用含版本參數的 CSS、JS；`app.js` 內的兩個 ES 模組匯入亦使用相同版本參數。每次後續內容更新須同步提高 `index.html`、`app.js`、`sw.js`、`version.json` 的版本，確保 LINE 與手機不再混讀不同版本。此頁面需要連網執行，無法取代離線閱讀功能。
+
+## HTML、LINE 分享及索引政策（2026.10.23-09）
+靜態首頁設置 Title／Description／OG／Twitter Card／Canonical；分享預覽圖為 `assets/og-cover.jpg`（1200×630），由 `scripts/build-social-image.py` 利用專案內取得授權的景點照片產生。手冊主要由親友以網址分享，設定 `noindex, nofollow, noarchive`，此設定並非密碼保護，公開網址仍可存取。網站互動切換在客戶端完成，LINE 分享顯示網站通用預覽，不為各 Day 自動生成各自 OG 卡。後續若正式改成公開旅遊攻略再評估是否允許搜尋索引。

@@ -25,6 +25,27 @@ jobs:
           node --check app.js
           node --check media.js
           node --check sw.js
+      - name: Validate static SEO and social metadata
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import re
+          class MetaParser(HTMLParser):
+              def __init__(self): super().__init__(); self.metas=[]; self.links=[]; self.titles=0
+              def handle_starttag(self, tag, attrs):
+                  a=dict(attrs)
+                  if tag=='meta': self.metas.append(a)
+                  if tag=='link': self.links.append(a)
+                  if tag=='title': self.titles+=1
+          p=MetaParser();p.feed(Path('index.html').read_text(encoding='utf-8'))
+          assert p.titles==1, "Exactly one static title is required"
+          for attr,val in [('name','description'),('name','robots'),('property','og:title'),('property','og:description'),('property','og:image'),('property','og:url'),('name','twitter:card')]:
+              assert any(m.get(attr)==val for m in p.metas), f"Missing {val}"
+          assert any(l.get('rel')=='canonical' for l in p.links)
+          assert Path('assets/og-cover.jpg').is_file()
+          print('Static HTML and social metadata OK')
+          PY
       - uses: actions/configure-pages@v5
         with:
           enablement: true
