@@ -5,11 +5,234 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-02', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-03', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
  warning:'旅行社可能調整路線及集合時間；網站內的自由行時刻是規劃參考。電車班次、天氣、營業狀態請於旅行當天再次確認。',
+ transportGuides:{
+  "hotel MONday Premium TOYOSU|銀座一丁目駅": {
+    "steps": [
+      "飯店步行約 10 分鐘至豐洲站（有樂町線 Y22；飯店側以 2b／6a 出口附近作為步行方向參考）。",
+      "搭有樂町線『和光市方面』往銀座一丁目站（Y19），不用在有樂町轉車。",
+      "銀座百貨依店舖位置選出口；銀座一丁目 4 號出口通往部分銀座商圈，2 號出口偏有樂町。"
+    ],
+    "note": "直達銀座適合豐洲站；不必先繞去東雲。出口依當天商場位置選擇。",
+    "official": "https://www.tokyometro.jp/station/ginza-itchome/index.html",
+    "alternative": "Google Maps 的最快路線僅供比較；不必改用公車。",
+    "crowd": "平日傍晚可能遇下班人潮，熱門出入口注意步行流量。"
+  },
+  "有楽町駅|hotel MONday Premium TOYOSU": {
+    "steps": [
+      "至東京 Metro 有樂町站（Y18），搭有樂町線『新木場方面』至豐洲站（Y22）。",
+      "豐洲站出站後步行約 10 分鐘回飯店；切勿把捷運站當飯店終點。"
+    ],
+    "note": "飯店團體訂房不適用官方免費接駁，晚間以步行回飯店為準。",
+    "official": "https://www.tokyotouristinfo.com/detail/M0612",
+    "crowd": "晚間班次與末班請出發當天確認。"
+  },
+  "hotel MONday Premium TOYOSU|アーバンドック ららぽーと豊洲": {
+    "steps": [
+      "直接從飯店步行往 LaLaport 豐洲，不必搭地鐵。",
+      "若由豐洲站附近辨認方向，2b 出口通往 LaLaport 豐洲。"
+    ],
+    "note": "單程步行約 15 分鐘為初步參考，以當天導航為準。",
+    "official": "https://www.tokyometro.jp/station/toyosu/index.html"
+  },
+  "アーバンドック ららぽーと豊洲|hotel MONday Premium TOYOSU": {
+    "steps": [
+      "由 LaLaport 步行回東雲的飯店，視需要順路到 AEON Shinonome 採買。",
+      "夜晚及下雨時留意路口、過馬路及步行時間。"
+    ],
+    "note": "飯店步行路線不用乘車；AEON 的最後營業時間請以實際店舖為準。",
+    "official": "https://www.tokyotouristinfo.com/detail/M0612"
+  },
+  "hotel MONday Premium TOYOSU|有明ガーデン": {
+    "steps": [
+      "飯店步行約 14 分鐘到東雲站（R02，B 出口方向）。",
+      "搭臨海線『大崎方面』至國際展示場站（R03），再步行至有明 Garden。",
+      "先比較『全程步行』與『步行＋臨海線』的總時間，避免候車比走路還久。"
+    ],
+    "note": "雨天或較晚出發時，不一定要搭車；選擇當下步行負擔較小的方式。",
+    "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx"
+  },
+  "有明ガーデン|hotel MONday Premium TOYOSU": {
+    "steps": [
+      "回國際展示場站（R03），搭臨海線『新木場方面』只到東雲站（R02）。",
+      "東雲站 B 出口步行回飯店；若轉乘與等車比直接步行慢，可以直接走回去。"
+    ],
+    "note": "注意站內『新木場方面』不是大崎方向。",
+    "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx"
+  },
+  "hotel MONday Premium TOYOSU|大船駅": {
+    "steps": [
+      "飯店步行約 14 分鐘至東雲站（臨海線 R02，B 出口）。",
+      "搭臨海線『大崎／埼京線方面』至大崎站（R08）。",
+      "大崎站轉 JR 湘南新宿線，確認南下列車標示『橫濱／大船／逗子／小田原方面』且實際停靠大船；月台看當日電子看板。",
+      "抵達大船 JR 站後依『湘南モノレール』站外指標轉乘，不把 JR 月台當作單軌月台。"
+    ],
+    "note": "推薦主線：東雲 → 大崎 → 大船，避免為了轉乘而先往市中心繞行。06:15 飯店出發不保證搭上任何特定班次。",
+    "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx",
+    "alternative": "備案可比較東雲 → 大井町（R07）→ JR 經品川／橫濱轉至大船，或豐洲→有樂町→JR；以當天候車與轉乘總時間決定。",
+    "service": "大崎清晨南下班次可能較疏，轉乘至少留合理步行時間；勿以只有 3 分鐘的轉乘作主要方案。",
+    "crowd": "12/3 週四通勤逐漸增加；臨海線及 JR 以現場擁擠狀況為準。"
+  },
+  "大船駅 湘南モノレール|湘南江の島駅": {
+    "steps": [
+      "從 JR 大船站依站內指標離站，前往獨立的『湘南モノレール 大船站』。",
+      "搭湘南單軌往終點『湘南江之島』，這段是指定體驗，不應被 Google Maps 改成 JR／小田急捷徑。"
+    ],
+    "note": "兩座站體並非同一月台；下車後還需步行到江之島、之後到江之電江之島站。",
+    "official": "https://www.shonan-monorail.co.jp/ticket/",
+    "service": "實際首末班、發車間隔請查湘南單軌官方時刻表；候車時間需計入。",
+    "crowd": "湘南熱門觀光路線，上午仍可能有通勤或旅客人潮。"
+  },
+  "江ノ島駅|鎌倉駅": {
+    "steps": [
+      "由江之島海蠟燭返回江之電『江ノ島站（EN06）』；注意它不同於湘南單軌『湘南江之島站』。",
+      "進站看『鎌倉方面』月台／看板，搭江之電至終點『鎌倉站（EN15）』。",
+      "鎌倉轉 JR 時，JR 連絡閘口自 2026/7/14 起僅適用符合規定的一張交通 IC 卡；其他票種走江之電西口，站外轉乘。"
+    ],
+    "note": "官方標示海蠟燭至江之電江之島站步行方向約 25 分鐘，還要另計從觀景台下山、排隊與等車。",
+    "official": "https://www.enoden.co.jp/tc/train/station/enoshima/",
+    "alternative": "Google Maps 可能改推小田急或其他較快路線，保留作備案，不取代原定江之電。",
+    "service": "江之電江之島往鎌倉白天約每 14 分鐘一班，最新時刻及末班以官方時刻表為準。",
+    "crowd": "熱門車廂及海景路段可能擁擠，不預設一定能坐到海側座位。"
+  },
+  "鎌倉駅|横浜ワールドポーターズ": {
+    "steps": [
+      "鎌倉站從 JR 搭『橫濱方面』的橫須賀線等適當列車，至橫濱站。",
+      "選一：橫濱轉 JR 京濱東北／根岸線到櫻木町，經汽車道步行約 10 分鐘至 World Porters。",
+      "選二：橫濱轉港未來線至馬車道站，走 4 號出口，步行約 5 分鐘到 World Porters。"
+    ],
+    "note": "兩條都是鐵道＋步行；比較當時班次、轉乘月台距離與天氣決定。",
+    "official": "https://www.yim.co.jp/static-pages/access",
+    "crowd": "下午橫濱站轉乘人多，留意 JR 與港未來線並非同一個月台。"
+  },
+  "横浜ワールドポーターズ|横浜赤レンガ倉庫": {
+    "steps": [
+      "World Porters 直接步行前往紅磚倉庫；兩地同在港未來新港區，不需為這一小段特別搭車。",
+      "在 World Porters 外確認行人路線，前往紅磚倉庫 1／2 號館及聖誕市集入口。"
+    ],
+    "note": "走路較符合景點順序；人潮密集時預留過馬路與排隊緩衝。",
+    "official": "https://www.yokohama-akarenga.jp/access/"
+  },
+  "横浜赤レンガ倉庫|ラゾーナ川崎プラザ": {
+    "steps": [
+      "由紅磚倉庫步行約 15 分鐘至 JR 櫻木町站（可經汽車道方向）。",
+      "搭 JR 京濱東北／根岸線等往橫濱方向列車，依當天轉乘資訊往川崎；抵達川崎站後往 LAZONA 川崎側出口步行。",
+      "若聖誕市集排隊延遲，川崎是可刪減項目，別為購物硬趕最後一段。"
+    ],
+    "note": "川崎屬 Day 2 A 延伸，不是必走景點。",
+    "official": "https://www.yokohama-akarenga.jp/access/",
+    "crowd": "17:30–19:30 為一般下班較忙時段，JR 櫻木町／橫濱轉乘可能擁擠。"
+  },
+  "川崎駅|hotel MONday Premium TOYOSU": {
+    "steps": [
+      "川崎站搭 JR 京濱東北線往大井町。",
+      "大井町轉臨海線（R07），搭『新木場方面』至東雲站（R02）。",
+      "東雲 B 出口步行約 14 分鐘回飯店。"
+    ],
+    "note": "不必固定先往有樂町繞行；以川崎→大井町→東雲為主要參考。",
+    "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx",
+    "alternative": "若錯過末班或路線停駛，Google Maps 可比較其他鐵道組合，但不預設公車。",
+    "crowd": "川崎晚間通勤可能擁擠；末班須同時核對 JR 和臨海線。"
+  },
+  "横浜赤レンガ倉庫|hotel MONday Premium TOYOSU": {
+    "steps": [
+      "紅磚倉庫步行約 15 分鐘至 JR 櫻木町站。",
+      "搭 JR 京濱東北／根岸線往『東京／大宮方面』在大井町站下車。",
+      "大井町轉臨海線（R07）『新木場方面』，至東雲站（R02）後步行回飯店。"
+    ],
+    "note": "原則不必繞有樂町。也可比較馬車道→橫濱→JR 的鐵道接續。",
+    "official": "https://www.yokohama-akarenga.jp/access/",
+    "alternative": "最快路線由 Google Maps 依即時班次查詢，可能含公車，僅供參考。",
+    "crowd": "傍晚下班與聖誕市集時段人潮多，回程留候車及站外步行緩衝。"
+  },
+  "東京駅|川崎駅": {
+    "steps": [
+      "東京站尋找 JR 東海道線等『橫濱／小田原方面』列車至川崎；依當天看板確認停靠。",
+      "川崎站出站後依『LAZONA 川崎』商場指標前進。"
+    ],
+    "note": "不需要轉乘地鐵，東京站的 JR 月台位置以現場看板為準。",
+    "crowd": "工作日 15:00 前後通常非主要通勤尖峰，但仍可能有人潮。"
+  },
+  "hotel MONday Premium TOYOSU|吉祥寺駅": {
+    "steps": [
+      "飯店步行至東雲站（R02），搭臨海線往大崎方向。",
+      "若有直通 JR 埼京線至新宿的班次，可繼續搭乘；若不是直通車則於大崎轉 JR 往新宿。",
+      "新宿站轉 JR 中央線快速往三鷹／高尾方向，確認停靠吉祥寺。"
+    ],
+    "note": "東京西側行程優先東雲方向；往新宿時注意列車是否直通埼京線。",
+    "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx",
+    "crowd": "通勤時段新宿站轉乘人潮較多，需預留找 JR 中央線的時間。"
+  },
+  "吉祥寺駅|下北沢駅": {
+    "steps": [
+      "吉祥寺站找京王井之頭線『澀谷方面』，在下北澤站下車。",
+      "不用為了更快而改用 JR 繞新宿。"
+    ],
+    "note": "這是連接吉祥寺與下北澤最簡單的特色路線。",
+    "crowd": "週四下午班次請依京王官方資訊查詢。"
+  },
+  "下北沢駅|渋谷駅": {
+    "steps": [
+      "下北澤站搭京王井之頭線『澀谷方面』至終點澀谷。",
+      "井之頭線與其他澀谷鐵道路線入口不同，回飯店前依 JR 埼京線指標移動。"
+    ],
+    "note": "繼續走井之頭線，不必繞到新宿。",
+    "crowd": "17:30 起澀谷站可能開始下班時段擁擠。"
+  },
+  "渋谷駅|hotel MONday Premium TOYOSU": {
+    "steps": [
+      "澀谷站依 JR 埼京線方向指標，找『臨海線直通／新木場方面』列車。",
+      "有直通車時在東雲站（R02）下車；否則在大崎換乘臨海線『新木場方面』。",
+      "東雲站 B 出口步行回飯店。"
+    ],
+    "note": "注意不是所有埼京線車次都直通臨海線，須看列車終點。",
+    "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx",
+    "crowd": "20:30 左右仍可能有晚間返家旅客，出站步行時間不要忽略。"
+  },
+  "銀座一丁目駅|日本橋駅 東京": {
+    "steps": [
+      "從銀座商圈步行到東京 Metro 銀座線『銀座站』。",
+      "搭銀座線往淺草方面至『日本橋站』，再步行逛日本橋與東京站周邊。",
+      "若百貨位置已靠近東京站，也可直接步行，未必需要搭車。"
+    ],
+    "note": "以實際購物區位置決定步行或搭地鐵，沒有必要硬湊一次轉乘。",
+    "official": "https://www.tokyometro.jp/station/ginza-itchome/index.html"
+  },
+  "ホテル花いさわ|さくら温泉通り, 山梨県笛吹市石和町川中島": {
+    "steps": [
+      "花石和飯店步行往石和溫泉櫻花溫泉通的燈飾區。",
+      "到達燈飾路段後只走想看的範圍，再照原路返回飯店。"
+    ],
+    "note": "活動全線距離較長，不代表需要走完全程；晚間務必注意寒冷與步行距離。",
+    "official": "https://www.fuefuki-kanko.jp/scontents/illumination"
+  },
+  "ホテル花いさわ|イオン石和店": {
+    "steps": [
+      "由花石和飯店步行至 AEON 石和店。",
+      "是否前往以晚餐、泡湯與店舖營業時間為先，這是可取消的延伸行程。"
+    ],
+    "note": "全程步行，不需要安排巴士。"
+  },
+  "THE HEDISTAR HOTEL NARITA|イオンタウン成田富里": {
+    "steps": [
+      "飯店步行約 5 分鐘至 AEON TOWN 成田富里，勿與較遠的 AEON MALL 成田混淆。",
+      "商場採買或晚餐後原路步行回飯店。"
+    ],
+    "note": "最推薦的 Day 4 晚間採買方案。",
+    "official": "https://www.aeontown.co.jp/naritatomisato/"
+  },
+  "THE HEDISTAR HOTEL NARITA|京成成田駅": {
+    "steps": [
+      "飯店步行往京成成田站商圈，沿途找晚餐店家。",
+      "吃完後步行回飯店；若抵達飯店太晚，改去 AEON TOWN 即可。"
+    ],
+    "note": "飯店到京成成田站約 13 分鐘步行參考，依實際出入口及天氣調整。"
+  }
+},
  sources:[
    {label:'長榮航空',url:'https://www.evaair.com/zh-tw/index.html'},
    {label:'hotel MONday Premium 豐洲',url:'https://hotel-monday.com/toyosu/'},
@@ -95,9 +318,9 @@ export const guide = {
     item('晚上｜待定','花石和入住＋公司晚餐','hotelHana','hotel','人資確認入住「花石和」，晚間可泡湯休息。',{status:'planned'})
    ],
    evening:[
-    item('晚餐後｜彈性','石和櫻花溫泉通燈飾','isawaLights','bonus','2026/11/15–2027/1/31，17:00–22:00 免費點燈。走一小段即可，不必全程。',{status:'confirmed'}),
+    item('晚餐後｜彈性','石和櫻花溫泉通燈飾','isawaLights','bonus','2026/11/15–2027/1/31，17:00–22:00 免費點燈。走一小段即可，不必全程。',{origin:'ホテル花いさわ',destination:'さくら温泉通り, 山梨県笛吹市石和町川中島',mode:'walking',status:'estimate'}),
     item('回飯店後','花石和溫泉放鬆','hotelHana','bonus','大浴場／露天溫泉。若想預約貸切風呂，先向飯店確認團體住房條件。',{status:'planned'}),
-    item('有餘裕再去','石和在地 AEON','aeonIsawa','bonus','當地生活商場與超市採買，優先度低於溫泉。',{status:'estimate'})
+    item('有餘裕再去','石和在地 AEON','aeonIsawa','bonus','當地 AEON 採買屬可取消的延伸活動，優先度低於溫泉。',{origin:'ホテル花いさわ',destination:'イオン石和店',mode:'walking',status:'estimate'})
    ]
   },
   {
@@ -112,8 +335,8 @@ export const guide = {
     item('晚上｜待定','入住 THE HEDISTAR 成田','hotelHedistar','hotel','飯店到附近 AEON TOWN 步行可達；晚餐自理。',{status:'planned'})
    ],
    evening:[
-    item('晚間｜優先','AEON TOWN 成田富里','aeonNarita','bonus','距飯店步行約 5 分鐘；超市與生活雜貨很適合最後採買。',{status:'estimate'}),
-    item('有精神再去','京成成田站附近晚餐','keiseiNarita','bonus','可找拉麵、壽司或街邊餐廳；若抵達較晚就直接在 AEON 用餐。',{status:'estimate'})
+    item('晚間｜優先','AEON TOWN 成田富里','aeonNarita','bonus','距飯店步行約 5 分鐘；超市與生活雜貨很適合最後採買。',{origin:'THE HEDISTAR HOTEL NARITA',destination:'イオンタウン成田富里',mode:'walking',status:'estimate'}),
+    item('有精神再去','京成成田站附近晚餐','keiseiNarita','bonus','可找拉麵、壽司或街邊餐廳；若抵達較晚就直接在 AEON 用餐。',{origin:'THE HEDISTAR HOTEL NARITA',destination:'京成成田駅',mode:'walking',status:'estimate'})
    ]
   },
   {
@@ -134,62 +357,65 @@ export const guide = {
    option('A','銀座＋丸之內','百貨購物先行，晚點欣賞冬季燈飾',[
     item('18:00–18:35','飯店出發 → 銀座','ginza','transit','豐洲站搭有樂町線往銀座一丁目；先確認實際入住時間。',{origin:'hotel MONday Premium TOYOSU',destination:'銀座一丁目駅',status:'estimate',duration:'約 25–35 分'}),
     item('18:35–20:00','銀座百貨與晚餐','ginza','self','優先逛百貨與品牌店；晚到時改以晚餐為主。',{status:'estimate'}),
-    item('20:00–21:20','丸之內燈飾／東京車站','marunouchi','self','沿仲通漫步、KITTE／東京站夜景彈性順遊。',{status:'estimate'}),
-    item('21:20–22:00','返回豐洲飯店','hotelMonday','transit','由有樂町站搭有樂町線回豐洲，步行回飯店。',{origin:'有楽町駅',destination:'豊洲駅',status:'estimate'})
+    item('20:00–21:20','丸之內燈飾／東京車站','marunouchi','self','由銀座步行往丸之內仲通，欣賞燈飾與 KITTE／東京站夜景；先確認距離與商店關門時間。',{origin:'銀座一丁目駅',destination:'丸の内仲通り',mode:'walking',status:'estimate'}),
+    item('21:20–22:00','返回豐洲飯店','hotelMonday','transit','有樂町（Y18）搭有樂町線往新木場至豐洲（Y22），再步行回飯店。',{origin:'有楽町駅',destination:'hotel MONday Premium TOYOSU',status:'estimate'})
    ],'建議飯店約 18:00 前辦完入住；若延遲，改選 B／C。'),
    option('B','LaLaport 豐洲','近距離購物＋海邊走走',[
     item('18:30 前後','飯店 → LaLaport 豐洲','lalaport','transit','以步行為優先；如時間太晚或天氣不佳，可改飯店周邊採買。',{origin:'hotel MONday Premium TOYOSU',destination:'アーバンドック ららぽーと豊洲',mode:'walking',status:'estimate'}),
     item('18:45–20:30','商場、餐廳與日用品','lalaport','self','挑有興趣店家慢慢逛，商店通常至 21:00。',{status:'estimate'}),
     item('20:30–21:30','晚餐＋港灣夜景','lalaport','self','天氣太冷可取消海邊散步。',{status:'estimate'}),
-    item('21:30 後','返回飯店／AEON','aeonToyosu','self','順路買第二天早起需要的早餐與飲料。',{status:'estimate'})
+    item('21:30 後','返回飯店／AEON','aeonToyosu','self','從 LaLaport 步行回飯店，順路買隔天的早餐與飲料。',{origin:'アーバンドック ららぽーと豊洲',destination:'hotel MONday Premium TOYOSU',mode:'walking',status:'estimate'})
    ],'較少轉乘，適合中度疲累或時間不夠跑銀座。'),
    option('C','有明 Garden','大型商場＋冬季燈飾',[
     item('18:15–18:45','飯店 → 有明 Garden','ariake','transit','以步行到車站及鐵道為優先，先查實際轉乘；若抵達太晚可改逛豐洲或休息。',{origin:'hotel MONday Premium TOYOSU',destination:'有明ガーデン',status:'estimate'}),
     item('18:45–20:45','逛街、晚餐','ariake','self','商場與餐飲；冬季燈飾依官方公告與天候。',{status:'estimate'}),
-    item('20:45–21:30','燈飾＋回飯店','ariake','self','不必特別跑遠，提早休息準備隔天。',{status:'estimate'})
+    item('20:45–21:30','燈飾＋回飯店','ariake','self','回國際展示場站搭臨海線往新木場方向至東雲，或視天氣直接步行回飯店。',{origin:'有明ガーデン',destination:'hotel MONday Premium TOYOSU',status:'estimate'})
    ],'適合抵達較晚、想體驗新商場與燈飾。'),
    option('D','輕鬆休息','飯店附近採買、早點睡',[
-    item('入住後','晚餐／飯店周邊','aeonToyosu','self','飯店附近簡單吃飯、採買。',{status:'estimate'}),
+    item('入住後','晚餐／飯店周邊','aeonToyosu','self','步行到飯店對面的 AEON 東雲採買與用餐，晚上注意路口。',{origin:'hotel MONday Premium TOYOSU',destination:'イオン東雲店',mode:'walking',status:'estimate'}),
     item('晚間','回飯店休息','hotelMonday','hotel','隔天清晨約 06:15 出發，提前整理好背包。',{status:'estimate'})
    ],'適合晚間 19:30 後才完成入住或旅途疲倦。')
   ],
   2:[
    option('A','湘南完整版＋川崎','雙特色鐵道・海景・小町通・橫濱・購物',[
-    item('06:15–07:50','豐洲 → 大船','ofuna','transit','飯店先步行到豐洲站，搭有樂町線至有樂町，再轉 JR 到大船；注意 Google Maps 可能列出公車。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
+    item('06:15–07:50','飯店 → 東雲 → 大崎 → 大船','ofuna','transit','飯店先步行至東雲站（R02），臨海線往大崎（R08）轉湘南新宿線至大船；實際班次與轉乘時間待核。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
     item('07:50–08:20','湘南單軌 → 湘南江之島','shonan','transit','搭懸掛式湘南單軌約 14 分鐘；含候車緩衝。',{origin:'大船駅 湘南モノレール',destination:'湘南江の島駅',status:'estimate'}),
-    item('08:20–10:45','江之島神社・海蠟燭','enoshima','self','步行上島、神社、白天觀景塔；09:00 才開始登塔。行程緊湊，需控制停留。',{status:'estimate'}),
+    item('08:20–10:45','江之島神社・海蠟燭','enoshima','self','湘南江之島站至海蠟燭官方步行約 26 分鐘，還須算排隊、Escar 上山與走回江之電江之島站；行程較緊湊。',{status:'estimate'}),
     item('10:45–11:30','江之電 江之島 → 鎌倉','enoden','transit','先走回江之電江之島站，再搭沿海段往鎌倉；中途不下車。',{origin:'江ノ島駅',destination:'鎌倉駅',status:'estimate'}),
     item('11:30–13:00','鎌倉小町通午餐','kamakura','self','逛商店街、選兩三家美食，較不趕。',{status:'estimate'}),
     item('13:00–14:30','鎌倉 → 橫濱港未來','yokohamaMall','transit','鎌倉站搭 JR 橫須賀線往橫濱，再轉港未來區域交通。',{origin:'鎌倉駅',destination:'横浜ワールドポーターズ',status:'estimate'}),
     item('14:30–16:00','港未來商場／港景','yokohamaMall','self','World Porters 與港灣短逛，不再排纜車或樂園。',{status:'estimate'}),
-    item('16:00–18:00','紅磚倉庫聖誕市集','redbrick','self','16:00 點燈，逛攤位、吃德式餐點、港灣拍照。',{status:'estimate'}),
+    item('16:00–18:00','紅磚倉庫聖誕市集','redbrick','self','16:00 點燈，逛攤位、吃德式餐點、港灣拍照。',{origin:'横浜ワールドポーターズ',destination:'横浜赤レンガ倉庫',mode:'walking',status:'estimate'}),
     item('18:00–19:00','橫濱 → 川崎','kawasaki','transit','步行至車站、搭 JR 到川崎，實際路線看 Google Maps。',{origin:'横浜赤レンガ倉庫',destination:'ラゾーナ川崎プラザ',status:'estimate'}),
     item('19:00–20:30','LAZONA 補逛','kawasaki','self','集中在上次沒逛到的區域；體力不夠就取消。',{status:'estimate'}),
     item('20:30–22:00','川崎 → 豐洲飯店','hotelMonday','transit','京濱東北線至有樂町轉有樂町線，步行回飯店。20:30 左右離開較有緩衝。',{origin:'川崎駅',destination:'hotel MONday Premium TOYOSU',status:'estimate'})
    ],'步調最豐富、也最容易被排隊與移動時間壓縮；建議旅行當天視狀況轉 B。'),
    option('B','湘南舒適版','保留海景、小町通與橫濱，不強求川崎',[
-    item('06:15–07:50','豐洲 → 大船','ofuna','transit','飯店步行到豐洲站，早起走 JR 東海道線到大船。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
+    item('06:15–07:50','飯店 → 東雲 → 大崎 → 大船','ofuna','transit','步行至東雲（R02）搭臨海線至大崎（R08），轉南下停大船的湘南新宿線；若班次銜接不佳可比較大井町轉 JR。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
     item('07:50–08:20','湘南單軌','shonan','transit','大船 → 湘南江之島，約 14 分鐘特色列車。',{origin:'大船駅 湘南モノレール',destination:'湘南江の島駅',status:'estimate'}),
-    item('08:20–11:00','江之島白天海景','enoshima','self','參拜、仲見世通、Escar 上山與海蠟燭。',{status:'estimate'}),
+    item('08:20–11:00','江之島白天海景','enoshima','self','湘南江之島站至海蠟燭官方步行約 26 分鐘，仍須計入跨橋、上坡／Escar、排隊及走回江之電站的時間。',{status:'estimate'}),
     item('11:00–11:45','江之電沿海到鎌倉','enoden','transit','經鎌倉高校前、七里濱，不必下車。',{origin:'江ノ島駅',destination:'鎌倉駅',status:'estimate'}),
     item('11:45–13:30','小町通午餐與購物','kamakura','self','適度重遊鎌倉，不需要趕到每個角落。',{status:'estimate'}),
     item('13:30–15:00','鎌倉 → 橫濱','yokohamaMall','transit','交通及步行緩衝。',{origin:'鎌倉駅',destination:'横浜ワールドポーターズ',status:'estimate'}),
     item('15:00–16:30','港未來商場與港景','yokohamaMall','self','有興趣就多逛一會兒，天氣差可轉室內。',{status:'estimate'}),
-    item('16:30–19:30','紅磚倉庫聖誕市集','redbrick','self','傍晚點燈、享受冬季限定活動與晚餐。',{status:'estimate'}),
+    item('16:30–19:30','紅磚倉庫聖誕市集','redbrick','self','傍晚點燈、享受冬季限定活動與晚餐。',{origin:'横浜ワールドポーターズ',destination:'横浜赤レンガ倉庫',mode:'walking',status:'estimate'}),
     item('19:30–21:30','橫濱 → 豐洲飯店','hotelMonday','transit','從港未來往東京，預留足夠候車與步行時間。',{origin:'横浜赤レンガ倉庫',destination:'hotel MONday Premium TOYOSU',status:'estimate'})
    ],'目前建議預設方案：最能兼顧體驗與旅行品質。'),
    option('C','江之島延長版','放慢海景腳步；鎌倉只搭江之電通過',[
-    item('06:15–08:20','飯店 → 大船 → 湘南單軌','shonan','transit','早出發，搭湘南單軌到江之島。',{origin:'hotel MONday Premium TOYOSU',destination:'湘南江の島駅',status:'estimate'}),
-    item('08:20–12:00','江之島深度散步','enoshima','self','海蠟燭、神社、午餐與海景；不排夜間。',{status:'estimate'}),
+    item('06:15–07:50','飯店 → 東雲 → 大崎 → 大船','ofuna','transit','與 A／B 共用鐵道主線；在大船再換指定的湘南單軌。',{origin:'hotel MONday Premium TOYOSU',destination:'大船駅',status:'estimate'}),
+    item('07:50–08:20','湘南單軌 → 湘南江之島','shonan','transit','從 JR 大船站走至湘南單軌站，搭指定的湘南單軌到湘南江之島。',{origin:'大船駅 湘南モノレール',destination:'湘南江の島駅',status:'estimate'}),
+    item('08:20–12:00','江之島深度散步','enoshima','self','預留湘南江之島站到海蠟燭約 26 分鐘步行及回江之電站時間，再安排神社、午餐與海景。',{status:'estimate'}),
     item('12:00–13:00','江之電到鎌倉站','enoden','transit','體驗沿海段，在鎌倉轉 JR，不另逛小町通。',{origin:'江ノ島駅',destination:'鎌倉駅',status:'estimate'}),
     item('13:00–14:30','鎌倉 → 橫濱','yokohamaMall','transit','轉 JR 抵達港未來。',{origin:'鎌倉駅',destination:'横浜ワールドポーターズ',status:'estimate'}),
     item('14:30–16:30','橫濱商場、港景','yokohamaMall','self','下午商場購物、散步。',{status:'estimate'}),
-    item('16:30–19:45','紅磚倉庫聖誕市集','redbrick','self','看點燈、吃晚餐後直接返回東京。',{status:'estimate'}),
+    item('16:30–19:45','紅磚倉庫聖誕市集','redbrick','self','看點燈、吃晚餐後直接返回東京。',{origin:'横浜ワールドポーターズ',destination:'横浜赤レンガ倉庫',mode:'walking',status:'estimate'}),
     item('19:45–21:45','返回豐洲','hotelMonday','transit','不排川崎、澀谷。',{origin:'横浜赤レンガ倉庫',destination:'hotel MONday Premium TOYOSU',status:'estimate'})
    ],'若江之島很喜歡、或海蠟燭排隊較久，選這版最不會急。'),
    option('D','雨天室內購物','東京市區主軸，不強求海邊景色',[
+    item('09:00–09:30','飯店 → 銀座','ginza','transit','飯店步行至豐洲站（Y22），有樂町線往和光市方向搭至銀座一丁目（Y19）。',{origin:'hotel MONday Premium TOYOSU',destination:'銀座一丁目駅',status:'estimate'}),
     item('09:30–11:45','銀座百貨與咖啡','ginza','self','雨天不急著六點出門；商店開門後再逛。',{status:'estimate'}),
-    item('12:00–15:00','日本橋與東京車站周邊','nihonbashi','self','地下街、商場、午餐、伴手禮。',{status:'estimate'}),
+    item('11:45–12:15','銀座 → 日本橋','nihonbashi','transit','依購物點位置，從銀座站搭銀座線往淺草至日本橋，或步行前往。',{origin:'銀座一丁目駅',destination:'日本橋駅 東京',status:'estimate'}),
+    item('12:15–15:00','日本橋與東京車站周邊','nihonbashi','self','地下街、商場、午餐、伴手禮。',{status:'estimate'}),
     item('15:00–18:00','川崎 LAZONA','kawasaki','transit','室內購物、重遊想逛的區域。',{origin:'東京駅',destination:'川崎駅',status:'estimate'}),
     item('18:00–20:30','晚餐／回豐洲','hotelMonday','transit','可選擇多留在川崎或直接返回豐洲。',{origin:'川崎駅',destination:'hotel MONday Premium TOYOSU',status:'estimate'})
    ],'明顯下雨、海風太強或能見度很差時使用。'),
