@@ -33,3 +33,12 @@ for(const day of [1,2]){
 assert.equal(guide.flights.length,2);
 assert.equal(guide.hotels.length,3);
 console.log('Validated '+events+' events, '+places.size+' places, and 9 self-guided options');
+
+const guideKeys = Object.keys(guide.transportGuides||{});
+assert.ok(guideKeys.length>=20,'transport guides should cover self-guided routes');
+for(const [key,route] of Object.entries(guide.transportGuides||{})){
+ assert.ok(key.includes('|'),'route key requires origin and destination');
+ assert.ok(Array.isArray(route.steps) && route.steps.length>0,'route guide must include steps: '+key);
+ assert.ok(route.steps.every(s=>typeof s==='string' && s.trim()),'route guide has empty step: '+key);
+}
+console.log('Validated '+guideKeys.length+' additional rail/walking guidance entries');
