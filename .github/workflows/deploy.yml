@@ -25,6 +25,10 @@ jobs:
           node --check app.js
           node --check media.js
           node --check sw.js
+      - name: Build single-photo OG preview
+        run: |
+          python -m pip install --disable-pip-version-check Pillow
+          python scripts/build-social-image.py
       - name: Validate static SEO and social metadata
         run: |
           python - <<'PY'

@@ -1,7 +1,7 @@
 // Offline-first installation, online-first reading. The complete itinerary remains available offline.
-const CACHE_NAME = 'japan-trip-2026-v20261023-09';
+const CACHE_NAME = 'japan-trip-2026-v20261024-01';
 const OFFLINE_FILES = [
-  './','./index.html','./styles.css?v=20261023-09','./data.js?v=20261023-09','./app.js?v=20261023-09','./media.js?v=20261023-09','./manifest.webmanifest','./version.json',
+  './','./index.html','./styles.css?v=20261024-01','./data.js?v=20261024-01','./app.js?v=20261024-01','./media.js?v=20261024-01','./manifest.webmanifest','./version.json',
   './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/hero.svg',
   './assets/video-poster-1.svg','./assets/video-poster-2.svg','./assets/video-poster-3.svg',
   './assets/video-poster-4.svg','./assets/video-poster-5.svg',
