@@ -14,8 +14,10 @@ const state = {
  selectedPlace:null,
  installEvent:null,
  shareToast:'',
- updateAvailable:false
+ updateAvailable:false,
+ readSize:stored('trip-read-size','normal')==='large'?'large':'normal'
 };
+document.documentElement.dataset.readSize=state.readSize;
 const app = document.getElementById('app');
 const escapeHtml = text => String(text??'').replace(/[&<>"']/g, a => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]));
 const enc = encodeURIComponent;
@@ -66,7 +68,7 @@ const schedule = (d=state.day) => {
 const typeLabel = t => ({flight:'航班',tour:'公司景點',coach:'遊覽車',hotel:'住宿',self:'自由活動',transit:'電車／移動',bonus:'晚間延伸',meal:'團體餐食'}[t] || '行程');
 const statusLabel = status => ({confirmed:'官方／航班已確認',planned:'既定行程・時間待定',estimate:'自助預估'}[status]||'規劃中');
 function syncURL(){const u=new URL(location.href);u.searchParams.set('day',state.day);if(guide.plans[state.day])u.searchParams.set('plan'+state.day,state.plans[state.day]);u.searchParams.set('view',state.view);history.replaceState({},'',u);}
-function header(){return `<header class="topbar"><a class="brand" href="./" aria-label="回旅遊手冊首頁"><span class="brand-mark">旅</span><span class="brand-name"><b>TRAVEL NOTE <span>2026</span></b><small>東京・湘南・富士</small></span></a><div class="top-actions"><span class="date-pill">DEC 02—06</span><button class="icon-button" data-action="share" title="分享目前方案" aria-label="分享目前方案">${icon('share',19)}</button></div></header>`;}
+function header(){return `<header class="topbar"><a class="brand" href="./" aria-label="回旅遊手冊首頁"><span class="brand-mark">旅</span><span class="brand-name"><b>TRAVEL NOTE <span>2026</span></b><small>東京・湘南・富士</small></span></a><div class="top-actions"><span class="date-pill">DEC 02—06</span><button class="read-size-button" data-action="read-size" title="切換電腦版文字大小" aria-label="切換電腦版文字大小" aria-pressed="${state.readSize==='large'}"><span class="read-size-symbol">Aa</span>${state.readSize==='large'?'標準字體':'大字模式'}</button><button class="icon-button" data-action="share" title="分享目前方案" aria-label="分享目前方案">${icon('share',19)}</button></div></header>`;}
 function sidebar(){return `<aside class="sidebar"><div class="sidebar-eyebrow">YOUR JOURNEY</div><div class="sidebar-title">五日行程</div><div class="day-nav">${guide.days.map(d=>`<button class="day-nav-item ${state.day===d.number?'is-active':''}" data-action="day" data-day="${d.number}" aria-current="${state.day===d.number?'page':'false'}"><span class="day-nav-num">${String(d.number).padStart(2,'0')}</span><span><b>${escapeHtml(d.region)}</b><small>12/${String(d.number+1).padStart(2,'0')}（${d.weekday}）</small></span><span class="nav-indicator"></span></button>`).join('')}</div><div class="sidebar-card"><div class="sidebar-mini">QUICK TIP</div><p>在日本旅行時，打開「今日行程」即可找到當天動線。地鐵班次以 Google Maps 當下查詢為準。</p><button class="text-link" data-action="today">${icon('calendar',15)} 跳到旅遊當日 ${icon('arrow',14)}</button></div><div class="sidebar-foot">內容版本 ${guide.version}<br>資料查核 ${guide.verified}</div></aside>`;}
 function bottomNav(){const nav=[['overview','home','總覽'],['schedule','calendar','行程'],['routes','route','交通'],['info','info','資訊']];return `<nav class="bottom-nav" aria-label="主要導覽">${nav.map(([value,ico,label])=>`<button data-action="view" data-view="${value}" class="${state.view===value?'active':''}" aria-current="${state.view===value?'page':'false'}">${icon(ico,20)}<span>${label}</span></button>`).join('')}</nav>`;}
 function dayTabs(){return `<div class="day-tabs" role="tablist" aria-label="切換旅遊日期">${guide.days.map(d=>`<button role="tab" aria-selected="${state.day===d.number}" data-action="day" data-day="${d.number}" class="day-tab ${state.day===d.number?'active':''}"><span>DAY ${d.number}</span><b>12/${String(d.number+1).padStart(2,'0')}</b></button>`).join('')}</div>`;}
@@ -119,6 +121,7 @@ app.addEventListener('click', async ev => {const element=ev.target.closest('[dat
  if(action==='close-modal'){if(element.classList.contains('modal-backdrop')&&ev.target!==element)return;state.modal=null;render();return;}
  if(action==='print'){window.print();return;}
  if(action==='top'){window.scrollTo({top:0,behavior:'smooth'});return;}
+ if(action==='read-size'){state.readSize=state.readSize==='large'?'normal':'large';save('trip-read-size',state.readSize);document.documentElement.dataset.readSize=state.readSize;render();return;}
  if(action==='share'){await share();return;}
  if(action==='copy'){const text=element.dataset.copy||'';try{await navigator.clipboard.writeText(text);toast('地址已複製');}catch{window.prompt('複製地址',text);}return;}
  if(action==='update'){if(navigator.serviceWorker?.controller)navigator.serviceWorker.controller.postMessage({type:'SKIP_WAITING'});location.reload();return;}
