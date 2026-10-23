@@ -1,4 +1,4 @@
-const CACHE_NAME = 'japan-trip-2026-v20261023-04';
+const CACHE_NAME = 'japan-trip-2026-v20261023-05';
 const OFFLINE_FILES = [
   './','./index.html','./styles.css','./data.js','./app.js','./media.js','./manifest.webmanifest','./version.json',
   './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/hero.svg','./assets/video-poster-1.svg','./assets/video-poster-2.svg','./assets/video-poster-3.svg','./assets/video-poster-4.svg','./assets/video-poster-5.svg'
