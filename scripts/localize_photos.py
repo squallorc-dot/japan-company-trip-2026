@@ -91,7 +91,7 @@ def prepare():
             raise RuntimeError('Suspicious output size '+p['key'])
         filename=f"{p['key']}.webp"
         built[filename]=out
-        source_page=p.get('page','https://commons.wikimedia.org/wiki/File:'+quote(p['filename'].replace(' ','_'),safe='-_.()'))
+        source_page=p['page'] if 'page' in p else ('https://commons.wikimedia.org/wiki/File:'+quote(p['filename'].replace(' ','_'),safe='-_.()'))
         attribution.append(dict(id=p['key'],subject=p['title'],file=filename,source_page=source_page,original_url=effective_url,author=p['author'],license=p['license'],license_url=p['license_url'],modification='Downscaled to max. 1400px, converted to WebP for web delivery',original_dimensions=f'{original_size[0]}x{original_size[1]}',webp_bytes=len(out)))
         print(f"  {p['key']}: {original_size[0]}x{original_size[1]} -> {len(out):,} bytes WebP",flush=True)
 
