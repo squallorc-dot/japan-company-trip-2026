@@ -449,3 +449,19 @@
 }
 @media screen and (max-width:540px){.route-pair-option{padding:10px 11px}.route-pair-option p{font-size:14px}}
 @media print{.route-pair-option{border-color:#ccc;background:#fff}.route-pair-option p{font-size:11px}}
+
+/* 2026.10.24-07: itinerary = what/when; transport = how */
+@media screen{
+.agenda-role-note{margin:0 0 17px;padding:12px 14px;border-left:3px solid #97b9b0;background:#f6f8f4;border-radius:0 9px 9px 0;font-size:14px;line-height:1.7;color:#51666a}
+.event-quick-route .event-guide-link{padding:9px 13px;border:1px solid #c5dad1;background:#f4f8f4;border-radius:10px;color:#25594f;text-decoration:none}
+.route-plan-context{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:13px 15px;border:1px solid #dce9e2;background:white;border-radius:13px;margin:4px 0 14px}
+.route-plan-context small{display:block;font-size:12px;color:#678078}.route-plan-context b{display:block;font-size:15px;color:#284f4a}
+.route-jump-heading{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:800;color:#37595a;margin:21px 0 9px}
+.route-jump-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.route-jump-list button{min-height:42px;max-width:100%;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #d6e5dd;background:#fefdfa;border-radius:10px;color:#3c5e5d;font-size:13px;font-weight:750;text-align:left;cursor:pointer}
+.route-jump-list button span{min-width:21px;height:21px;display:grid;place-items:center;border-radius:50%;background:#e7efe9;font-size:11px}
+.route-jump-list button:hover{background:#edf5ef}
+.route-jump-list button:focus-visible{outline:3px solid #bf604d;outline-offset:2px}
+}
+@media(max-width:540px){.agenda-role-note{font-size:13px}.route-jump-list button{font-size:12px}}
+@media print{.agenda-role-note,.route-plan-context,.route-jump-heading,.route-jump-list{display:none!important}}
