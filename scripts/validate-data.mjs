@@ -1,10 +1,27 @@
 import {guide} from '../data.js';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 
 assert.equal(guide.days.length,5,'five travel days');
 assert.equal(guide.tripStart,'2026-12-02');
 assert.equal(guide.tripEnd,'2026-12-06');
-assert.equal(guide.version,'2026.10.24-02');
+// Compare against the single version manifest, not a hard-coded release number.
+const readProjectFile = path => readFileSync(new URL('../'+path,import.meta.url),'utf8');
+const expectedVersion=JSON.parse(readProjectFile('version.json')).version;
+const assetVersion=expectedVersion.replaceAll('.','');
+assert.equal(guide.version,expectedVersion,'data.js and version.json must use the same release');
+const html=readProjectFile('index.html');
+const appSource=readProjectFile('app.js');
+const worker=readProjectFile('sw.js');
+const refreshPage=readProjectFile('refresh.html');
+for(const ref of ['./styles.css?v='+assetVersion,'./app.js?v='+assetVersion]){
+ assert.ok(html.includes(ref),'index.html has stale resource version: '+ref);
+}
+for(const ref of ['./data.js?v='+assetVersion,'./media.js?v='+assetVersion]){
+ assert.ok(appSource.includes(ref),'app.js has stale import version: '+ref);
+}
+assert.ok(worker.includes('japan-trip-2026-v'+assetVersion),'sw.js has stale cache version');
+assert.ok(refreshPage.includes('fresh='+assetVersion),'refresh.html has stale cache-busting version');
 const places=new Set(Object.keys(guide.places));
 const allowedStatuses=new Set(['confirmed','planned','estimate']);
 const allowedModes=new Set(['walking','transit']);
