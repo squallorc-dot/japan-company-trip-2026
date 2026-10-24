@@ -92,3 +92,11 @@ for(const [key,g] of spotEntries){
  if(g.photo)assert.ok(['meiji','enoshima','hakone','fuji','narita','yokohama','shonanTrain','enodenCoast','komachiStreet','gotembaOutlets','oshinoPond'].includes(g.photo),'unknown licensed scene');
 }
 assert.ok(appSource.includes('spotEditorial(e,expanded)'),'spot editorial is not displayed');
+
+const mediaSource=readProjectFile('media.js');
+assert.ok(mediaSource.includes('overviewScenes'),'overview images must be independent from itinerary images');
+assert.ok(mediaSource.includes("assets/photos/shonanTrain.webp"),'new photos must use local assets');
+assert.ok(!/image:'https:\/\/commons\\.wikimedia\\.org/.test(mediaSource),'direct hotlinked source image not allowed');
+const gallery=JSON.parse(readProjectFile('assets/photo-sources.json'));
+assert.ok(gallery.photos.length>=9,'insufficient local image sources');
+for(const x of gallery.photos)assert.ok(x.id&&x.file&&x.source&&x.author&&x.license,'missing photo provenance');

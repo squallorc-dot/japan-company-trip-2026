@@ -1,13 +1,17 @@
-// 行程照片採用可公開展示的照片連結；著作權與圖片頁面可在頁尾「影像與參考資訊」查看。
+// 旅遊景點照片優先使用本站內的 WebP；新增圖由部署流程下載，附原始來源與授權。
 // 所有主要照片皆存於 assets/photos/，可供離線閱讀；已縮放轉 WebP，詳見 credits.json。
 const commons = file => 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file).replace(/%2F/g,'/')+'?width=1280';
 const credit = (file,author,license) => ({author,license,source:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file).replace(/%2F/g,'/')});
 export const scenes = {
- shonanTrain:{title:'湘南單軌',location:'湘南單軌',image:'https://commons.wikimedia.org/wiki/Special:FilePath/MonorailShonan.JPG?width=720',fallback:'./assets/photos/enoshima.webp',remote:true,alt:'湘南單軌列車實景',credit:credit('MonorailShonan.JPG','Commons contributors','請以檔案頁標示為準')},
- enodenCoast:{title:'江之電沿海段',location:'江之電沿海段',image:'https://commons.wikimedia.org/wiki/Special:FilePath/EnodenT2000Shichirigahama.jpg?width=720',fallback:'./assets/photos/enoshima.webp',remote:true,alt:'七里濱江之電實景',credit:credit('EnodenT2000Shichirigahama.jpg','Stéphane Gottraux','請以檔案頁標示為準')},
- komachiStreet:{title:'鎌倉小町通',location:'鎌倉小町通',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Komachi_dori_in_Kamakura_2025_02.jpg?width=720',fallback:'./assets/photos/narita.webp',remote:true,alt:'鎌倉小町通實景',credit:credit('Komachi dori in Kamakura 2025 02.jpg','Olaf2','CC BY-SA 4.0')},
- gotembaOutlets:{title:'御殿場 Outlet',location:'御殿場 Outlet',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Gotemba_premium_outlets1.jpg?width=720',fallback:'./assets/photos/fuji.webp',remote:true,alt:'御殿場 Outlet 舊景參考',credit:credit('Gotemba premium outlets1.jpg','Jungle','CC BY-SA 3.0')},
- oshinoPond:{title:'忍野八海',location:'忍野八海',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Kagami_Pond%2C_Oshino_Hakkai_2020.jpg?width=720',fallback:'./assets/photos/hakone.webp',remote:true,alt:'忍野八海鏡池實景',credit:credit('Kagami Pond, Oshino Hakkai 2020.jpg','Suikotei','CC BY-SA 4.0')},
+ senkyakuPhoto:{title:'豐洲千客萬來',location:'豐洲千客萬來',image:'./assets/photos/senkyakuPhoto.webp',fallback:'./assets/photos/meiji.webp',alt:'豐洲千客萬來景點實景',credit:credit('Toyosu Senkyaku Banrai.jpg','Fred Cherrygarden','CC BY-SA 4.0')},
+ worldPorters:{title:'橫濱 World Porters',location:'橫濱 World Porters',image:'./assets/photos/worldPorters.webp',fallback:'./assets/photos/yokohama.webp',alt:'橫濱 World Porters景點實景',credit:credit('World-Porters-Yokohama.jpg','Rs1421','CC BY-SA 3.0')},
+ asakusaStreet:{title:'淺草仲見世',location:'淺草仲見世',image:'./assets/photos/asakusaStreet.webp',fallback:'./assets/photos/narita.webp',alt:'淺草仲見世景點實景',credit:credit('Nakamise, Asakusa.jpg','Motokoka','CC BY-SA 4.0')},
+ naritaStreet:{title:'成田山表參道',location:'成田山表參道',image:'./assets/photos/naritaStreet.webp',fallback:'./assets/photos/narita.webp',alt:'成田山表參道景點實景',credit:credit('Narita Altstadt 1.jpg','Zairon','CC BY-SA 4.0')},
+ shonanTrain:{title:'湘南單軌',location:'湘南單軌',image:'./assets/photos/shonanTrain.webp',fallback:'./assets/photos/enoshima.webp',alt:'湘南單軌列車實景',credit:credit('Shonan monorail departing Enoshima.jpg','Syced','CC0 1.0')},
+ enodenCoast:{title:'江之電沿海段',location:'江之電沿海段',image:'./assets/photos/enodenCoast.webp',fallback:'./assets/photos/enoshima.webp',alt:'七里濱江之電實景',credit:credit('Enoden - Shichirigahama.jpg','Kakidai','CC BY-SA 4.0')},
+ komachiStreet:{title:'鎌倉小町通',location:'鎌倉小町通',image:'./assets/photos/komachiStreet.webp',fallback:'./assets/photos/narita.webp',alt:'鎌倉小町通實景',credit:credit('Kamakura Komachi street 2024.jpg','ARandomName123','CC BY-SA 4.0')},
+ gotembaOutlets:{title:'御殿場 Outlet',location:'御殿場 Outlet',image:'./assets/photos/gotembaOutlets.webp',fallback:'./assets/photos/fuji.webp',alt:'御殿場 Outlet 舊景參考',credit:credit('Gotemba premium outlets1.jpg','Jungle','CC BY-SA 3.0')},
+ oshinoPond:{title:'忍野八海',location:'忍野八海',image:'./assets/photos/oshinoPond.webp',fallback:'./assets/photos/hakone.webp',alt:'忍野八海鏡池實景',credit:credit('Kagami Pond, Oshino Hakkai 2020.jpg','Suikotei','CC BY-SA 4.0')},
  meiji:{title:'東京的第一站，從綠意與鳥居開始',location:'明治神宮',image:'./assets/photos/meiji.webp',alt:'明治神宮參道上的木造鳥居',credit:credit('Torii of Meiji Shrine.jpg','Christophe95','CC BY-SA 4.0')},
  enoshima:{title:'沿著海風，去看看湘南的藍',location:'江之島・海蠟燭',image:'./assets/photos/enoshima.webp',alt:'江之島白天的海蠟燭觀景塔實景',credit:credit('EnoshimaSeaCandle.jpg','Maksym Grinenko','CC BY-SA 4.0')},
  hakone:{title:'湖上的紅色鳥居，和冬天的山景',location:'箱根神社・蘆之湖',image:'./assets/photos/hakone.webp',alt:'蘆之湖岸邊的箱根神社平和鳥居',credit:credit('Hakone-jinja torii - Hakone, Japan -DSC05709.jpg','Daderot','CC0 1.0')},
@@ -16,6 +20,7 @@ export const scenes = {
  yokohama:{title:'橫濱的冬夜，有聖誕市集的溫度',location:'橫濱紅磚倉庫',image:'./assets/photos/yokohama.webp',alt:'橫濱紅磚倉庫過往冬季燈飾',credit:credit('Yokohama Red Brick Warehouse 20191207 2006.jpg','Pcs34560','Public Domain')}
 };
 export const dayScenes={1:'meiji',2:'enoshima',3:'hakone',4:'fuji',5:'narita'};
+export const overviewScenes={1:'senkyakuPhoto',2:'shonanTrain',3:'gotembaOutlets',4:'asakusaStreet',5:'naritaStreet'};
 export const inspirations = {
  1:{lead:'剛抵達東京，不必急著把每個地方走完。明治神宮的樹影、豐洲的江戶風街道，以及入夜後的銀座燈光，已經足夠讓第一天很有旅行感。',note:'如果進飯店較晚，改逛豐洲或有明 Garden，就能把精神留給隔天的湘南一日遊。',secondary:null,links:[{title:'東京旅遊官方｜景點與活動',url:'https://www.gotokyo.org/tc/index.html',type:'景點攻略'},{title:'明治神宮官方',url:'https://www.meijijingu.or.jp/',type:'官方資訊'},{title:'丸之內・東京站聖誕燈飾散步｜2025 年實景參考',url:'https://www.youtube.com/watch?v=SmHGi2IGgvw',video:'SmHGi2IGgvw',channel:'akkz01',type:'冬季街景實拍'}]},
  2:{lead:'上次沒完成的江之島，這次換個方式靠近：從大船搭懸掛式湘南單軌，登島後看海，再用江之電沿海岸到鎌倉。把傍晚留給橫濱紅磚倉庫的聖誕氛圍。',note:'江之島白天就值得去；晴天再上海蠟燭。如果想慢慢走，就選不去川崎的備案。',secondary:'yokohama',links:[{title:'東京太累太擠？改住橫濱7天：鎌倉、江之島、東京一次玩，50+反而更舒服',url:'https://www.youtube.com/watch?v=uzheqHvJdK0',video:'uzheqHvJdK0',channel:'我的任意門 Jane Travel',type:'旅行靈感影片'},{title:'江之島海蠟燭官方',url:'https://enoshima-seacandle.com/',type:'景點官方'},{title:'橫濱紅磚倉庫聖誕活動',url:'https://www.yokohama-akarenga.jp/christmas/',type:'冬季活動'}]},
