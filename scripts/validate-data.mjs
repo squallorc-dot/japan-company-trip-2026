@@ -123,3 +123,17 @@ assert.notEqual(overviewScenes[2],dayScenes[2],'Day 2 overview and itinerary mus
 for(const d of guide.days)assert.ok(!Object.hasOwn(d,'photo'),'Accidental photo property attached to a day entry: '+d.number);
 assert.equal(guide.spotGuides.naritaStreet?.photo,'naritaStreet','Narita photo belongs to spot guide, not Day 1');
 assert.ok(appSource.includes('showSpot?spotEditorial(e,expanded)'), 'Repeated same-place photo suppression missing');
+
+for(const [key,pin] of Object.entries(guide.stationPins||{})){
+ assert.ok(pin.label&&pin.query&&pin.note,'incomplete station pin '+key);
+ assert.ok(pin.query.includes('駅'),'station pin needs Japanese station '+key);
+}
+let pinnedRoutes=0;
+for(const [key,r] of Object.entries(guide.transportGuides)){
+ if(!r.walkTo)continue;
+ assert.ok(Array.isArray(r.walkTo)&&r.walkTo.length>0,'empty station walk route '+key);
+ for(const pin of r.walkTo)assert.ok(Object.hasOwn(guide.stationPins,pin),'unknown station pin '+pin+' in '+key);
+ pinnedRoutes++;
+}
+assert.ok(pinnedRoutes>=17,'station walk routes missing');
+assert.ok(appSource.includes('walkStationButtons(e)'),'station navigation not displayed');
