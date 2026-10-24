@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-08`。
+- 版本：`2026.10.24-09`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -139,3 +139,10 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - 交通工具頁保持純工具化，不重複加上食物、購物或圖片介紹。
 - 美食與商品是地方特色建議，不保證某店某日供貨；團體行程依集合時間取捨。
 - 改版前備份：`backup-pre-itinerary-editorial-20261024`，提交 `b8157be66c4d99cad017290dd7c02e553faa5994`。
+
+
+## 2026.10.24-09｜真實景點照片能直接看見
+- 之前照片需要先展開；現在重要景點的實景縮圖直接顯示在行程卡片上。
+- 新增不同照片：湘南單軌、江之電、鎌倉小町通、御殿場 Outlet、忍野八海；保留既有六張本地授權照片。
+- 新增照片連結為 Wikimedia Commons 外部來源，著作權連結與授權列於頁尾，可能須網路連線；遠端無法讀取會使用原本景點圖作為備援，不能當成對應景點的另一張實景。
+- 改版前備份：`backup-pre-photo-visibility-20261024`，commit `82d0f0303156824bccd126ce30723a04c669dd4c`。

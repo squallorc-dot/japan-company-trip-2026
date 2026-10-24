@@ -3,6 +3,11 @@
 const commons = file => 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file).replace(/%2F/g,'/')+'?width=1280';
 const credit = (file,author,license) => ({author,license,source:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file).replace(/%2F/g,'/')});
 export const scenes = {
+ shonanTrain:{title:'湘南單軌',location:'湘南單軌',image:'https://commons.wikimedia.org/wiki/Special:FilePath/MonorailShonan.JPG?width=720',fallback:'./assets/photos/enoshima.webp',remote:true,alt:'湘南單軌列車實景',credit:credit('MonorailShonan.JPG','Commons contributors','請以檔案頁標示為準')},
+ enodenCoast:{title:'江之電沿海段',location:'江之電沿海段',image:'https://commons.wikimedia.org/wiki/Special:FilePath/EnodenT2000Shichirigahama.jpg?width=720',fallback:'./assets/photos/enoshima.webp',remote:true,alt:'七里濱江之電實景',credit:credit('EnodenT2000Shichirigahama.jpg','Stéphane Gottraux','請以檔案頁標示為準')},
+ komachiStreet:{title:'鎌倉小町通',location:'鎌倉小町通',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Komachi_dori_in_Kamakura_2025_02.jpg?width=720',fallback:'./assets/photos/narita.webp',remote:true,alt:'鎌倉小町通實景',credit:credit('Komachi dori in Kamakura 2025 02.jpg','Olaf2','CC BY-SA 4.0')},
+ gotembaOutlets:{title:'御殿場 Outlet',location:'御殿場 Outlet',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Gotemba_premium_outlets1.jpg?width=720',fallback:'./assets/photos/fuji.webp',remote:true,alt:'御殿場 Outlet 舊景參考',credit:credit('Gotemba premium outlets1.jpg','Jungle','CC BY-SA 3.0')},
+ oshinoPond:{title:'忍野八海',location:'忍野八海',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Kagami_Pond%2C_Oshino_Hakkai_2020.jpg?width=720',fallback:'./assets/photos/hakone.webp',remote:true,alt:'忍野八海鏡池實景',credit:credit('Kagami Pond, Oshino Hakkai 2020.jpg','Suikotei','CC BY-SA 4.0')},
  meiji:{title:'東京的第一站，從綠意與鳥居開始',location:'明治神宮',image:'./assets/photos/meiji.webp',alt:'明治神宮參道上的木造鳥居',credit:credit('Torii of Meiji Shrine.jpg','Christophe95','CC BY-SA 4.0')},
  enoshima:{title:'沿著海風，去看看湘南的藍',location:'江之島・海蠟燭',image:'./assets/photos/enoshima.webp',alt:'江之島白天的海蠟燭觀景塔實景',credit:credit('EnoshimaSeaCandle.jpg','Maksym Grinenko','CC BY-SA 4.0')},
  hakone:{title:'湖上的紅色鳥居，和冬天的山景',location:'箱根神社・蘆之湖',image:'./assets/photos/hakone.webp',alt:'蘆之湖岸邊的箱根神社平和鳥居',credit:credit('Hakone-jinja torii - Hakone, Japan -DSC05709.jpg','Daderot','CC0 1.0')},

@@ -486,3 +486,13 @@
 }
 @media screen and (max-width:540px){.spot-editorial{padding:11px}.spot-expanded-grid{grid-template-columns:1fr}.spot-why{font-size:14px}}
 @media print{.spot-expanded{display:none!important}.spot-preview-tags span{border:1px solid #ddd}}
+
+/* 2026.10.24-09: image visible before expanding important itinerary stops */
+@media screen {
+.spot-cover{margin:0 0 12px;max-width:340px}
+.spot-cover .spot-real-photo{max-width:100%;margin:0}
+.spot-cover .spot-real-photo .scene-frame{aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#e8ebe7}
+.spot-cover .spot-real-photo img{display:block;object-fit:cover;width:100%;height:100%}
+.spot-cover .spot-real-photo figcaption{margin:6px 2px 0;font-size:11px;line-height:1.45}
+}
+@media screen and (max-width:540px){.spot-cover{max-width:100%}.spot-cover .spot-real-photo .scene-frame{aspect-ratio:16/9}}

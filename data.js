@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-08', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-09', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -425,7 +425,8 @@ export const guide = {
     ],
     "eat": [],
     "buy": [],
-    "tip": "單軌終點不等於江之島島上；過橋、上坡還需要步行。"
+    "tip": "單軌終點不等於江之島島上；過橋、上坡還需要步行。",
+    "photo": "shonanTrain"
   },
   "enoshima": {
     "why": "把湘南海景、神社參拜及海蠟燭集中在一起，是 Day 2 最值得停留的地方。",
@@ -452,7 +453,8 @@ export const guide = {
     "buy": [
       "沿線車站若有販售的江之電紀念小物"
     ],
-    "tip": "以車窗觀景為主；若車廂擁擠，不保證海側座位，也不安排追拍平交道。"
+    "tip": "以車窗觀景為主；若車廂擁擠，不保證海側座位，也不安排追拍平交道。",
+    "photo": "enodenCoast"
   },
   "kamakura": {
     "why": "小町通有街頭點心與傳統伴手禮，很適合用午餐時間輕鬆重遊。",
@@ -468,7 +470,8 @@ export const guide = {
       "豐島屋鳩餅（鳩サブレー）",
       "鎌倉風格手巾與小雜貨"
     ],
-    "tip": "前次已去過，這回只挑想吃或沒買到的商店；別為排隊耽誤橫濱。"
+    "tip": "前次已去過，這回只挑想吃或沒買到的商店；別為排隊耽誤橫濱。",
+    "photo": "komachiStreet"
   },
   "yokohamaMall": {
     "why": "World Porters 可休息、用餐、逛店，和紅磚倉庫很適合一起安排。",
@@ -598,7 +601,8 @@ export const guide = {
       "服飾、運動鞋、戶外用品",
       "品牌折扣與退稅需看現場規範"
     ],
-    "tip": "下車先記集合地點，確認品牌所在分區；團體停留有限，不要把排隊餐廳排成必吃。"
+    "tip": "下車先記集合地點，確認品牌所在分區；團體停留有限，不要把排隊餐廳排成必吃。",
+    "photo": "gotembaOutlets"
   },
   "oshino": {
     "why": "忍野八海適合看富士山湧泉與傳統村落，團體時間內不必走完八池。",
@@ -613,7 +617,8 @@ export const guide = {
     "buy": [
       "富士山圖案點心、山梨水果風味伴手禮"
     ],
-    "tip": "草餅與點心屬有空再買；池邊禁止踩踏、注意濕滑與團體集合。"
+    "tip": "草餅與點心屬有空再買；池邊禁止踩踏、注意濕滑與團體集合。",
+    "photo": "oshinoPond"
   },
   "hotelHana": {
     "why": "這晚最值得的是溫泉與飯店晚餐，安排自己舒服的放鬆節奏。",
