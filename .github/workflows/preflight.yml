@@ -1,0 +1,39 @@
+name: Pre-merge Website Check
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check itinerary and release consistency
+        run: node scripts/validate-data.mjs
+      - name: Verify browser application and offline worker syntax
+        run: |
+          node --check app.js
+          node --check data.js
+          node --check media.js
+          node --check sw.js
+          node --check scripts/validate-data.mjs
+      - name: Check photo and OG asset builder syntax
+        run: |
+          python -m py_compile scripts/build-photos.py scripts/build-social-image.py
+      - name: Verify basic static file references
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('.')
+          required=['index.html','app.js','data.js','media.js','styles.css','sw.js','refresh.html','version.json','manifest.webmanifest','assets/photo-sources.json']
+          for name in required:
+            assert (root/name).is_file(), f"Missing published source: {name}"
+          gallery=json.loads((root/'assets/photo-sources.json').read_text(encoding='utf-8'))
+          names=[p['id'] for p in gallery['photos']]
+          assert len(names)==len(set(names)), 'Duplicate photo id'
+          assert all(p['source'].startswith('https://commons.wikimedia.org/wiki/File:') for p in gallery['photos'])
+          print(f'Preflight passed: {len(names)} gallery photos registered')
+          PY
