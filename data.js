@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-11', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-12', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -739,7 +739,8 @@ export const guide = {
       "羊羹禮盒、千葉花生點心",
       "傳統和菓子與小工藝品"
     ],
-    "tip": "上午店家可能尚未全數開門，鰻魚飯排隊長就改買易攜帶點心，不能影響機場報到。"
+    "tip": "上午店家可能尚未全數開門，鰻魚飯排隊長就改買易攜帶點心，不能影響機場報到。",
+    "photo": "naritaStreet"
   }
 },
  places:{
@@ -790,8 +791,7 @@ export const guide = {
      item('下午','明治神宮','meiji','tour','參道、鳥居、正殿參拜。12 月閉門時間早，依導遊帶領參觀。',{status:'planned'}),
      item('下午～傍晚','豐洲千客萬來','senkyaku','tour','江戶風美食街、海鮮小吃；若停留夠久再考慮 8 樓免費足湯。',{status:'planned'}),
      item('傍晚｜待定','入住豐洲飯店','hotelMonday','hotel','實際完成入住時刻，將決定今晚採用銀座或近郊備案。',{status:'planned'})
-   ],
-    "photo": "naritaStreet"
+   ]
   },
   {
    number:2,date:'2026-12-03',weekday:'四',region:'湘南・鎌倉・橫濱',headline:'搭上湘南列車，追著海走',imageTag:'SHONAN / YOUR OWN ROUTE',hotel:'monday',kind:'夫妻全天自由行',meal:'早餐可前晚採買｜午晚餐自理',tone:'sea',short:'湘南單軌・江之島・江之電・橫濱',

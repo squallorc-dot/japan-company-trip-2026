@@ -22,7 +22,7 @@
   <div class="mark" aria-hidden="true">旅</div>
   <h1>更新日本旅遊手冊</h1>
   <p id="status" role="status" aria-live="polite">正在檢查舊版快取，準備打開最新行程……</p>
-  <a class="btn" id="open-new" href="./?fresh=20261024-11">開啟最新版旅遊手冊</a>
+  <a class="btn" id="open-new" href="./?fresh=20261024-12">開啟最新版旅遊手冊</a>
   <div class="info">僅整理這個旅遊專案的離線快取；不清除其他 GitHub 網站資料，也不刪除你的方案選擇。</div>
 </main>
 <script>
@@ -31,7 +31,7 @@
   var open=document.getElementById('open-new');
   var target=new URL('./',location.href);
   var qs=new URLSearchParams(location.search);
-  target.searchParams.set('fresh','20261024-11');
+  target.searchParams.set('fresh','20261024-12');
   ['day','view','plan1','plan2'].forEach(function(key){
     var v=qs.get(key); if(v)target.searchParams.set(key,v);
   });
