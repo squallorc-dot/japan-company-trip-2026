@@ -1,4 +1,5 @@
 import {guide} from '../data.js';
+import {scenes,overviewScenes,dayScenes} from '../media.js';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 
@@ -89,7 +90,7 @@ for(const [key,g] of spotEntries){
  assert.ok(places.has(key),'unknown editorial place '+key);
  assert.ok(g.why?.length>=12 && g.tip?.length>=10,'incomplete editorial notes '+key);
  for(const list of ['see','eat','buy'])assert.ok(Array.isArray(g[list]),'missing spot list '+key+' '+list);
- if(g.photo)assert.ok(['meiji','enoshima','hakone','fuji','narita','yokohama','shonanTrain','enodenCoast','komachiStreet','gotembaOutlets','oshinoPond'].includes(g.photo),'unknown licensed scene');
+ if(g.photo)assert.ok(Object.hasOwn(scenes,g.photo),'unknown photo scene '+g.photo+' for '+key);
 }
 assert.ok(appSource.includes('spotEditorial(e,expanded)'),'spot editorial is not displayed');
 
@@ -104,3 +105,14 @@ for(const x of gallery.photos)assert.ok(x.id&&x.file&&x.source&&x.author&&x.lice
 assert.ok(!appSource.includes('read-size-button'),'obsolete text-size toggle should be removed');
 assert.ok(!appSource.includes('scenePreview(d)'),'duplicate scene block should be removed');
 assert.ok(appSource.includes('story-resources-collapse'),'travel guide resources must stay available');
+
+for(const day of guide.days){
+  assert.ok(Object.hasOwn(scenes,overviewScenes[day.number]),'overview photo missing on Day '+day.number);
+  assert.ok(Object.hasOwn(scenes,dayScenes[day.number]),'itinerary photo missing on Day '+day.number);
+  assert.notEqual(overviewScenes[day.number],dayScenes[day.number],'overview and itinerary must use different photos on Day '+day.number);
+}
+for(const photo of gallery.photos){
+  const scene=scenes[photo.id];
+  assert.ok(scene,'gallery source has no media scene: '+photo.id);
+  assert.equal(scene.image,'./assets/photos/'+photo.id+'.webp','gallery image must use local WebP: '+photo.id);
+}
