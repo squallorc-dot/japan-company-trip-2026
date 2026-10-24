@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-14`。
+- 版本：`2026.10.24-15`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -185,3 +185,10 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - A 東雲與 B 豐洲分成兩個車站按鈕；JR 大船與湘南單軌大船、湘南單軌湘南江之島與江之電江之島各自區分。
 - 站點集中 data.js.stationPins；鎖定車站搜尋目的地，不保證到特定剪票口或站口。
 - 修改前備份 backup-pre-walk-station-pins-20261024。
+
+
+## 2026.10.24-15｜景點 A→B 與目前位置步行導航
+- 將所有已排步行目的地的地圖位置集中在 data.js.walkingDestinations，沿用既有 places 的景點定位。
+- 已排步行段提供 A→B 路線及從當下位置步行到 B 兩種模式；非步行的大眾運輸及公司遊覽車不強制改成步行。
+- 行程的景點、購物與自選行程若具地圖位置，可直接由目前所在地開啟 Google Maps 步行；團體景點需抵達附近再用，並依集合時間為準。
+- 上一版備份 backup-pre-place-walking-20261024。
