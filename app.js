@@ -1,5 +1,5 @@
-import {guide} from './data.js?v=20261024-15';
-import {scenes,dayScenes,overviewScenes,inspirations} from './media.js?v=20261024-15';
+import {guide} from './data.js?v=20261024-16';
+import {scenes,dayScenes,overviewScenes,inspirations} from './media.js?v=20261024-16';
 
 const qs = new URLSearchParams(location.search);
 const stored = (key, fallback) => { try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; } };
@@ -40,7 +40,7 @@ const walkStationButtons = e => {
 const walkingDestination = e => {
  if(e.mode==='walking' && e.destination)return guide.walkingDestinations[e.destination] || {label:e.destination,query:e.destination};
  // Attractions and shopping events without a transit route use their actual place pin.
- if(!e.origin && !e.destination && ['self','bonus','tour'].includes(e.kind)){
+ if(!e.origin && !e.destination && ['self','bonus'].includes(e.kind)){
    const place=placeOf(e.place);
    if(place?.map)return {label:place.title,query:place.map};
  }
@@ -51,6 +51,16 @@ const walkingShortcuts = e => {
  const fixed=e.mode==='walking' && e.origin && e.destination;
  const direct=fixed?'<a class="walk-link" href="'+routeURL(e.origin,spot.query,'walking')+'" target="_blank" rel="noopener noreferrer">'+icon('route',15)+' A → B 步行路線 '+icon('external',12)+'</a>':'';
  return '<div class="place-walk-shortcuts"><span>'+icon('pin',15)+' '+escapeHtml(spot.label)+'</span><div class="place-walk-actions"><a class="walk-link" href="'+walkingFromHereURL(spot.query)+'" target="_blank" rel="noopener noreferrer">'+icon('pin',15)+' 從目前位置步行 '+icon('external',12)+'</a>'+direct+'</div></div>';
+};
+
+const itineraryNavigation = e => {
+ // The itinerary shows one immediate action; detailed A-to-B and station routing
+ // remains in the Transport toolbox.
+ if(e.origin && e.destination && e.mode!=='walking')
+  return '<div class="event-quick-route"><span>鐵道移動</span><button class="event-guide-link" data-action="route-detail" data-origin="'+escapeHtml(e.origin)+'" data-destination="'+escapeHtml(e.destination)+'">'+icon('train',15)+' 查看這段交通 '+icon('arrow',14)+'</button></div>';
+ const spot=walkingDestination(e);
+ if(!spot)return '';
+ return '<div class="event-quick-route"><span>'+(e.mode==='walking'?'步行目的地':'自由活動')+'</span><a class="event-guide-link" href="'+walkingFromHereURL(spot.query)+'" target="_blank" rel="noopener noreferrer" aria-label="從目前位置步行導航到'+escapeHtml(spot.label)+'">'+icon('pin',15)+' 導航到這裡 '+icon('external',12)+'</a></div>';
 };
 const routeSummary = e => routeGuide(e)?.summary || e.desc;
 // Complete rail alternatives, station exits and timetables live only in Transport.
@@ -132,16 +142,16 @@ function spotEditorial(e,expanded){
  const list=(title,items,cls)=>items?.length?'<div class="spot-detail-block '+cls+'"><b>'+title+'</b><ul>'+items.map(x=>'<li>'+escapeHtml(x)+'</li>').join('')+'</ul></div>':'';
  return '<div class="spot-editorial">'+(hero?'<div class="spot-cover">'+hero+'</div>':'')+'<p class="spot-why">'+escapeHtml(g.why)+'</p>'+(tags.length?'<div class="spot-preview-tags">'+tags.map(t=>'<span>'+escapeHtml(t)+'</span>').join('')+'</div>':'')+(expanded?'<div class="spot-expanded"><div class="spot-expanded-grid">'+list('值得看',g.see,'spot-see')+list('推薦美食',g.eat,'spot-eat')+list('特色購物／伴手禮',g.buy,'spot-buy')+'</div><p class="spot-reminder"><b>現場提醒：</b>'+escapeHtml(g.tip)+'</p><small>美食及商品屬在地特色建議，未保證特定店家有販售；照片為景點實景參考，季節及天氣可能不同。</small></div>':'')+'</div>';
 }
-function eventCard(e,i,section,showSpot=true){const p=placeOf(e.place);const unique=`${section}-${i}`;const expanded=state.showAll||state.expanded.has(unique);const classname=e.kind==='transit'?'transit':(['flight','tour','coach','hotel','meal'].includes(e.kind)?'company':e.kind==='bonus'?'bonus':'personal');const map=mapURL(p);
+function eventCard(e,i,section,showSpot=true){const p=placeOf(e.place);const itineraryNav=itineraryNavigation(e);const unique=`${section}-${i}`;const expanded=state.showAll||state.expanded.has(unique);const classname=e.kind==='transit'?'transit':(['flight','tour','coach','hotel','meal'].includes(e.kind)?'company':e.kind==='bonus'?'bonus':'personal');const map=mapURL(p);
  let actions=[];
- if(map)actions.push(`<a class="mini-action" href="${map}" target="_blank" rel="noopener noreferrer">${icon('pin',15)} 地圖 ${icon('external',12)}</a>`);
+ if(map&&!itineraryNav)actions.push(`<a class="mini-action" href="${map}" target="_blank" rel="noopener noreferrer">${icon('pin',15)} 查看景點地圖 ${icon('external',12)}</a>`);
  // Route links are visible beside each schedule item; do not repeat them in expanded details.
  if(p?.site)actions.push(`<a class="mini-action" href="${escapeHtml(p.site)}" target="_blank" rel="noopener noreferrer">${icon('external',14)} 官方資訊</a>`);
  const tips=(p?.tips||[]).map(t=>`<li>${escapeHtml(t)}</li>`).join('');
  const hasSpot=!!guide.spotGuides?.[e.place] && showSpot;
- const routeQuick=e.origin&&e.destination?`<div class="event-quick-route"><span>${travelMode(e)==='walking'?'步行移動':'鐵道移動'}</span><button class="event-guide-link" data-action="route-detail" data-origin="${escapeHtml(e.origin)}" data-destination="${escapeHtml(e.destination)}">${icon('train',15)} 查看這段交通 ${icon('arrow',14)}</button></div>`:'';
+
  const photos={meiji:'meiji',enoshima:'enoshima',seacandle:'enoshima',hakone:'hakone',chureito:'fuji',redbrick:'yokohama',naritaTemple:'narita',narita:'narita'};const sceneKey=photos[e.place];
- return `<article class="timeline-item ${classname}"><div class="timeline-rail"><span class="rail-circle"></span></div><div class="event-body"><div class="event-top"><div class="event-time">${escapeHtml(e.at)}</div><div class="event-tag">${escapeHtml(typeLabel(e.kind))}</div></div><button class="event-title-button" data-action="expand" data-id="${unique}" aria-expanded="${expanded}"><span class="event-title">${escapeHtml(e.title)}</span>${icon('chevron',19)}</button>${e.kind==='transit'&&e.origin?'':`<p class="event-desc">${escapeHtml(e.desc)}</p>`}<div class="event-meta"><span>${escapeHtml(statusLabel(e.status))}</span>${p?.ja?`<span class="japan-label">${escapeHtml(p.ja)}</span>`:''}</div>${routeQuick}${walkingShortcuts(e)}${showSpot?spotEditorial(e,expanded):''}${expanded?`<div class="event-extra">${!hasSpot&&sceneKey?sceneImage(sceneKey,'event-photo'):''}${p?.hours?`<div class="hours">${icon('clock',15)} ${escapeHtml(p.hours)}</div>`:''}${tips?`<ul class="event-tips">${tips}</ul>`:''}${actions.length?`<div class="event-actions">${actions.join('')}</div>`:''}${!tips&&!actions.length?'<span class="minor">詳細集合資訊尚未提供。</span>':''}</div>`:''}</div></article>`;}
+ return `<article class="timeline-item ${classname}"><div class="timeline-rail"><span class="rail-circle"></span></div><div class="event-body"><div class="event-top"><div class="event-time">${escapeHtml(e.at)}</div><div class="event-tag">${escapeHtml(typeLabel(e.kind))}</div></div><button class="event-title-button" data-action="expand" data-id="${unique}" aria-expanded="${expanded}"><span class="event-title">${escapeHtml(e.title)}</span>${icon('chevron',19)}</button>${e.kind==='transit'&&e.origin?'':`<p class="event-desc">${escapeHtml(e.desc)}</p>`}<div class="event-meta"><span>${escapeHtml(statusLabel(e.status))}</span>${p?.ja?`<span class="japan-label">${escapeHtml(p.ja)}</span>`:''}</div>${itineraryNav}${showSpot?spotEditorial(e,expanded):''}${expanded?`<div class="event-extra">${!hasSpot&&sceneKey?sceneImage(sceneKey,'event-photo'):''}${p?.hours?`<div class="hours">${icon('clock',15)} ${escapeHtml(p.hours)}</div>`:''}${tips?`<ul class="event-tips">${tips}</ul>`:''}${actions.length?`<div class="event-actions">${actions.join('')}</div>`:''}${!tips&&!actions.length?'<span class="minor">詳細集合資訊尚未提供。</span>':''}</div>`:''}</div></article>`;}
 function timelineSection(title,caption,events,section){
  // Keep the travel/arrival step (and its route button) visible. Only the actual
  // visit shows photos, food, and shopping when the next event is the same place.
