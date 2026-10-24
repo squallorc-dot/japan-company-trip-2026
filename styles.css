@@ -517,3 +517,7 @@
  .story-heading h3{font-size:20px}
 }
 @media print{.story-resources-collapse{display:none!important}}
+
+/* Audit: preserve accurate captions if a local image fails to load. */
+.scene-frame.photo-unavailable,.overview-card-photo.photo-unavailable{background:#edf1ed;display:grid;place-items:center;min-height:100px}
+.scene-frame.photo-unavailable:after,.overview-card-photo.photo-unavailable:after{content:'照片暫時無法顯示';color:#55716d;font-size:14px;font-weight:700;text-align:center;padding:12px}
