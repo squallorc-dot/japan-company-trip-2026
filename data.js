@@ -5,11 +5,52 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-14', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-15', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
  warning:'旅行社可能調整路線及集合時間；網站內的自由行時刻是規劃參考。電車班次、天氣、營業狀態請於旅行當天再次確認。',
+ walkingDestinations:{
+  "丸の内仲通り": {
+    "label": "丸之內仲通",
+    "query": "丸の内仲通り, 東京都千代田区",
+    "note": "燈飾是沿街區域，Google Maps 定位為街道，並非固定入口"
+  },
+  "イオン東雲店": {
+    "label": "AEON 東雲店",
+    "query": "イオン東雲店, 東京都江東区東雲1-9-10"
+  },
+  "アーバンドック ららぽーと豊洲": {
+    "label": "LaLaport 豐洲",
+    "query": "アーバンドック ららぽーと豊洲, 東京都江東区豊洲2-4-9"
+  },
+  "hotel MONday Premium TOYOSU": {
+    "label": "豐洲 MONday 飯店",
+    "query": "hotel MONday Premium TOYOSU, 東京都江東区東雲1-2-11"
+  },
+  "横浜赤レンガ倉庫": {
+    "label": "橫濱紅磚倉庫",
+    "query": "横浜赤レンガ倉庫, 神奈川県横浜市中区新港1-1"
+  },
+  "さくら温泉通り, 山梨県笛吹市石和町川中島": {
+    "label": "石和櫻花溫泉通",
+    "query": "さくら温泉通り, 山梨県笛吹市石和町川中島",
+    "note": "燈飾沿街約 3 公里，請到附近後自行選擇入口，不表示需要走完全程"
+  },
+  "イオン石和店": {
+    "label": "AEON 石和店",
+    "query": "イオン石和店, 山梨県笛吹市"
+  },
+  "イオンタウン成田富里": {
+    "label": "AEON TOWN 成田富里",
+    "query": "イオンタウン成田富里, 千葉県成田市東町133"
+  },
+  "京成成田駅": {
+    "label": "京成成田站",
+    "query": "京成成田駅, 千葉県成田市",
+    "note": "此段是飯店附近散步，終點為京成成田站周邊"
+  }
+},
  stationPins:{
   "shinonome": {
     "label": "東雲站｜臨海線 R02",
