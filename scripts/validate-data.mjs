@@ -137,3 +137,16 @@ for(const [key,r] of Object.entries(guide.transportGuides)){
 }
 assert.ok(pinnedRoutes>=17,'station walk routes missing');
 assert.ok(appSource.includes('walkStationButtons(e)'),'station navigation not displayed');
+
+const walkingIds=new Set(Object.keys(guide.walkingDestinations||{}));
+let seenWalking=0;
+for(const day of guide.days){
+ const all=[...(day.fixed||[]),...(day.evening||[]),...(guide.plans[day.number]||[]).flatMap(p=>p.events)];
+ for(const e of all){
+  if(e.mode!=='walking')continue;
+  assert.ok(walkingIds.has(e.destination),'Missing fixed pedestrian destination: '+e.destination);
+  seenWalking++;
+ }
+}
+assert.ok(seenWalking>=10,'Expected all pedestrian events');
+assert.ok(appSource.includes('walkingShortcuts(e)'),'Pedestrian shortcuts missing from UI');
