@@ -150,3 +150,9 @@ for(const day of guide.days){
 }
 assert.ok(seenWalking>=10,'Expected all pedestrian events');
 assert.ok(appSource.includes('walkingShortcuts(e)'),'Pedestrian shortcuts missing from UI');
+
+assert.ok(appSource.includes("const itineraryNavigation = e =>"),'Itinerary contextual navigation missing');
+assert.ok(appSource.includes("const itineraryNav=itineraryNavigation(e)"),'Event cards must use a single context-aware action');
+assert.ok(!appSource.includes("${routeQuick}${walkingShortcuts(e)}"),'Itinerary must not duplicate full Transport navigation');
+assert.ok(appSource.includes("if(map&&!itineraryNav)"),'Company stops retain maps without doubling free-activity navigation');
+assert.ok(appSource.includes("e.mode==='walking'?walkingShortcuts(e):''"),'Transport must retain full A-to-B walking options');
