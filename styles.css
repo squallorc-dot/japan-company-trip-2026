@@ -39,11 +39,7 @@
 .live-panel{display:flex;align-items:flex-start;gap:12px;border:1px solid #c9ddd6;background:#e9f4ee;border-radius:12px;padding:14px 16px;margin:0 0 18px}.live-dot{flex-shrink:0;width:9px;height:9px;background:#2c997f;border-radius:50%;box-shadow:0 0 0 4px #cae9de;margin-top:5px}.live-panel b{font-size:12px;color:#2d7566}.live-panel p{font-size:12px;color:#496d67;line-height:1.7;margin:3px 0}.live-panel small{font-size:10px;color:#728f88}
 
 /* Desktop readability v2026.10.23-02: Chinese reading first, not information density. */
-:root{--read-scale:1}
-:root[data-read-size="large"]{--read-scale:1.14}
-.read-size-button{display:inline-flex;align-items:center;gap:7px;min-height:39px;padding:8px 13px;border:1px solid #dae4e0;border-radius:11px;background:#f4f7f5;color:#254b4e;font-size:14px;font-weight:800;white-space:nowrap}
-.read-size-button:hover{background:#e9f2ee;border-color:#8baea2}
-.read-size-symbol{font-size:17px;font-weight:900;letter-spacing:-.07em}
+:root{--read-scale:1.14}
 @media screen and (min-width:791px){
  .workspace{grid-template-columns:218px minmax(0,1fr);gap:27px;padding-top:37px}
  .content-grid{grid-template-columns:minmax(0,1fr) minmax(245px,265px);gap:24px}
@@ -126,7 +122,6 @@
  .right-rail{position:static;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:20px}
  .right-rail .sidebox:last-child{display:none}
 }
-@media screen and (max-width:790px){.read-size-button{display:none}}
 
 /* ═══════════════════════════════════════════════════════════════
    2026/10/23 · Winter travel editorial redesign
@@ -226,10 +221,10 @@
  .overview-card-photo:before{content:'日本的風景';position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-family:ui-serif,'Noto Serif TC',serif}
  .overview-card-photo img{position:relative;width:100%;height:100%;object-fit:cover}
  /* Large mode on every viewport */
- :root[data-read-size="large"]{--read-scale:1.12}
- :root[data-read-size="large"] .event-title{font-size:calc(20px * var(--read-scale))}
- :root[data-read-size="large"] .event-desc,:root[data-read-size="large"] .story-copy p,:root[data-read-size="large"] .hotel-card>p{font-size:calc(16px * var(--read-scale))}
- :root[data-read-size="large"] .plan-option,:root[data-read-size="large"] .mini-action,:root[data-read-size="large"] .sidebar-card p{font-size:calc(15px * var(--read-scale))}
+ 
+ 
+ 
+ 
 }
 @media screen and (min-width:791px){
  .workspace{grid-template-columns:214px minmax(0,1fr);gap:26px}
@@ -292,9 +287,9 @@
  .check-text{font-size:15px}.check-status{font-size:11px}.flight-time small,.flight-card p{font-size:14px}
  .bottom-nav button{font-size:12px;min-height:51px}.bottom-nav button .i{width:23px;height:23px}
  .footer{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
- :root[data-read-size="large"] .event-desc,:root[data-read-size="large"] .story-copy p{font-size:17px}
- :root[data-read-size="large"] .event-title{font-size:20px}
- :root[data-read-size="large"] .plan-option{font-size:16px}
+ 
+ 
+ 
 }
 @media print{.scene-intro,.story-section,.photo-credit-details,.read-size-button,.hero-photo-wrap{display:none!important}}
 @media screen{
@@ -496,3 +491,29 @@
 .spot-cover .spot-real-photo figcaption{margin:6px 2px 0;font-size:11px;line-height:1.45}
 }
 @media screen and (max-width:540px){.spot-cover{max-width:100%}.spot-cover .spot-real-photo .scene-frame{aspect-ratio:16/9}}
+
+/* 2026.10.24-11 — accessible typography and single-purpose sections */
+@media screen and (min-width:791px){
+ .spot-why,.spot-detail-block ul,.spot-reminder,.spot-preview-tags span{font-size:15px;line-height:1.8}
+ .spot-expanded>small,.spot-real-photo figcaption{font-size:13px}
+ .route-jump-list button,.transit-guide-body,.transit-guide summary{font-size:15px}
+ .route-pair-option p,.route-pair-note{font-size:15px!important}
+ .story-heading p,.story-note{font-size:16px;line-height:1.8}
+ .story-resources-collapse summary{font-size:15px}
+ .footer{font-size:14px}
+}
+@media screen{
+ .story-section{margin-top:20px;padding:18px 21px}
+ .story-heading{margin-bottom:10px}
+ .story-heading h3{font-size:21px}
+ .story-note{margin-bottom:14px}
+ .story-resources-collapse{border:1px solid #e6ebe6;border-radius:12px;background:white;overflow:hidden}
+ .story-resources-collapse summary{min-height:45px;cursor:pointer;padding:12px 15px;color:#315c57;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:10px}
+ .story-resources-collapse .resource-grid{padding:10px 13px 14px}
+ .story-resources-collapse summary:focus-visible{outline:3px solid #c2604d;outline-offset:-3px}
+}
+@media screen and (max-width:790px){
+ .story-section{padding:16px 13px}
+ .story-heading h3{font-size:20px}
+}
+@media print{.story-resources-collapse{display:none!important}}
