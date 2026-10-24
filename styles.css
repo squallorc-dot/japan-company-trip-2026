@@ -521,3 +521,14 @@
 /* Audit: preserve accurate captions if a local image fails to load. */
 .scene-frame.photo-unavailable,.overview-card-photo.photo-unavailable{background:#edf1ed;display:grid;place-items:center;min-height:100px}
 .scene-frame.photo-unavailable:after,.overview-card-photo.photo-unavailable:after{content:'照片暫時無法顯示';color:#55716d;font-size:14px;font-weight:700;text-align:center;padding:12px}
+
+@media screen{
+.station-walk-tools{margin:12px 0;padding:12px 14px;border:1px solid #b6d4c9;background:#f4faf6;border-radius:12px}
+.station-walk-tools>strong{display:block;font-size:15px;color:#28584c}
+.station-walk-tools>p{margin:5px 0 10px;font-size:13px;line-height:1.6;color:#56706a}
+.station-walk-links{display:flex;flex-wrap:wrap;gap:8px}
+.station-walk-link{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:9px 12px;background:#fff;color:#24584c;border:1px solid #9abcb0;border-radius:9px;font-size:14px;font-weight:800;text-decoration:none}
+.station-walk-link:hover{background:#e4f1e8}
+.station-walk-link:focus-visible{outline:3px solid #d0784d;outline-offset:2px}
+.station-walk-tools small{display:block;margin-top:8px;font-size:12px;color:#627873}
+}
