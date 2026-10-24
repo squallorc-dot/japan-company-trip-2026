@@ -116,3 +116,10 @@ for(const photo of gallery.photos){
   assert.ok(scene,'gallery source has no media scene: '+photo.id);
   assert.equal(scene.image,'./assets/photos/'+photo.id+'.webp','gallery image must use local WebP: '+photo.id);
 }
+
+const shonanSource=gallery.photos.find(x=>x.id==='shonanTrain');
+assert.equal(shonanSource?.file,'ShonanMonorail-M8689.jpg','Do not silently restore the control-panel photo');
+assert.notEqual(overviewScenes[2],dayScenes[2],'Day 2 overview and itinerary must show different scenery');
+for(const d of guide.days)assert.ok(!Object.hasOwn(d,'photo'),'Accidental photo property attached to a day entry: '+d.number);
+assert.equal(guide.spotGuides.naritaStreet?.photo,'naritaStreet','Narita photo belongs to spot guide, not Day 1');
+assert.ok(appSource.includes('showSpot?spotEditorial(e,expanded)'), 'Repeated same-place photo suppression missing');
