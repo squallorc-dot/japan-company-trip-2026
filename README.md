@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-03`。
+- 版本：`2026.10.24-04`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -102,3 +102,10 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - 修正為自動讀取 `version.json` 取得目前版本，同步檢查 `data.js`、`index.html`、`app.js`、`sw.js`、`refresh.html`，避免日後再次因忘記更新版本字串而阻擋部署。
 - 這次只修復發布檢查與文件，旅遊路線內容、畫面設計、OG 及四個底部選單都不改。
 - 修正前備份分支：`backup-pre-deploy-fix-20261024`（提交 `2c462482277b74aed74e80845fc2793cbb34ed52`）。
+
+
+## 2026.10.24-04｜全路段摘要統一與替代車站
+- 行程頁、交通頁同步使用 `transportGuides.summary`；避免僅顯示「搭 JR」、「看 Google Maps」等不可執行的描述。
+- 前往大船有東雲出發 A 主線與豐洲出發 B 替代線。豐洲與東雲是不同車站，並非相同車站不同月台；出發前應依當天班次比較總移動時間。
+- 重要車站換乘與特色鐵道另外顯示展開步驟；沒有寫死未確認月台。
+- 本次修改前備份：`backup-pre-clarity-20261024`（commit `2a24f2b6a7c8398719206cc4349fef8fe263fd1c`）。
