@@ -100,3 +100,7 @@ assert.ok(!/image:'https:\/\/commons\\.wikimedia\\.org/.test(mediaSource),'direc
 const gallery=JSON.parse(readProjectFile('assets/photo-sources.json'));
 assert.ok(gallery.photos.length>=9,'insufficient local image sources');
 for(const x of gallery.photos)assert.ok(x.id&&x.file&&x.source&&x.author&&x.license,'missing photo provenance');
+
+assert.ok(!appSource.includes('read-size-button'),'obsolete text-size toggle should be removed');
+assert.ok(!appSource.includes('scenePreview(d)'),'duplicate scene block should be removed');
+assert.ok(appSource.includes('story-resources-collapse'),'travel guide resources must stay available');
