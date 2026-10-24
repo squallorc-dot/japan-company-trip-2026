@@ -555,3 +555,22 @@
 .onsite-steps{padding:13px 15px;margin:12px 0;background:#f3f8f4;border:1px solid #d2e1d5;border-radius:10px}
 .onsite-steps>b{color:#355f53;font-size:14px}.onsite-steps ol{padding-left:22px;margin:9px 0;font-size:14px;line-height:1.85}.onsite-steps small{color:#657a70;font-size:12px}
 @media(max-width:600px){.rail-map-grid{grid-template-columns:1fr}.rail-maps-panel>summary{padding:15px}.rail-maps-inner{padding:0 12px 14px}}
+
+/* 2026.10.24-19: avoid hiding desktop's right-hand factual column in laptop windows.
+   Keep phone as a single column and both supplementary cards discoverable. */
+@media screen and (min-width:1000px){
+ .content-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(205px,230px);gap:18px;align-items:start}
+ .content-grid>.right-rail{display:grid;position:sticky;top:18px;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:0}
+ .content-grid>.right-rail .sidebox:last-child{display:block}
+}
+@media screen and (min-width:791px) and (max-width:999px){
+ .content-grid{display:block}
+ .content-grid>.right-rail{display:grid;position:static;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+ .content-grid>.right-rail .sidebox:last-child{display:block}
+}
+@media screen and (max-width:790px){
+ .content-grid{display:block}
+ .content-grid>.right-rail{display:grid;position:static;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:16px}
+ .rail-maps-panel{margin:14px 0 20px}
+}
+.site-version{font-size:11px;color:#71847c;white-space:nowrap}
