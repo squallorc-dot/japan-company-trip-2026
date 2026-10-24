@@ -77,3 +77,8 @@ for(const [i,name] of ['東雲','豐洲'].entries()){
  assert.ok(alt.short?.includes(name) && alt.short.includes('大船'),'Both routes need full actionable summaries');
 }
 assert.ok(ofunaGuide.summary.includes('A｜') && ofunaGuide.summary.includes('B｜'),'Cached clients must also get complete A/B summary');
+
+assert.ok(appSource.includes('agenda-role-note'),'itinerary purpose missing');
+assert.ok(appSource.includes("if(action==='route-jump')"),'route quick index missing');
+assert.ok(!appSource.includes("routeOverview(e,'schedule')"),'full transfer alternatives must remain in transport');
+assert.ok(appSource.includes("routeOverview(e,'routes')"),'transport route detail missing');
