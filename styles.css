@@ -465,3 +465,24 @@
 }
 @media(max-width:540px){.agenda-role-note{font-size:13px}.route-jump-list button{font-size:12px}}
 @media print{.agenda-role-note,.route-plan-context,.route-jump-heading,.route-jump-list{display:none!important}}
+
+/* 2026.10.24-08: compact licensed travel photo + local food/souvenirs, only in itinerary */
+@media screen{
+.spot-editorial{margin:8px 0 13px;padding:12px 14px;background:#fafaf7;border:1px solid #e8ece5;border-radius:12px}
+.spot-why{font-size:14px;line-height:1.8;margin:0 0 9px;color:#4a6164}
+.spot-preview-tags{display:flex;flex-wrap:wrap;gap:7px}
+.spot-preview-tags span{font-size:12px;font-weight:700;line-height:1.5;background:#f2eae0;color:#855d45;border-radius:20px;padding:4px 9px}
+.spot-expanded{border-top:1px solid #e4e8e2;margin-top:13px;padding-top:14px}
+.spot-expanded-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.spot-detail-block{background:white;border:1px solid #e6eae4;border-radius:10px;padding:11px 13px;min-width:0}
+.spot-detail-block b{font-size:13px;color:#365c57}
+.spot-detail-block ul{margin:8px 0 0;padding-left:20px;font-size:13px;line-height:1.8;color:#4b6569}
+.spot-reminder{padding:11px 12px;background:#fff5ea;border-radius:9px;font-size:13px;line-height:1.8;color:#725743;margin:11px 0}
+.spot-expanded>small{display:block;color:#687778;font-size:11px;line-height:1.6}
+.spot-real-photo{max-width:370px;margin:0 0 13px}
+.spot-real-photo .scene-frame{border-radius:10px;overflow:hidden;aspect-ratio:16/10}
+.spot-real-photo .scene-frame img{object-fit:cover;width:100%;height:100%}
+.spot-real-photo figcaption{font-size:12px;color:#69807a;margin-top:5px}
+}
+@media screen and (max-width:540px){.spot-editorial{padding:11px}.spot-expanded-grid{grid-template-columns:1fr}.spot-why{font-size:14px}}
+@media print{.spot-expanded{display:none!important}.spot-preview-tags span{border:1px solid #ddd}}
