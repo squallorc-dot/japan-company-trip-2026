@@ -82,3 +82,13 @@ assert.ok(appSource.includes('agenda-role-note'),'itinerary purpose missing');
 assert.ok(appSource.includes("if(action==='route-jump')"),'route quick index missing');
 assert.ok(!appSource.includes("routeOverview(e,'schedule')"),'full transfer alternatives must remain in transport');
 assert.ok(appSource.includes("routeOverview(e,'routes')"),'transport route detail missing');
+
+const spotEntries=Object.entries(guide.spotGuides||{});
+assert.ok(spotEntries.length>=25,'insufficient trip editorial content');
+for(const [key,g] of spotEntries){
+ assert.ok(places.has(key),'unknown editorial place '+key);
+ assert.ok(g.why?.length>=12 && g.tip?.length>=10,'incomplete editorial notes '+key);
+ for(const list of ['see','eat','buy'])assert.ok(Array.isArray(g[list]),'missing spot list '+key+' '+list);
+ if(g.photo)assert.ok(['meiji','enoshima','hakone','fuji','narita','yokohama'].includes(g.photo),'unknown licensed scene');
+}
+assert.ok(appSource.includes('spotEditorial(e,expanded)'),'spot editorial is not displayed');
