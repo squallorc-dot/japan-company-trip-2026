@@ -89,6 +89,6 @@ for(const [key,g] of spotEntries){
  assert.ok(places.has(key),'unknown editorial place '+key);
  assert.ok(g.why?.length>=12 && g.tip?.length>=10,'incomplete editorial notes '+key);
  for(const list of ['see','eat','buy'])assert.ok(Array.isArray(g[list]),'missing spot list '+key+' '+list);
- if(g.photo)assert.ok(['meiji','enoshima','hakone','fuji','narita','yokohama'].includes(g.photo),'unknown licensed scene');
+ if(g.photo)assert.ok(['meiji','enoshima','hakone','fuji','narita','yokohama','shonanTrain','enodenCoast','komachiStreet','gotembaOutlets','oshinoPond'].includes(g.photo),'unknown licensed scene');
 }
 assert.ok(appSource.includes('spotEditorial(e,expanded)'),'spot editorial is not displayed');
