@@ -164,3 +164,24 @@ assert.ok(worker.includes('./assets/og-cover-'+assetVersion+'.jpg'),'Current OG 
 assert.ok(appSource.includes("u.searchParams.set('share',guide.version.replaceAll('.',''))"),'Share URL must avoid old LINE cache');
 const socialBuilder=readProjectFile('scripts/build-social-image.py');
 assert.ok(socialBuilder.includes("'og-cover-'+RELEASE+'.jpg'"),'Versioned OG image must be created by build script');
+
+const railMapIds=Object.keys(guide.railMaps||{});
+assert.equal(railMapIds.length,5,'expected exactly five official Chinese railway references');
+for(const [id,r] of Object.entries(guide.railMaps)){
+ assert.ok(r.title&&r.type&&r.usage&&r.note&&r.url.startsWith('https://'),'incomplete rail map: '+id);
+ assert.ok(/繁體中文|繁中|中文/.test(r.type),'not a Chinese-language resource: '+id);
+}
+for(const [day,plans] of Object.entries(guide.railMapPlans||{})){
+ for(const [plan,ids] of Object.entries(plans)){
+  assert.ok(guide.plans[Number(day)]?.some(p=>p.id===plan),'unknown map plan '+day+'/'+plan);
+  assert.ok(ids.every(id=>railMapIds.includes(id)),'unknown rail map in '+day+'/'+plan);
+ }
+}
+assert.deepEqual(guide.railMapPlans[1].B,[],'walking-only option should not show rail maps');
+assert.deepEqual(guide.railMapPlans[1].D,[],'hotel-only option should not show rail maps');
+assert.ok(!guide.railMapPlans[2].E.includes('shonan'),'alternative E has no monorail');
+assert.ok(appSource.includes('railMapPanel()'),'rail map panel not rendered');
+assert.ok(appSource.includes('onsite+'),'onsite guides not shown');
+const actionRoutes=Object.values(guide.transportGuides).filter(g=>g.stationSigns);
+assert.ok(actionRoutes.length>=10,'insufficient onsite Chinese transfer notes');
+for(const g of actionRoutes)assert.ok(g.stationSigns.every(x=>x.length>=15),'empty station instruction');
