@@ -1,4 +1,4 @@
-// 行程照片採用可公開展示的照片連結；著作權與圖片頁面可在頁尾「影像與參考資訊」查看。
+// 旅遊景點照片優先使用本站內的 WebP；新增圖由部署流程下載，附原始來源與授權。
 // 所有主要照片皆存於 assets/photos/，可供離線閱讀；已縮放轉 WebP，詳見 credits.json。
 const commons = file => 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file).replace(/%2F/g,'/')+'?width=1280';
 const credit = (file,author,license) => ({author,license,source:'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file).replace(/%2F/g,'/')});
