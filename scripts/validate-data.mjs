@@ -59,3 +59,11 @@ for(const [key,route] of Object.entries(guide.transportGuides||{})){
  assert.ok(route.steps.every(s=>typeof s==='string' && s.trim()),'route guide has empty step: '+key);
 }
 console.log('Validated '+guideKeys.length+' additional rail/walking guidance entries');
+
+for(const [key,route] of Object.entries(guide.transportGuides||{})){
+ assert.ok(route.summary && route.summary.length>=18,'missing actionable route summary: '+key);
+ if(route.alternatives){
+  assert.ok(route.alternatives.length>=2,'route alternatives need at least two options: '+key);
+  for(const option of route.alternatives)assert.ok(option.label && option.note && option.steps?.length>=2,'incomplete alternative: '+key);
+ }
+}
