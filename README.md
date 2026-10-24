@@ -171,3 +171,10 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - 在同一行程方案中，如果相鄰「移動抵達」與「逛景點」指向同一地點，移動段只保留路線資訊；照片、美食和購物資訊只於景點活動卡顯示。相鄰重複的活動亦不重複顯示完整景點資訊。
 - 更正誤放在 Day 1 資料的照片欄位，成田表參道的照片指向歸回正確景點。
 - 修改前備份：`backup-pre-photo-dedupe-20261024`。
+
+
+## 2026/10/24 架構稽核
+- 新增 `.github/workflows/preflight.yml`，在 PR 合併前先檢查行程、版本、JavaScript、離線快取程式及圖片來源清單；主要發布流程仍於 `main` push 後執行。
+- 圖片載入失敗時不再使用其他景點照片誤導使用者，而顯示「照片暫時無法顯示」。
+- 非法 `view` 網址參數返回行程頁，防止意外輸入落入非預期畫面。
+- 上版備份：`backup-pre-architecture-audit-20261024`；未刪除歷史分支與素材。
