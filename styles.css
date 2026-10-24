@@ -415,3 +415,5 @@
 .route-info{min-width:0}
 }
 @media print{.transit-guide{display:none!important}.route-reference{display:none!important}}
+
+@media screen{.route-alternatives{display:grid;gap:12px;margin:10px 0}.route-alternative{padding:13px;border:1px solid #dce9e1;background:#fff;border-radius:12px}.route-alternative>b{font-size:14px;color:#2d5853}.route-alternative p{margin:6px 0}.route-alternative ol{margin:8px 0}.route-alternative a{font-size:13px}}
