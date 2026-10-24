@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-05', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-06', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -83,16 +83,18 @@ export const guide = {
     "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx"
   },
   "hotel MONday Premium TOYOSU|大船駅": {
-    "summary": "推薦 A：飯店步行至東雲站（R02）→ 臨海線往大崎（R08）→ 轉 JR 湘南新宿線往橫濱／大船 → 大船站。另有豐洲站出發 B 路線。",
+    "summary": "A｜東雲站：飯店步行到東雲（R02）→ 臨海線往大崎（R08）→ 轉 JR 湘南新宿線往橫濱／大船，確認停靠大船。B｜豐洲站：飯店步行到豐洲（Y22）→ 有樂町線往和光市到有樂町（Y18）→ 轉 JR 山手線往品川到新橋 → JR 東海道線往橫濱／小田原到大船。兩線使用不同出發車站，以當天轉乘時間比較。",
     "alternatives": [
       {
         "label": "A｜東雲站出發・優先",
+        "short": "飯店步行至東雲站（R02）→ 臨海線往大崎（R08）→ JR 湘南新宿線往橫濱／大船（確認停靠大船）→ 大船站。",
         "note": "飯店步行約 14 分鐘到東雲（R02），走臨海線往大崎方向；大崎轉 JR 湘南新宿線至大船。需配合清晨較疏的南下班次。",
         "steps": ["飯店步行至東雲站（R02，B 出口側）", "臨海線往大崎（R08）", "大崎依電子看板轉 JR 湘南新宿線南下並確認列車停靠大船", "大船到站後出東口方向，找獨立的湘南單軌站"],
         "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx"
       },
       {
         "label": "B｜豐洲站出發・市中心方向",
+        "short": "飯店步行至豐洲站（Y22）→ 有樂町線往和光市到有樂町（Y18）→ JR 山手線往品川到新橋 → JR 東海道線往橫濱／小田原到大船。",
         "note": "飯店改步行約 10 分鐘到「另一座車站」豐洲（Y22），先搭向市中心的有樂町線，再改搭 JR 南下；地理上較繞，但若 A 班次沒接上，總時間仍可能更快。不是在東雲站換乘有樂町線。",
         "steps": ["飯店步行至豐洲站（有樂町線 Y22）", "搭往和光市方向到有樂町（Y18），離開 Metro 改進 JR 有樂町站", "JR 山手線往品川方向先至新橋站（依現場看板核對列車）", "新橋轉 JR 東海道線往橫濱／小田原方向，確認列車停大船"],
         "official": "https://www.tokyometro.jp/station/toyosu/index.html"

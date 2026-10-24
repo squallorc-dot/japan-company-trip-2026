@@ -67,3 +67,13 @@ for(const [key,route] of Object.entries(guide.transportGuides||{})){
   for(const option of route.alternatives)assert.ok(option.label && option.note && option.steps?.length>=2,'incomplete alternative: '+key);
  }
 }
+
+const ofunaGuide=guide.transportGuides?.['hotel MONday Premium TOYOSU|大船駅'];
+assert.ok(ofunaGuide,'Day 2 Ofuna departure choices missing');
+assert.equal(ofunaGuide.alternatives?.length,2,'Both Ofuna routes must be present');
+for(const [i,name] of ['東雲','豐洲'].entries()){
+ const alt=ofunaGuide.alternatives[i];
+ assert.ok(alt.label.includes(name),'Wrong origin in Ofuna option '+(i+1));
+ assert.ok(alt.short?.includes(name) && alt.short.includes('大船'),'Both routes need full actionable summaries');
+}
+assert.ok(ofunaGuide.summary.includes('A｜') && ofunaGuide.summary.includes('B｜'),'Cached clients must also get complete A/B summary');

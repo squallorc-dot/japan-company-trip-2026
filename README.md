@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-05`。
+- 版本：`2026.10.24-06`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -117,3 +117,9 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - 「交通」集中呈現車站方向、出口、轉乘、官方連結及 Google Maps 最快路線參考。點擊行程上的「查看交通詳情」會開啟該日對應路段並展開資訊。
 - 兩個功能仍共用 `data.js` 的交通資料，但不在兩頁重複繪製完整轉乘說明。
 - 回復基準：`backup-pre-desktop-nav-20261024`（`3b2964434fc41044701ce9c807d3fac7001b4f2f`）。
+
+## 2026.10.24-06｜大船 A／B 路線同等完整
+- Day 2 前往大船的行程摘要不再僅說「另有 B 路線」；A（步行東雲站）與 B（步行豐洲站）完整路段並列。
+- A／B 皆包含起始車站、路線方向、轉乘車站與抵達站；轉乘出口及班距等仍在「交通」詳情展開區。
+- A／B 是從飯店步行前往不同的車站，不是同一座車站的不同鐵道。實際最快路線由現場班次決定。
+- 此次變更前備份：`backup-pre-ab-ofuna-20261024`（前版提交 `e550bd6c090a272112bec38cd0b42486a038aaa0`）。
