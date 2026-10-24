@@ -13,6 +13,8 @@ PHOTOS = ROOT / "assets" / "photos"
 SOURCE = PHOTOS / "fuji.webp"
 CREDITS = PHOTOS / "credits.json"
 OUTPUT = ROOT / "assets" / "og-cover.jpg"
+RELEASE = json.loads((ROOT / 'version.json').read_text(encoding='utf-8'))['version'].replace('.','')
+VERSIONED_OUTPUT = ROOT / 'assets' / ('og-cover-'+RELEASE+'.jpg')
 
 credits = json.loads(CREDITS.read_text(encoding="utf-8"))
 if not SOURCE.is_file() or not any(row.get("file") == SOURCE.name for row in credits):
@@ -27,8 +29,10 @@ with Image.open(SOURCE) as photo:
     )
     cover.save(OUTPUT, "JPEG", quality=88, optimize=True, progressive=True, subsampling=0)
 
-with Image.open(OUTPUT) as check:
+VERSIONED_OUTPUT.write_bytes(OUTPUT.read_bytes())
+
+with Image.open(VERSIONED_OUTPUT) as check:
     assert check.size == (1200, 630), check.size
 if OUTPUT.stat().st_size > 600_000:
     raise RuntimeError("OG image unexpectedly large")
-print(f"OG preview rebuilt from Fuji photo: {OUTPUT} ({OUTPUT.stat().st_size:,} bytes)")
+print(f"OG preview rebuilt from Fuji photo: {VERSIONED_OUTPUT} ({VERSIONED_OUTPUT.stat().st_size:,} bytes)")
