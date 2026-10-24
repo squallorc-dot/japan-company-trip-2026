@@ -1,0 +1,68 @@
+{
+  "description": "Images to localize during GitHub Pages build (verified Wikimedia Commons image pages, authors and licenses).",
+  "photos": [
+    {
+      "id": "senkyakuPhoto",
+      "file": "Toyosu Senkyaku Banrai.jpg",
+      "author": "Fred Cherrygarden",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Toyosu_Senkyaku_Banrai.jpg"
+    },
+    {
+      "id": "shonanTrain",
+      "file": "Shonan monorail departing Enoshima.jpg",
+      "author": "Syced",
+      "license": "CC0 1.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Shonan_monorail_departing_Enoshima.jpg"
+    },
+    {
+      "id": "enodenCoast",
+      "file": "Enoden - Shichirigahama.jpg",
+      "author": "Kakidai",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Enoden_-_Shichirigahama.jpg"
+    },
+    {
+      "id": "komachiStreet",
+      "file": "Kamakura Komachi street 2024.jpg",
+      "author": "ARandomName123",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kamakura_Komachi_street_2024.jpg"
+    },
+    {
+      "id": "worldPorters",
+      "file": "World-Porters-Yokohama.jpg",
+      "author": "Rs1421",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:World-Porters-Yokohama.jpg"
+    },
+    {
+      "id": "gotembaOutlets",
+      "file": "Gotemba premium outlets1.jpg",
+      "author": "Jungle",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gotemba_premium_outlets1.jpg"
+    },
+    {
+      "id": "oshinoPond",
+      "file": "Kagami Pond, Oshino Hakkai 2020.jpg",
+      "author": "Suikotei",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kagami_Pond,_Oshino_Hakkai_2020.jpg"
+    },
+    {
+      "id": "asakusaStreet",
+      "file": "Nakamise, Asakusa.jpg",
+      "author": "Motokoka",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Nakamise%2C_Asakusa.jpg"
+    },
+    {
+      "id": "naritaStreet",
+      "file": "Narita Altstadt 1.jpg",
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Narita_Altstadt_1.jpg"
+    }
+  ]
+}
