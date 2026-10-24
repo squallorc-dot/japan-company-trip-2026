@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-12`。
+- 版本：`2026.10.24-13`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
