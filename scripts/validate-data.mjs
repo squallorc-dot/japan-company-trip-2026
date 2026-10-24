@@ -156,3 +156,11 @@ assert.ok(appSource.includes("const itineraryNav=itineraryNavigation(e)"),'Event
 assert.ok(!appSource.includes("${routeQuick}${walkingShortcuts(e)}"),'Itinerary must not duplicate full Transport navigation');
 assert.ok(appSource.includes("if(map&&!itineraryNav)"),'Company stops retain maps without doubling free-activity navigation');
 assert.ok(appSource.includes("e.mode==='walking'?walkingShortcuts(e):''"),'Transport must retain full A-to-B walking options');
+
+const expectedShareImage = 'https://squallorc-dot.github.io/japan-company-trip-2026/assets/og-cover-'+assetVersion+'.jpg';
+assert.ok(html.includes('<meta property="og:image" content="'+expectedShareImage+'"'),'OG image URL must change with release');
+assert.ok(html.includes('<meta name="twitter:image" content="'+expectedShareImage+'"'),'Twitter image must match current OG image');
+assert.ok(worker.includes('./assets/og-cover-'+assetVersion+'.jpg'),'Current OG image should be in offline assets');
+assert.ok(appSource.includes("u.searchParams.set('share',guide.version.replaceAll('.',''))"),'Share URL must avoid old LINE cache');
+const socialBuilder=readProjectFile('scripts/build-social-image.py');
+assert.ok(socialBuilder.includes("'og-cover-'+RELEASE+'.jpg'"),'Versioned OG image must be created by build script');
