@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.10.24-17', verified:'2026-10-23', timezone:'Asia/Tokyo',
+ version:'2026.10.24-18', verified:'2026-10-23', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -123,6 +123,88 @@ export const guide = {
     "note": "與銀座一丁目（有樂町線）不同車站"
   }
 },
+ railMaps:{
+  "jr": {
+    "title": "JR 東日本",
+    "type": "繁體中文 PDF",
+    "usage": "大崎、大船、鎌倉、橫濱與川崎等 JR 轉乘",
+    "url": "https://www.jreast.co.jp/tc/info/map_a4ol.pdf",
+    "note": "2024/3/16 版本；用於認識路網，當日列車停靠與月台仍須確認"
+  },
+  "metro": {
+    "title": "東京 Metro",
+    "type": "繁體中文 PDF",
+    "usage": "豐洲 Y22、有樂町 Y18、銀座一丁目與市區備案",
+    "url": "https://www.tokyometro.jp/station/pdf/202305/202305_number_tcn.pdf",
+    "note": "2023/3 版本；Day 2 湘南行程中主要作為「豐洲出發備案」"
+  },
+  "rinkai": {
+    "title": "臨海線",
+    "type": "官方繁中路線頁",
+    "usage": "東雲 R02、國際展示場 R03、大崎 R08、大井町 R07",
+    "url": "https://www.twr.co.jp/chtw/tabid/263/Default.aspx",
+    "note": "有繁中車站資訊；與 JR 埼京線可能直通，仍須確認班次"
+  },
+  "shonan": {
+    "title": "湘南單軌",
+    "type": "官方中文車站頁",
+    "usage": "大船 SMR1 → 湘南江之島 SMR8",
+    "url": "https://kamakura-enoshima-monorail.jp/chi/tickets-and-stations/",
+    "note": "中文說明配合英文站名；票價及時刻另依營運公司當日資訊"
+  },
+  "enoden": {
+    "title": "江之電",
+    "type": "官方繁中車站頁",
+    "usage": "江之島 EN06 → 鎌倉 EN15",
+    "url": "https://www.enoden.co.jp/tc/train/station/",
+    "note": "可查全線 15 站中文名稱，注意江之電與湘南單軌車站不同"
+  }
+},
+ railMapPlans:{
+  "1": {
+    "A": [
+      "metro",
+      "jr"
+    ],
+    "B": [],
+    "C": [
+      "rinkai"
+    ],
+    "D": []
+  },
+  "2": {
+    "A": [
+      "jr",
+      "rinkai",
+      "shonan",
+      "enoden",
+      "metro"
+    ],
+    "B": [
+      "jr",
+      "rinkai",
+      "shonan",
+      "enoden",
+      "metro"
+    ],
+    "C": [
+      "jr",
+      "rinkai",
+      "shonan",
+      "enoden",
+      "metro"
+    ],
+    "D": [
+      "metro",
+      "jr",
+      "rinkai"
+    ],
+    "E": [
+      "jr",
+      "rinkai"
+    ]
+  }
+},
  transportGuides:{
   "銀座一丁目駅|丸の内仲通り": {
     "summary": "銀座一丁目站／銀座商圈 → 沿有樂町方向步行 → 丸之內仲通與東京站周邊；不須搭車。",
@@ -137,6 +219,7 @@ export const guide = {
     "official": "https://www.aeon.com/store/イオン/イオン東雲店/"
   },
   "hotel MONday Premium TOYOSU|銀座一丁目駅": {
+    "stationSigns": ["從飯店走到 Metro「豊洲」（Y22），選「和光市方面」，不是往「新木場」。","在「銀座一丁目」（Y19）下車；這段不必轉 JR。"],
     "walkTo": ["toyosu"],
     "summary": "飯店步行至豐洲站（Y22）→ 有樂町線往和光市方面 → 銀座一丁目站（Y19）；無須轉乘。",
     "steps": [
@@ -150,6 +233,7 @@ export const guide = {
     "crowd": "平日傍晚可能遇下班人潮，熱門出入口注意步行流量。"
   },
   "有楽町駅|hotel MONday Premium TOYOSU": {
+    "stationSigns": ["找東京 Metro「有楽町」（Y18），不要走錯成 JR 入口。","搭有樂町線「新木場方面」，於「豊洲」（Y22）下車，最後步行回飯店。"],
     "walkTo": ["yurakucho"],
     "summary": "有樂町站（Y18）→ 有樂町線往新木場 → 豐洲站（Y22）→ 步行回飯店。",
     "steps": [
@@ -200,6 +284,7 @@ export const guide = {
     "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx"
   },
   "hotel MONday Premium TOYOSU|大船駅": {
+    "stationSigns": ["出發先選定 A 東雲 R02 或 B 豐洲 Y22，這是不同車站，不是同站兩個月台。","A 到大崎後找「湘南新宿ライン」，確認南下往橫濱方向、且這班有停「大船」。","B 豐洲搭「和光市方面」至有樂町；JR 依現場看板至新橋轉東海道線，確認停「大船」。"],
     "walkTo": ["shinonome","toyosu"],
     "summary": "A｜東雲站：飯店步行到東雲（R02）→ 臨海線往大崎（R08）→ 轉 JR 湘南新宿線往橫濱／大船，確認停靠大船。B｜豐洲站：飯店步行到豐洲（Y22）→ 有樂町線往和光市到有樂町（Y18）→ 轉 JR 山手線往品川到新橋 → JR 東海道線往橫濱／小田原到大船。兩線使用不同出發車站，以當天轉乘時間比較。",
     "alternatives": [
@@ -207,14 +292,14 @@ export const guide = {
         "label": "A｜東雲站出發・優先",
         "short": "飯店步行至東雲站（R02）→ 臨海線往大崎（R08）→ JR 湘南新宿線往橫濱／大船（確認停靠大船）→ 大船站。",
         "note": "飯店步行約 14 分鐘到東雲（R02），走臨海線往大崎方向；大崎轉 JR 湘南新宿線至大船。需配合清晨較疏的南下班次。",
-        "steps": ["飯店步行至東雲站（R02，B 出口側）", "臨海線往大崎（R08）", "大崎依電子看板轉 JR 湘南新宿線南下並確認列車停靠大船", "大船到站後出東口方向，找獨立的湘南單軌站"],
+        "steps": ["① 步行到東雲（R02；B 出口方向），這裡是臨海線，不是豐洲站。", "② 看『大崎方面』的臨海線，於大崎（R08）下車。", "③ 大崎找『湘南新宿ライン』；只選南下且確實停靠大船的列車，月台依當日看板。", "④ JR 大船下車後往東口與『湘南モノレール』指標前進。"],
         "official": "https://www.twr.co.jp/route/tabid/108/Default.aspx"
       },
       {
         "label": "B｜豐洲站出發・市中心方向",
         "short": "飯店步行至豐洲站（Y22）→ 有樂町線往和光市到有樂町（Y18）→ JR 山手線往品川到新橋 → JR 東海道線往橫濱／小田原到大船。",
         "note": "飯店改步行約 10 分鐘到「另一座車站」豐洲（Y22），先搭向市中心的有樂町線，再改搭 JR 南下；地理上較繞，但若 A 班次沒接上，總時間仍可能更快。不是在東雲站換乘有樂町線。",
-        "steps": ["飯店步行至豐洲站（有樂町線 Y22）", "搭往和光市方向到有樂町（Y18），離開 Metro 改進 JR 有樂町站", "JR 山手線往品川方向先至新橋站（依現場看板核對列車）", "新橋轉 JR 東海道線往橫濱／小田原方向，確認列車停大船"],
+        "steps": ["① 步行到豐洲（Y22），選有樂町線『和光市方面』，不是東雲臨海線。", "② 於有樂町（Y18）出 Metro，找到 JR 有樂町站入口。", "③ JR 山手線往品川方向先搭到新橋，依現場看板核對方向。", "④ 新橋找 JR 東海道線往橫濱／小田原方向，確認這班停靠大船。"],
         "official": "https://www.tokyometro.jp/station/toyosu/index.html"
       }
     ],
@@ -231,6 +316,7 @@ export const guide = {
     "crowd": "12/3 週四通勤逐漸增加；臨海線及 JR 以現場擁擠狀況為準。"
   },
   "大船駅 湘南モノレール|湘南江の島駅": {
+    "stationSigns": ["JR 大船站下車後找「湘南モノレール／湘南單軌」，不是留在 JR 月台。","在湘南單軌大船站（SMR1）搭往「湘南江の島」，坐到終點 SMR8。"],
     "walkTo": ["shonanOfuna"],
     "summary": "JR 大船站下車 → 依東口／湘南モノレール指標找單軌站（SMR1）→ 搭往終點湘南江之島（SMR8），純車程約 14 分鐘。",
     "steps": [
@@ -243,6 +329,7 @@ export const guide = {
     "crowd": "湘南熱門觀光路線，上午仍可能有通勤或旅客人潮。"
   },
   "江ノ島駅|鎌倉駅": {
+    "stationSigns": ["從江之島步行到「江ノ電 江ノ島駅」（EN06），不是湘南單軌「湘南江の島駅」。","站內找「鎌倉方面」，坐到江之電終點「鎌倉」（EN15）。"],
     "walkTo": ["enodenEnoshima"],
     "summary": "從海蠟燭步行回江之電「江ノ島站」（EN06）→ 搭江之電往鎌倉方向 → 鎌倉站（EN15）；注意不同於湘南單軌的湘南江之島站。",
     "steps": [
@@ -257,6 +344,7 @@ export const guide = {
     "crowd": "熱門車廂及海景路段可能擁擠，不預設一定能坐到海側座位。"
   },
   "鎌倉駅|横浜ワールドポーターズ": {
+    "stationSigns": ["鎌倉轉 JR 時找「JR 横須賀線」，搭往「横浜／東京方面」，在「横浜」下車。","橫濱站找 JR「根岸線／京浜東北線」，確認往「桜木町」，下車後走汽車道往 World Porters。"],
     "walkTo": ["jrKamakura"],
     "summary": "鎌倉站 → JR 橫須賀線往橫濱方向 → 橫濱站轉 JR 根岸線至櫻木町 → 經汽車道步行約 10 分鐘到 World Porters；不用纜車。",
     "steps": [
@@ -278,6 +366,7 @@ export const guide = {
     "official": "https://www.yokohama-akarenga.jp/access/"
   },
   "横浜赤レンガ倉庫|ラゾーナ川崎プラザ": {
+    "stationSigns": ["從紅磚倉庫走到 JR「桜木町」，看往「横浜／川崎方面」的 JR 路線；到川崎前確認列車停靠。","抵達「川崎」後依「ラゾーナ川崎プラザ」方向出站；川崎屬選配，太晚可取消。"],
     "walkTo": ["jrSakuragicho"],
     "summary": "紅磚倉庫 → 步行約 15 分鐘至櫻木町站 → JR 京濱東北／根岸線往東京方向直達川崎站 → 步行至 LAZONA，無須轉乘。",
     "steps": [
@@ -290,6 +379,7 @@ export const guide = {
     "crowd": "17:30–19:30 為一般下班較忙時段，JR 櫻木町／橫濱轉乘可能擁擠。"
   },
   "川崎駅|hotel MONday Premium TOYOSU": {
+    "stationSigns": ["在 JR 川崎站找「京浜東北線」往「東京・大宮方面」，先到「大井町」。","大井町轉「りんかい線」往「新木場方面」，在「東雲」（R02）下車。"],
     "walkTo": ["jrKawasaki"],
     "summary": "川崎站 → JR 京濱東北線往東京／大宮方向至大井町 → 轉臨海線往新木場至東雲（R02）→ 步行回飯店。",
     "steps": [
@@ -303,6 +393,7 @@ export const guide = {
     "crowd": "川崎晚間通勤可能擁擠；末班須同時核對 JR 和臨海線。"
   },
   "横浜赤レンガ倉庫|hotel MONday Premium TOYOSU": {
+    "stationSigns": ["先步行到 JR「桜木町」，搭根岸／京濱東北線往「東京・大宮方面」，在「大井町」下車。","大井町換「りんかい線」往「新木場方面」，於「東雲」（R02）下車步行回飯店。"],
     "walkTo": ["jrSakuragicho"],
     "summary": "紅磚倉庫 → 步行約 15 分鐘至櫻木町站 → JR 根岸／京濱東北線往東京至大井町 → 轉臨海線往新木場至東雲 → 步行回飯店。",
     "steps": [
@@ -326,6 +417,7 @@ export const guide = {
     "crowd": "工作日 15:00 前後通常非主要通勤尖峰，但仍可能有人潮。"
   },
   "hotel MONday Premium TOYOSU|吉祥寺駅": {
+    "stationSigns": ["從東雲 R02 搭往「大崎方面」；若班次直通 JR 埼京線可往新宿，否則依現場提示換乘。","新宿換「中央線快速」往三鷹／高尾，確認停靠「吉祥寺」。"],
     "walkTo": ["shinonome"],
     "summary": "飯店步行至東雲站（R02）→ 臨海線往大崎／新宿方向 → 新宿轉 JR 中央線快速往三鷹／高尾方向 → 吉祥寺站。",
     "steps": [
@@ -338,6 +430,7 @@ export const guide = {
     "crowd": "通勤時段新宿站轉乘人潮較多，需預留找 JR 中央線的時間。"
   },
   "吉祥寺駅|下北沢駅": {
+    "stationSigns": ["吉祥寺找「京王井の頭線」往「渋谷方面」，於「下北沢」下車；不必繞新宿。"],
     "walkTo": ["keioKichijoji"],
     "summary": "吉祥寺站 → 京王井之頭線往澀谷方向 → 下北澤站；不用繞新宿。",
     "steps": [
@@ -348,6 +441,7 @@ export const guide = {
     "crowd": "週四下午班次請依京王官方資訊查詢。"
   },
   "下北沢駅|渋谷駅": {
+    "stationSigns": ["下北澤找「京王井の頭線」往「渋谷方面」，搭到終點；回程須另外找 JR 入口。"],
     "walkTo": ["keioShimokitazawa"],
     "summary": "下北澤站 → 京王井之頭線往澀谷方向 → 終點澀谷站；轉 JR 時需依站內指標步行。",
     "steps": [
@@ -358,6 +452,7 @@ export const guide = {
     "crowd": "17:30 起澀谷站可能開始下班時段擁擠。"
   },
   "渋谷駅|hotel MONday Premium TOYOSU": {
+    "stationSigns": ["澀谷找 JR「埼京線／りんかい線直通」往「新木場方面」；先核對這班車的終點。","若無直通班次，於「大崎」轉臨海線「新木場方面」，在「東雲」（R02）下車。"],
     "walkTo": ["jrShibuya"],
     "summary": "澀谷站 → JR 埼京線找臨海線直通「新木場方面」→ 東雲站（R02）→ 步行回飯店；未直通則於大崎轉車。",
     "steps": [
