@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.10.24-16`。
+- 版本：`2026.10.24-17`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -200,3 +200,11 @@ https://squallorc-dot.github.io/japan-company-trip-2026/refresh.html
 - 公司團體／遊覽車景點不顯示自行步行提示，保留展開後查看景點地圖。
 - 交通頁保留 A→B、從目前位置步行、上車車站定位與替代路線。
 - 方案、照片、時間、美食購物不變；先前版本備份：`backup-pre-nav-role-polish-20261024`。
+
+
+## 2026.10.24-17｜LINE OG 分享預覽更新
+- 根因：頁面從初版起沿用 `og-cover.jpg?v=20261024-01`，即使每次部署重新產生封面，LINE 仍可能繼續使用過期分享預覽。
+- 分享圖片改為每次版本專屬的 `og-cover-YYYYMMDD-NN.jpg`，保留舊 `og-cover.jpg` 作為相容備份；部署時自動複製版本化檔名，並檢查尺寸與 HTML 標籤。
+- 網站分享按鈕加入與版號一致的 `share` 查詢參數，讓 LINE 有機會以新的分享網址重抓縮圖；此前已發出的訊息無法自動更新。
+- 分享圖片為已授權的富士山與忠靈塔實景，尺寸 1200×630 JPEG；檔案在發布時建置，不用新增外部圖片依賴。
+- 修改前備份：`backup-pre-line-og-refresh-20261024`。

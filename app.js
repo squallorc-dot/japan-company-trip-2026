@@ -1,5 +1,5 @@
-import {guide} from './data.js?v=20261024-16';
-import {scenes,dayScenes,overviewScenes,inspirations} from './media.js?v=20261024-16';
+import {guide} from './data.js?v=20261024-17';
+import {scenes,dayScenes,overviewScenes,inspirations} from './media.js?v=20261024-17';
 
 const qs = new URLSearchParams(location.search);
 const stored = (key, fallback) => { try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; } };
@@ -190,7 +190,7 @@ function setView(view){state.view=view;state.expanded.clear();state.showAll=fals
 function choosePlan(id){const d=state.day;const plans=guide.plans[d];if(!plans?.some(p=>p.id===id))return;state.plans[d]=id;save('trip-plan'+d,id);state.expanded.clear();state.modal=null;syncURL();render();}
 let toastTimer;
 function toast(t){app.querySelector('.toast')?.remove();clearTimeout(toastTimer);const node=document.createElement('div');node.className='toast';node.setAttribute('role','status');node.textContent=t;app.querySelector('.site-shell')?.append(node);toastTimer=setTimeout(()=>node.remove(),2700);}
-function shareURL(){const u=new URL(location.href);u.searchParams.set('day',state.day);u.searchParams.set('view',state.view);if(guide.plans[state.day])u.searchParams.set('plan'+state.day,state.plans[state.day]);return u.toString();}
+function shareURL(){const u=new URL(location.href);u.searchParams.set('day',state.day);u.searchParams.set('view',state.view);if(guide.plans[state.day])u.searchParams.set('plan'+state.day,state.plans[state.day]);u.searchParams.set('share',guide.version.replaceAll('.',''));return u.toString();}
 async function share(){const url=shareURL();try {if(navigator.share&&matchMedia('(max-width:680px)').matches){await navigator.share({title:'2026 日本五日旅遊手冊',url});return;}if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(url);toast('已複製目前方案連結');return;}} catch(err){if(err.name==='AbortError')return;}window.prompt('複製這個行程網址',url);}
 app.addEventListener('click', async ev => {const element=ev.target.closest('[data-action]');if(!element)return;const action=element.dataset.action;
  if(action==='day'||action==='overview-day'){setDay(Number(element.dataset.day));if(action==='overview-day')setView('schedule');return;}

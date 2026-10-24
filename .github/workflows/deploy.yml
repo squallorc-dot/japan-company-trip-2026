@@ -57,6 +57,14 @@ jobs:
               assert any(m.get(attr)==val for m in p.metas), f"Missing {val}"
           assert any(l.get('rel')=='canonical' for l in p.links)
           assert Path('assets/og-cover.jpg').is_file()
+          import json
+          version=json.loads(Path('version.json').read_text(encoding='utf-8'))['version'].replace('.','')
+          preview=Path('assets')/f'og-cover-{version}.jpg'
+          assert preview.is_file(), f'Missing current social preview: {preview}'
+          url='https://squallorc-dot.github.io/japan-company-trip-2026/assets/'+preview.name
+          for tag in ('og:image','twitter:image'):
+              assert any(m.get('content')==url for m in p.metas if m.get('property')==tag or m.get('name')==tag),f'Wrong {tag} URL'
+
           print('Static HTML and social metadata OK')
           PY
       - uses: actions/configure-pages@v5
