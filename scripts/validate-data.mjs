@@ -185,3 +185,10 @@ assert.ok(appSource.includes('onsite+'),'onsite guides not shown');
 const actionRoutes=Object.values(guide.transportGuides).filter(g=>g.stationSigns);
 assert.ok(actionRoutes.length>=10,'insufficient onsite Chinese transfer notes');
 for(const g of actionRoutes)assert.ok(g.stationSigns.every(x=>x.length>=15),'empty station instruction');
+
+const railPanelPosition=appSource.indexOf('${railMapPanel()}');
+const railListPosition=appSource.indexOf('<div class="route-list">');
+const railIndexPosition=appSource.indexOf('<div class="route-jump-heading">');
+assert.ok(railPanelPosition>railIndexPosition&&railPanelPosition<railListPosition,'Rail maps should appear after route index but before long list');
+assert.equal(appSource.split('${railMapPanel()}').length-1,1,'Rail maps should render once');
+assert.ok(appSource.includes('版本 ${escapeHtml(guide.version)}'),'Version must be visible for cache diagnosis');
