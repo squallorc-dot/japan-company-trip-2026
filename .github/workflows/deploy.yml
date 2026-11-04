@@ -46,7 +46,7 @@ jobs:
           from pathlib import Path
           worker=Path('sw.js').read_text(encoding='utf-8')
           listed=worker.split('const OFFLINE_FILES = [',1)[1].split('];',1)[0]
-          files=re.findall(r"'(\\./[^']+)'", listed)
+          files=re.findall(r"'(\./[^']+)'", listed)
           missing=[name for name in files if name!='./' and not Path(name.split('?')[0]).is_file()]
           assert not missing, 'Missing PWA offline files: '+', '.join(missing)
           print('All', len(files), 'offline resources are present')
