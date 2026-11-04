@@ -22,6 +22,9 @@ for(const ref of ['./data.js?v='+assetVersion,'./media.js?v='+assetVersion]){
  assert.ok(appSource.includes(ref),'app.js has stale import version: '+ref);
 }
 assert.ok(worker.includes('japan-trip-2026-v'+assetVersion),'sw.js has stale cache version');
+assert.ok(readProjectFile('.github/workflows/deploy.yml').includes('python scripts/build-icons.py'),'512px icon must be generated for deployment');
+assert.ok(worker.includes("'./assets/icon-512.png'"),'512px icon must be available offline');
+
 assert.ok(refreshPage.includes('fresh='+assetVersion),'refresh.html has stale cache-busting version');
 const places=new Set(Object.keys(guide.places));
 const allowedStatuses=new Set(['confirmed','planned','estimate']);
@@ -44,6 +47,16 @@ for(const [i,day] of guide.days.entries()){
 }
 assert.equal(guide.plans[1].length,4,'Day 1 options');
 assert.equal(guide.plans[2].length,5,'Day 2 options');
+assert.ok(guide.days[1].meal.includes('早餐飯店'),'Day 2 breakfast missing from day summary');
+assert.ok(guide.days[1].fixed.some(e=>e.title.includes('飯店早餐')),'Day 2 breakfast missing from schedule');
+for (const plan of guide.plans[2]) {
+ const first=plan.events[0];
+ const match=first.at.match(/^(\d{2}):(\d{2})/);
+ assert.ok(match, 'Unexpected Day 2 first time for '+plan.id);
+ assert.ok(Number(match[1])*60+Number(match[2])>=7*60+25,'Day 2 plan leaves before breakfast: '+plan.id);
+}
+assert.ok(!readProjectFile('data.js').includes('06:15'),'Old 06:15 start note remains');
+
 for(const day of [1,2]){
   const ids=guide.plans[day].map(p=>p.id);
   assert.equal(new Set(ids).size,ids.length,'duplicate plan ID');
