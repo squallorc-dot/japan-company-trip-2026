@@ -51,7 +51,7 @@ assert.ok(guide.days[1].meal.includes('早餐飯店'),'Day 2 breakfast missing f
 assert.ok(guide.days[1].fixed.some(e=>e.title.includes('飯店早餐')),'Day 2 breakfast missing from schedule');
 for (const plan of guide.plans[2]) {
  const first=plan.events[0];
- const match=first.at.match(/^(\\d{2}):(\\d{2})/);
+ const match=first.at.match(/^(\d{2}):(\d{2})/);
  assert.ok(match, 'Unexpected Day 2 first time for '+plan.id);
  assert.ok(Number(match[1])*60+Number(match[2])>=7*60+25,'Day 2 plan leaves before breakfast: '+plan.id);
 }
