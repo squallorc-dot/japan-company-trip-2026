@@ -28,6 +28,7 @@ jobs:
       - name: Build attributed local travel photos
         run: |
           python -m pip install --disable-pip-version-check Pillow
+          python scripts/build-icons.py
           python scripts/build-photos.py
           python - <<'PY'
           import json
@@ -38,6 +39,18 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check Pillow
           python scripts/build-social-image.py
+      - name: Validate all precached offline files
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          worker=Path('sw.js').read_text(encoding='utf-8')
+          listed=worker.split('const OFFLINE_FILES = [',1)[1].split('];',1)[0]
+          files=re.findall(r"'(\\./[^']+)'", listed)
+          missing=[name for name in files if name!='./' and not Path(name.split('?')[0]).is_file()]
+          assert not missing, 'Missing PWA offline files: '+', '.join(missing)
+          print('All', len(files), 'offline resources are present')
+          PY
       - name: Validate static SEO and social metadata
         run: |
           python - <<'PY'

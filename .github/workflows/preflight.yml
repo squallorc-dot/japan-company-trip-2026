@@ -21,7 +21,7 @@ jobs:
           node --check scripts/validate-data.mjs
       - name: Check photo and OG asset builder syntax
         run: |
-          python -m py_compile scripts/build-photos.py scripts/build-social-image.py
+          python -m py_compile scripts/build-photos.py scripts/build-social-image.py scripts/build-icons.py
       - name: Verify basic static file references
         run: |
           python - <<'PY'
