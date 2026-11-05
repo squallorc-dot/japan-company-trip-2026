@@ -47,6 +47,14 @@ for(const [i,day] of guide.days.entries()){
 }
 assert.equal(guide.plans[1].length,4,'Day 1 options');
 assert.equal(guide.plans[2].length,5,'Day 2 options');
+assert.ok(appSource.includes("const headline=daily?day.headline:'一起，去日本走走。'"),'Daily hero must be based on each day headline');
+assert.ok(appSource.includes('function overviewShortcuts()'),'Travel shortcut controls not defined');
+assert.ok(appSource.includes('${overviewShortcuts()}'),'Travel shortcuts not shown in Overview');
+assert.ok(appSource.includes('${dayFocus(d)}'),'Daily focus not shown above itinerary');
+assert.ok(appSource.includes('d.keypoints.slice(1).map('),'Daily focus should not repeat in the sidebar');
+assert.ok(!readProjectFile('scripts/build-photos.py').includes('dest.write_bytes(fb.read_bytes())'),'A mismatched place photo cannot be substituted');
+assert.ok(readProjectFile('scripts/build-photos.py').includes('Some attributed photos could not be downloaded'),'Missing source photos should block a faulty release');
+
 assert.ok(guide.days[1].meal.includes('早餐飯店'),'Day 2 breakfast missing from day summary');
 assert.ok(guide.days[1].fixed.some(e=>e.title.includes('飯店早餐')),'Day 2 breakfast missing from schedule');
 for (const plan of guide.plans[2]) {
@@ -133,6 +141,11 @@ for(const photo of gallery.photos){
 const shonanSource=gallery.photos.find(x=>x.id==='shonanTrain');
 assert.equal(shonanSource?.file,'ShonanMonorail-M8689.jpg','Do not silently restore the control-panel photo');
 assert.notEqual(overviewScenes[2],dayScenes[2],'Day 2 overview and itinerary must show different scenery');
+assert.equal(dayScenes[2],'enoshimaPanorama','Day 2 main photo should be the complete island panorama');
+assert.equal(guide.spotGuides.redbrick.photo,'yokohamaMarket','Red Brick should show a documented Christmas Market scene');
+assert.ok(gallery.photos.some(p=>p.id==='enoshimaPanorama'&&p.license==='CC BY 4.0'),'Enoshima panorama attribution missing');
+assert.ok(gallery.photos.some(p=>p.id==='yokohamaMarket'&&p.license==='CC BY 2.0'),'Christmas market attribution missing');
+
 for(const d of guide.days)assert.ok(!Object.hasOwn(d,'photo'),'Accidental photo property attached to a day entry: '+d.number);
 assert.equal(guide.spotGuides.naritaStreet?.photo,'naritaStreet','Narita photo belongs to spot guide, not Day 1');
 assert.ok(appSource.includes('showSpot?spotEditorial(e,expanded)'), 'Repeated same-place photo suppression missing');

@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.11.04-20', verified:'2026-11-04', timezone:'Asia/Tokyo',
+ version:'2026.11.05-21', verified:'2026-11-05', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -730,7 +730,7 @@ export const guide = {
       "聖誕裝飾與節慶小物"
     ],
     "tip": "2026/12/3 開放至 21:00，16:00 起點燈；一般入場 500 日圓起，部分免費區，餐飲與商品另計。擁擠時縮短逛街、不必追加川崎。",
-    "photo": "yokohama"
+    "photo": "yokohamaMarket"
   },
   "kawasaki": {
     "why": "LAZONA 是大型購物中心，很適合補逛前次錯過的店，但優先度低於湘南與橫濱。",

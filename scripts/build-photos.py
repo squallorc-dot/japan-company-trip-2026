@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Create local WebP site photos from documented Commons sources.
-If source retrieval fails, substitute a local fallback and record the failure;
-never silently label a substitute as the pictured site.
+"""Create local WebP photos only from properly documented original locations.
+A missing source blocks deployment instead of relabeling another attraction.
 """
 import json
 import os
@@ -13,7 +12,6 @@ from PIL import Image, ImageOps
 root=Path(__file__).resolve().parents[1]
 manifest=json.loads((root/"assets/photo-sources.json").read_text(encoding="utf-8"))["photos"]
 outdir=root/"assets/photos"
-fallback={"senkyakuPhoto":"meiji","shonanTrain":"enoshima","enodenCoast":"enoshima","komachiStreet":"narita","worldPorters":"yokohama","gotembaOutlets":"fuji","oshinoPond":"hakone","asakusaStreet":"narita","naritaStreet":"narita"}
 results=[]
 for photo in manifest:
   dest=outdir/(photo["id"]+".webp")
@@ -31,10 +29,12 @@ for photo in manifest:
     results.append({"id":photo["id"],"status":"downloaded","source":photo["source"]})
     print("OK",photo["id"],dest.stat().st_size)
   except Exception as exc:
-    fb=outdir/(fallback[photo["id"]]+".webp")
-    if not fb.is_file(): raise RuntimeError("Fallback missing: "+str(fb))
-    dest.write_bytes(fb.read_bytes())
-    results.append({"id":photo["id"],"status":"substitute","source":photo["source"],"fallback":fallback[photo["id"]]})
-    print("WARNING",photo["id"],str(exc)[:130])
+    # Never misidentify scenery. Existing public deployment stays unchanged if this build fails.
+    if dest.is_file():
+      dest.unlink()
+    results.append({"id":photo["id"],"status":"failed","source":photo["source"],"error":str(exc)[:250]})
+    print("PHOTO SOURCE UNAVAILABLE",photo["id"],str(exc)[:130])
 (root/"assets/photo-build-status.json").write_text(json.dumps(results,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("Photo localizations:",sum(x["status"]=="downloaded" for x in results),"of",len(results))
+if any(x["status"] != "downloaded" for x in results):
+  raise RuntimeError("Some attributed photos could not be downloaded. Deployment stopped to prevent incorrect scenery.")
