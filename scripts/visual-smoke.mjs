@@ -44,7 +44,7 @@ for(const width of widths){
  // Verify each day remains accessible and its heading actually changes.
  await page.locator(width<=790?'.bottom-nav button[data-view="schedule"]':'.desktop-sections button[data-view="schedule"]').click();
  for(let day=1;day<=5;day++){
-  await page.locator('.day-tabs button[data-day="'+day+'"]').click();
+  await page.locator((width<=790?'.day-tabs button[data-day="':'.day-nav-item[data-day="')+day+'"]').click();
   const heading=await page.locator('.hero h1').textContent();
   const entries=await page.locator('.timeline-item').count();
   check(heading!=='一起，去日本走走。','Daily hero did not change',{width,day,heading});
@@ -59,7 +59,7 @@ for(const width of widths){
  // One pass at phone and desktop dimensions: all nine original plans and comparison dialog.
  if([390,1440].includes(width)){
   for(const [day,options] of [[1,['A','B','C','D']],[2,['A','B','C','D','E']]]){
-   await page.locator('.day-tabs button[data-day="'+day+'"]').click();
+   await page.locator((width<=790?'.day-tabs button[data-day="':'.day-nav-item[data-day="')+day+'"]').click();
    for(const plan of options){
     await page.locator('button[data-action="plan"][data-plan="'+plan+'"]').click();
     const selected=await page.locator('button[data-action="plan"][data-plan="'+plan+'"]').getAttribute('aria-checked');
