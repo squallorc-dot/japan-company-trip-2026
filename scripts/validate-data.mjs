@@ -47,6 +47,14 @@ for(const [i,day] of guide.days.entries()){
 }
 assert.equal(guide.plans[1].length,4,'Day 1 options');
 assert.equal(guide.plans[2].length,5,'Day 2 options');
+assert.ok(appSource.includes("const headline=daily?day.headline:'一起，去日本走走。'"),'Daily hero must be based on each day headline');
+assert.ok(appSource.includes('function overviewShortcuts()'),'Travel shortcut controls not defined');
+assert.ok(appSource.includes('${overviewShortcuts()}'),'Travel shortcuts not shown in Overview');
+assert.ok(appSource.includes('${dayFocus(d)}'),'Daily focus not shown above itinerary');
+assert.ok(appSource.includes('d.keypoints.slice(1).map('),'Daily focus should not repeat in the sidebar');
+assert.ok(!readProjectFile('scripts/build-photos.py').includes('dest.write_bytes(fb.read_bytes())'),'A mismatched place photo cannot be substituted');
+assert.ok(readProjectFile('scripts/build-photos.py').includes('Some attributed photos could not be downloaded'),'Missing source photos should block a faulty release');
+
 assert.ok(guide.days[1].meal.includes('早餐飯店'),'Day 2 breakfast missing from day summary');
 assert.ok(guide.days[1].fixed.some(e=>e.title.includes('飯店早餐')),'Day 2 breakfast missing from schedule');
 for (const plan of guide.plans[2]) {

@@ -33,7 +33,9 @@ jobs:
           python - <<'PY'
           import json
           p=json.load(open('assets/photo-build-status.json'))
-          print('Local travel photos downloaded:',sum(i['status']=='downloaded' for i in p),'/',len(p))
+          verified=sum(i['status']=='downloaded' for i in p)
+          assert verified==len(p),f'Not all source photos are correct: {verified}/{len(p)}'
+          print('Local travel photos downloaded and verified:',verified,'/',len(p))
           PY
       - name: Build single-photo OG preview
         run: |
