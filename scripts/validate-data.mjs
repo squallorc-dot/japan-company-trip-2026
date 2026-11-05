@@ -141,6 +141,11 @@ for(const photo of gallery.photos){
 const shonanSource=gallery.photos.find(x=>x.id==='shonanTrain');
 assert.equal(shonanSource?.file,'ShonanMonorail-M8689.jpg','Do not silently restore the control-panel photo');
 assert.notEqual(overviewScenes[2],dayScenes[2],'Day 2 overview and itinerary must show different scenery');
+assert.equal(dayScenes[2],'enoshimaPanorama','Day 2 main photo should be the complete island panorama');
+assert.equal(guide.spotGuides.redbrick.photo,'yokohamaMarket','Red Brick should show a documented Christmas Market scene');
+assert.ok(gallery.photos.some(p=>p.id==='enoshimaPanorama'&&p.license==='CC BY 4.0'),'Enoshima panorama attribution missing');
+assert.ok(gallery.photos.some(p=>p.id==='yokohamaMarket'&&p.license==='CC BY 2.0'),'Christmas market attribution missing');
+
 for(const d of guide.days)assert.ok(!Object.hasOwn(d,'photo'),'Accidental photo property attached to a day entry: '+d.number);
 assert.equal(guide.spotGuides.naritaStreet?.photo,'naritaStreet','Narita photo belongs to spot guide, not Day 1');
 assert.ok(appSource.includes('showSpot?spotEditorial(e,expanded)'), 'Repeated same-place photo suppression missing');

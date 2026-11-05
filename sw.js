@@ -9,6 +9,7 @@ const OFFLINE_FILES = [
   './assets/photos/komachiStreet.webp','./assets/photos/worldPorters.webp','./assets/photos/gotembaOutlets.webp',
   './assets/photos/oshinoPond.webp','./assets/photos/asakusaStreet.webp','./assets/photos/naritaStreet.webp',
   './assets/og-cover-20261105-21.jpg','./assets/photos/meiji.webp','./assets/photos/enoshima.webp','./assets/photos/hakone.webp',
+  './assets/photos/enoshimaPanorama.webp','./assets/photos/yokohamaMarket.webp',
   './assets/photos/fuji.webp','./assets/photos/narita.webp','./assets/photos/yokohama.webp'
 ];
 const isAppDocument = request => request.mode === 'navigate' ||

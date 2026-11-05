@@ -17,9 +17,11 @@ export const scenes = {
  hakone:{title:'湖上的紅色鳥居，和冬天的山景',location:'箱根神社・蘆之湖',image:'./assets/photos/hakone.webp',alt:'蘆之湖岸邊的箱根神社平和鳥居',credit:credit('Hakone-jinja torii - Hakone, Japan -DSC05709.jpg','Daderot','CC0 1.0')},
  fuji:{title:'期待富士山從雲層中露出來',location:'新倉山淺間公園・忠靈塔',image:'./assets/photos/fuji.webp',alt:'新倉山忠靈塔與晴朗的富士山',credit:{author:'Takashi Miyazaki',license:'Unsplash License',source:'https://unsplash.com/photos/_VCtujeQNSY'}},
  narita:{title:'在老街的屋簷下，收藏旅行最後一天',location:'成田山新勝寺',image:'./assets/photos/narita.webp',alt:'成田山新勝寺的建築景觀',credit:credit('Naritasan Shinshoji Temple.jpg','Manish Prabhune','CC BY 2.0')},
- yokohama:{title:'橫濱的冬夜，有聖誕市集的溫度',location:'橫濱紅磚倉庫',image:'./assets/photos/yokohama.webp',alt:'橫濱紅磚倉庫過往冬季燈飾',credit:credit('Yokohama Red Brick Warehouse 20191207 2006.jpg','Pcs34560','Public Domain')}
+ yokohama:{title:'橫濱的冬夜，有聖誕市集的溫度',location:'橫濱紅磚倉庫',image:'./assets/photos/yokohama.webp',alt:'橫濱紅磚倉庫過往冬季燈飾',credit:credit('Yokohama Red Brick Warehouse 20191207 2006.jpg','Pcs34560','Public Domain')},
+ enoshimaPanorama:{title:'從海岸望向整座江之島',location:'江之島全景（2025 年實拍）',image:'./assets/photos/enoshimaPanorama.webp',alt:'由片瀨海岸遠眺相模灣與整座江之島的白天全景',credit:credit('Enoshima from a distance 2025 March 21.jpeg','Nesnad','CC BY 4.0')},
+ yokohamaMarket:{title:'冬夜的紅磚倉庫聖誕市集',location:'橫濱聖誕市集（2022 年活動照片）',image:'./assets/photos/yokohamaMarket.webp',alt:'2022 年橫濱紅磚倉庫聖誕市集夜景實拍，僅作歷年活動參考',credit:credit('Christmas Market in Yokohama Red Brick Warehouse 2022 (52646021247).jpg','Dick Thomas Johnson','CC BY 2.0')}
 };
-export const dayScenes={1:'meiji',2:'enoshima',3:'hakone',4:'fuji',5:'narita'};
+export const dayScenes={1:'meiji',2:'enoshimaPanorama',3:'hakone',4:'fuji',5:'narita'};
 export const overviewScenes={1:'senkyakuPhoto',2:'enodenCoast',3:'gotembaOutlets',4:'asakusaStreet',5:'naritaStreet'};
 export const inspirations = {
  1:{lead:'剛抵達東京，不必急著把每個地方走完。明治神宮的樹影、豐洲的江戶風街道，以及入夜後的銀座燈光，已經足夠讓第一天很有旅行感。',note:'如果進飯店較晚，改逛豐洲或有明 Garden，就能把精神留給隔天的湘南一日遊。',secondary:null,links:[{title:'東京旅遊官方｜景點與活動',url:'https://www.gotokyo.org/tc/index.html',type:'景點攻略'},{title:'明治神宮官方',url:'https://www.meijijingu.or.jp/',type:'官方資訊'},{title:'丸之內・東京站聖誕燈飾散步｜2025 年實景參考',url:'https://www.youtube.com/watch?v=SmHGi2IGgvw',video:'SmHGi2IGgvw',channel:'akkz01',type:'冬季街景實拍'}]},
