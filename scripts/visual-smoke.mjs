@@ -19,6 +19,9 @@ for(const width of widths){
  page.on('pageerror',e=>pageErrors.push(e.message));
  await page.goto('http://127.0.0.1:4173/',{waitUntil:'domcontentloaded'});
  await page.locator('.workspace-main').waitFor();
+ const heroImg=page.locator('.hero-art');
+ await heroImg.evaluate(img=>img.decode().catch(()=>{}));
+ check(await heroImg.evaluate(img=>img.complete&&img.naturalWidth>0),'Hero photo failed to load',{width,day:1});
 
  for(const view of views){
   const nav=width<=790?'.bottom-nav button[data-view="'+view+'"]':'.desktop-sections button[data-view="'+view+'"]';
@@ -36,6 +39,7 @@ for(const width of widths){
   reports.push(row);
   check(m.scrollWidth<=m.width+2,'Horizontal overflow',row);
   check(m.textLength>90,'Empty or missing main content',row);
+  check(m.blankPhotos===0,'Photo failed to render',row);
   check(m.selectedView===view,'Navigation view out of sync',row);
   check(pageErrors.length===0,'JavaScript error',row);
   if([390,1440].includes(width))await page.screenshot({path:'artifacts/screenshots/'+width+'-'+view+'.png',fullPage:true});
@@ -49,6 +53,8 @@ for(const width of widths){
   const entries=await page.locator('.timeline-item').count();
   check(heading!=='一起，去日本走走。','Daily hero did not change',{width,day,heading});
   check(entries>0,'No itinerary events',{width,day,entries});
+  await page.locator('.hero-art').evaluate(img=>img.decode().catch(()=>{}));
+  check(await page.locator('.hero-art').evaluate(img=>img.complete&&img.naturalWidth>0),'Daily hero failed to load',{width,day});
   if(width===390 && [1,2,3,4,5].includes(day)){
     const c=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
     check(c.scrollWidth<=c.width+2,'Day timeline overflow',{width,day,...c});
@@ -79,6 +85,15 @@ for(const width of widths){
   check(await page.locator('.overview-shortcut').count()===3,'Overview must have three quick shortcuts',{width});
   await page.locator('.overview-shortcut[data-view="routes"]').click();
   check(new URL(page.url()).searchParams.get('view')==='routes','Quick transit shortcut failed',{width});
+  await page.locator(width<=790?'.bottom-nav button[data-view="overview"]':'.desktop-sections button[data-view="overview"]').click();
+  for(const day of [1,2,3,4]){
+    await page.locator('.overview-card[data-day="'+day+'"]').click();
+    await page.locator(width<=790?'.bottom-nav button[data-view="overview"]':'.desktop-sections button[data-view="overview"]').click();
+    const href=await page.locator('.overview-shortcut[href*="/maps/dir/"]').first().getAttribute('href');
+    const params=new URL(href,'http://127.0.0.1:4173').searchParams;
+    const mode=[3,4].includes(day)?'walking':'transit';
+    check(params.get('api')==='1'&&params.get('destination')&&params.get('travelmode')===mode&&params.get('dir_action')==='navigate','Wrong Maps hotel return params',{width,day,href});
+  }
  }
 
  await page.close();
