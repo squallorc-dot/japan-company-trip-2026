@@ -5,7 +5,7 @@ const item = (at, title, place, kind, desc, options = {}) => ({ at,title,place,k
 const option = (id,name,subtitle,events,note) => ({id,name,subtitle,events,note});
 
 export const guide = {
- version:'2026.11.05-21', verified:'2026-11-05', timezone:'Asia/Tokyo',
+ version:'2026.11.06-22', verified:'2026-11-06', timezone:'Asia/Tokyo',
  tripStart:'2026-12-02', tripEnd:'2026-12-06', title:'東京・湘南・富士 五日',
  subTitle:'2026 日本員工旅遊｜夫妻自由行互動手冊',
  intro:'五天有公司安排的風景，也有兩個人自己決定的旅行。把當下需要的資訊，留在最容易找到的位置。',
@@ -729,7 +729,7 @@ export const guide = {
       "聖誕市集紀念馬克杯（依票種／存量）",
       "聖誕裝飾與節慶小物"
     ],
-    "tip": "2026/12/3 開放至 21:00，16:00 起點燈；一般入場 500 日圓起，部分免費區，餐飲與商品另計。擁擠時縮短逛街、不必追加川崎。",
+    "tip": "2026/12/3（四）11:00–21:00（餐飲最後點餐 20:30）、16:00 起點燈。一般票每人 ¥500，可於主入口現金購票或透過 Asoview 線上購買，線上一般票仍需排隊；另有新港中央廣場免費 Christmas Gate（11:00–21:05，攤位僅收非現金支付）。餐飲、商品另計；若疲累逛 60–90 分鐘即可提早回飯店。",
     "photo": "yokohamaMarket"
   },
   "kawasaki": {
@@ -985,7 +985,7 @@ export const guide = {
   enoden:{title:'江之電海岸線',ja:'江ノ島電鉄・江ノ島駅',map:'江ノ島駅, 藤沢市',type:'特色鐵道',site:'https://www.enoden.co.jp/',tips:['江之島站 → 鎌倉站可看鎌倉高校前、七里濱等經典海景','不必下車追拍平交道；沿途及車站注意交通安全','江之電車站不在島上，須步行過橋回本土']},
   kamakura:{title:'鎌倉小町通',ja:'鎌倉 小町通り',map:'小町通り, 鎌倉市',type:'街道／美食',tips:['從鎌倉站東口走入商店街，以午餐、點心及伴手禮為主','許多商店上午 10–11 點才開始營業','2026 年 1 月實際去過鎌倉小町通，本次可以縮短重遊']},
   yokohamaMall:{title:'港未來・World Porters',ja:'みなとみらい・横浜ワールドポーターズ',map:'横浜ワールドポーターズ, 神奈川県横浜市中区新港2-2-1',type:'購物／港景',site:'https://www.yim.co.jp/',tips:['利用下午逛商場或港灣，不強求跑完所有商場','上次已搭過橫濱纜車，本次以新體驗為主']},
-  redbrick:{title:'橫濱紅磚倉庫聖誕市集',ja:'横浜赤レンガ倉庫 クリスマスマーケット',map:'横浜赤レンガ倉庫, 横浜市中区新港1-1',type:'聖誕活動',site:'https://www.yokohama-akarenga.jp/christmas/',hours:'2026/12/3 11:00–21:00；16:00 起點燈；一般票 500 日圓起，另有免費區',tips:['2026 活動 11/20–12/25，傍晚適合看點燈與港灣夜景','可能排隊、限流或部分區域另需門票','上次只是一般紅磚倉庫，這次有實際聖誕活動']},
+  redbrick:{title:'橫濱紅磚倉庫聖誕市集',ja:'横浜赤レンガ倉庫 クリスマスマーケット',map:'横浜赤レンガ倉庫, 横浜市中区新港1-1',type:'聖誕活動',site:'https://www.yokohama-akarenga.jp/christmas/',hours:'2026/12/3（四）11:00–21:00（L.O.20:30）；16:00 起點燈；一般票 ¥500／人',tips:['2026 活動 11/20–12/25，12/3 一般日；現金可在主入口購票，線上購票使用 Asoview，一般票仍需排隊','附近新港中央廣場 Christmas Gate 11:00–21:05 免費入場，餐飲商品另計且僅接受非現金支付','依體力逛 60–90 分鐘亦可提早回飯店，不必逛到表定結束時刻']},
   kawasaki:{title:'LAZONA 川崎',ja:'ラゾーナ川崎プラザ',map:'ラゾーナ川崎プラザ, 川崎市幸区堀川町72-1',type:'購物',site:'https://mitsui-shopping-park.com/lazona-kawasaki/',hours:'多數商店約至 21:00，依店鋪公告',tips:['上次沒逛完，可集中在想補逛的商店','若橫濱玩太晚就直接取消，不必勉強','要 22:00 前回飯店，建議 20:30 左右離開']},
   shibuya:{title:'澀谷',ja:'渋谷',map:'渋谷駅, 東京',type:'逛街',tips:['年輕品牌、購物中心與街區；屬雨天／市區備案']},
   kichijoji:{title:'吉祥寺',ja:'吉祥寺',map:'吉祥寺駅, 武蔵野市',type:'商店街',tips:['2025 年 9 月實際去過；2026 年 1 月只列備案沒有去','商店街、百貨、井之頭周邊適合慢逛']},
