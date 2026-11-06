@@ -13,6 +13,10 @@ const assetVersion=expectedVersion.replaceAll('.','');
 assert.equal(guide.version,expectedVersion,'data.js and version.json must use the same release');
 const html=readProjectFile('index.html');
 const appSource=readProjectFile('app.js');
+assert.ok(appSource.includes('const hotelReturnMode = day => day===3||day===4'), 'Hotel return navigation modes missing');
+assert.ok(appSource.includes('hotelReturnURL(hotel.search,selected)'), 'Overview return hotel must use day mode');
+assert.ok(appSource.includes('hotelReturnURL(hotel.search,state.day)'), 'Transport return hotel must use day mode');
+assert.ok(guide.places.redbrick.tips.some(t=>t.includes('Christmas Gate')), '2026 free Christmas Gate note missing');
 const worker=readProjectFile('sw.js');
 const refreshPage=readProjectFile('refresh.html');
 for(const ref of ['./styles.css?v='+assetVersion,'./app.js?v='+assetVersion]){

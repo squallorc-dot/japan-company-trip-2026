@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.11.05-21`。
+- 版本：`2026.11.06-22`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -43,6 +43,14 @@ python -m http.server 8080
 - PWA 需從 HTTPS（GitHub Pages）或 localhost 使用，開啟後才能正常快取。主要 HTML/CSS/JS/插畫可離線，但 Maps、外部官網及真實列車狀況需網路。
 - 自己手機選的方案保存在該裝置；分享按鈕可產生帶 `day` 與 `plan` 參數的連結，不需要夫妻同步服務。
 - 日本境內自助時間使用 JST；公司集合及桃園起降為台灣時間（比日本慢一小時）。
+
+## 2026/11/06 導航及活動資訊審核版
+
+- Google Maps 採官方 Maps URLs：從目前位置步行以 `travelmode=walking&dir_action=navigate`；鐵道對照以 `travelmode=transit`。Google 仍可能推薦公車，指定湘南單軌及江之電仍依站名指示。
+- Day 1–2 回豐洲飯店預設大眾運輸；Day 3 石和、Day 4 成田飯店周邊預設步行。行程與交通兩處一致。
+- 橫濱 2026/12/3 聖誕市集更新 ¥500 票價、主入口現金／Asoview 線上購票、免費 Christmas Gate 及可提早返程的體力提醒。不改原定景點及時間。
+- 保留 `enoshimaPanorama.webp` 和 `yokohamaMarket.webp` 精選主圖。使用者喜歡的有明 Garden 夜景、LaLaport 豐洲水岸、湘南單軌懸掛列車、石和燈飾四張搜尋預覽，未確定圖片重用授權之前不直接重製或擅換其他構圖。
+- 視覺測試增加照片載入、飯店導航網址模式檢查；LINE 與手機真機、離線仍須實際驗收。
 
 ## 2026/11/05 小型精修：旅行體驗與測試
 
