@@ -19,6 +19,16 @@ for(const width of widths){
  page.on('pageerror',e=>pageErrors.push(e.message));
  await page.goto('http://127.0.0.1:4173/',{waitUntil:'domcontentloaded'});
  await page.locator('.workspace-main').waitFor();
+ // Analytics may be tested locally without sending data to production GA4.
+ const analytics=await page.evaluate(()=>({
+   id:window.tripAnalytics?.tripId,
+   events:(window.dataLayer||[]).map(x=>x.event),
+   remoteGtm:!!document.querySelector('script[src*="googletagmanager.com/gtm.js"]')
+ }));
+ check(analytics.id==='company_2026','Missing trip analytics identifier',{width,...analytics});
+ check(analytics.events.includes('trip_page_open'),'Missing initial travel event',{width,...analytics});
+ check(!analytics.remoteGtm,'Local smoke test must never load production GTM',{width});
+
  const heroImg=page.locator('.hero-art');
  await heroImg.evaluate(img=>img.decode().catch(()=>{}));
  check(await heroImg.evaluate(img=>img.complete&&img.naturalWidth>0),'Hero photo failed to load',{width,day:1});

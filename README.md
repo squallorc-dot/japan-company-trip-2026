@@ -6,7 +6,7 @@
 - 內容：五日公司行程與 Day 1–2 夫妻自由行完整方案、夜間周邊建議、交通快捷入口、航班、三家住宿。
 - 技術：**零外部依賴的 ES Modules + PWA + GitHub Pages**，不需要 Node/npm、Google 試算表、Apps Script、API Key、帳號或資料庫。
 - 檔案：`index.html`、`styles.css`、`app.js`、`data.js`、`manifest.webmanifest`、`sw.js`、`assets/`。
-- 版本：`2026.11.06-22`。
+- 版本：`2026.11.07-23`。
 
 > 技術與先前 Vue/Vite 提案略有調整：此站不需要複雜的元件生態系；為確保能直接在 GitHub Pages 運行、無 npm 依賴且可穩定離線，改採原生 JavaScript 模組。介面與內容依然分離，保留完整互動功能。未來需要更大型功能時再遷移框架。
 
@@ -43,6 +43,13 @@ python -m http.server 8080
 - PWA 需從 HTTPS（GitHub Pages）或 localhost 使用，開啟後才能正常快取。主要 HTML/CSS/JS/插畫可離線，但 Maps、外部官網及真實列車狀況需網路。
 - 自己手機選的方案保存在該裝置；分享按鈕可產生帶 `day` 與 `plan` 參數的連結，不需要夫妻同步服務。
 - 日本境內自助時間使用 JST；公司集合及桃園起降為台灣時間（比日本慢一小時）。
+
+## 2026/11/07 個人 GA4 + GTM 統一追蹤
+
+- 三站共用 GTM 容器 `GTM-5MK7X2XK`，本網站事件識別 `company_2026`，採獨立 `travel-tracking.js` 傳送匿名行程互動事件。
+- 只在 `squallorc-dot.github.io` 正式網站載入 GTM；其他環境保留 Data Layer 測試但不送正式 GA4，網址 `?analytics=off` 可跳過追蹤。
+- 自訂事件包括開啟網站、切換日期/頁面/方案、Google Maps、官方資源、分享及勾選清單；不蒐集個資、查詢字詞或位置。
+- PWA 快取已加入追蹤程式；保留旅遊動線、照片及導航功能。GA4 調整、GTM 預覽和即時報表須另外驗收。
 
 ## 2026/11/06 導航及活動資訊審核版
 
