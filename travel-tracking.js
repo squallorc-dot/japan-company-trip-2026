@@ -11,11 +11,11 @@
  window.dataLayer=window.dataLayer||[];
  const allowed=new Set(['trip_page_open','trip_section_view','trip_day_view','trip_plan_select','trip_navigation_click','trip_resource_click','trip_share_click','trip_checklist_update','trip_shopping_toggle']);
  const dayValue=input=>{const m=String(input||'').match(/^(?:day[_-]?)?([1-9])$/i);return m?'day_'+m[1]:'unknown';};
- const currentDay=()=>{const q=new URLSearchParams(location.search),m=location.hash.match(/^#day([1-9])(?:$|[-_])/i);return dayValue(q.get('day')||(m&&m[1])||'');};
- const currentSection=()=>{const v=new URLSearchParams(location.search).get('view')||'default';return v==='routes'?'transport':v;};
+ const currentDay=()=>{const q=new URLSearchParams(location.search),m=location.hash.match(/^#day([1-9])(?:$|[-_])/i);return dayValue(q.get('day')||(m&&m[1])||(tripId==='tokyo_2026'?'':'1'));};
+ const currentSection=()=>{const v=new URLSearchParams(location.search).get('view')||(tripId==='tokyo_2026'?'article':'overview');return v==='routes'?'transport':v;};
  function push(name,params){
   if(!allowed.has(name))return;
-  const e={event:name,trip_id:tripId,trip_day:currentDay(),trip_section:currentSection()};
+  const e={event:name,trip_id:tripId,trip_day:currentDay(),trip_section:currentSection(),plan_id:undefined,navigation_type:undefined,resource_domain:undefined,share_method:undefined,check_state:undefined,shopping_state:undefined};
   for(const [k,v] of Object.entries(params||{})){
    if(!/^[a-z][a-z0-9_]{0,39}$/.test(k))continue;
    if(typeof v==='string'&&/^[a-zA-Z0-9_.-]{1,90}$/.test(v))e[k]=v;
