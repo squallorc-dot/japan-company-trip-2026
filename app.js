@@ -1,5 +1,5 @@
-import {guide} from './data.js?v=20261106-22';
-import {scenes,dayScenes,overviewScenes,inspirations} from './media.js?v=20261106-22';
+import {guide} from './data.js?v=20261107-23';
+import {scenes,dayScenes,overviewScenes,inspirations} from './media.js?v=20261107-23';
 
 const qs = new URLSearchParams(location.search);
 const stored = (key, fallback) => { try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; } };
