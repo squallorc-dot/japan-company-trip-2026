@@ -24,7 +24,7 @@
   window.dataLayer.push(e);
  }
  window.tripAnalytics={track:push,tripId};
- if(/^GTM-[A-Z0-9]{5,16}$/.test(gtmId)){
+ if(/^GTM-[A-Z0-9]{5,16}$/.test(gtmId) && location.hostname==='squallorc-dot.github.io'){
   window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
   const node=document.createElement('script');node.async=true;
   node.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(gtmId);
