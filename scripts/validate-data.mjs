@@ -14,6 +14,7 @@ assert.equal(guide.version,expectedVersion,'data.js and version.json must use th
 const html=readProjectFile('index.html');
 const appSource=readProjectFile('app.js');
 const tracking=readProjectFile('travel-tracking.js');
+const worker=readProjectFile('sw.js');
 assert.ok(html.includes('data-trip-id="company_2026"') && html.includes('data-gtm-id="GTM-5MK7X2XK"'), 'travel GTM loader missing');
 assert.ok(worker.includes("'./travel-tracking.js'"), 'travel tracker not available offline');
 assert.ok(tracking.includes("location.hostname==='squallorc-dot.github.io'"), 'GTM hostname guard missing');
@@ -23,7 +24,7 @@ assert.ok(appSource.includes('const hotelReturnMode = day => day===3||day===4'),
 assert.ok(appSource.includes('hotelReturnURL(hotel.search,selected)'), 'Overview return hotel must use day mode');
 assert.ok(appSource.includes('hotelReturnURL(hotel.search,state.day)'), 'Transport return hotel must use day mode');
 assert.ok(guide.places.redbrick.tips.some(t=>t.includes('Christmas Gate')), '2026 free Christmas Gate note missing');
-const worker=readProjectFile('sw.js');
+
 const refreshPage=readProjectFile('refresh.html');
 for(const ref of ['./styles.css?v='+assetVersion,'./app.js?v='+assetVersion]){
  assert.ok(html.includes(ref),'index.html has stale resource version: '+ref);
