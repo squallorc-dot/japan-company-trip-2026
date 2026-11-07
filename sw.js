@@ -1,14 +1,14 @@
 // Offline-first installation, online-first reading. The complete itinerary remains available offline.
-const CACHE_NAME = 'japan-trip-2026-v20261106-22';
+const CACHE_NAME = 'japan-trip-2026-v20261107-23';
 const OFFLINE_FILES = [
-  './','./index.html','./styles.css?v=20261106-22','./data.js?v=20261106-22','./app.js?v=20261106-22','./media.js?v=20261106-22','./manifest.webmanifest','./version.json',
+  './','./index.html','./travel-tracking.js','./styles.css?v=20261107-23','./data.js?v=20261107-23','./app.js?v=20261107-23','./media.js?v=20261107-23','./manifest.webmanifest','./version.json',
   './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/hero.svg',
   './assets/video-poster-1.svg','./assets/video-poster-2.svg','./assets/video-poster-3.svg',
   './assets/video-poster-4.svg','./assets/video-poster-5.svg',
   './assets/photos/senkyakuPhoto.webp','./assets/photos/shonanTrain.webp','./assets/photos/enodenCoast.webp',
   './assets/photos/komachiStreet.webp','./assets/photos/worldPorters.webp','./assets/photos/gotembaOutlets.webp',
   './assets/photos/oshinoPond.webp','./assets/photos/asakusaStreet.webp','./assets/photos/naritaStreet.webp',
-  './assets/og-cover-20261106-22.jpg','./assets/photos/meiji.webp','./assets/photos/enoshima.webp','./assets/photos/hakone.webp',
+  './assets/og-cover-20261107-23.jpg','./assets/photos/meiji.webp','./assets/photos/enoshima.webp','./assets/photos/hakone.webp',
   './assets/photos/enoshimaPanorama.webp','./assets/photos/yokohamaMarket.webp',
   './assets/photos/fuji.webp','./assets/photos/narita.webp','./assets/photos/yokohama.webp'
 ];
