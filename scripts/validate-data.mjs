@@ -13,6 +13,12 @@ const assetVersion=expectedVersion.replaceAll('.','');
 assert.equal(guide.version,expectedVersion,'data.js and version.json must use the same release');
 const html=readProjectFile('index.html');
 const appSource=readProjectFile('app.js');
+const tracking=readProjectFile('travel-tracking.js');
+assert.ok(html.includes('data-trip-id="company_2026"') && html.includes('data-gtm-id="GTM-5MK7X2XK"'), 'travel GTM loader missing');
+assert.ok(worker.includes("'./travel-tracking.js'"), 'travel tracker not available offline');
+assert.ok(tracking.includes("location.hostname==='squallorc-dot.github.io'"), 'GTM hostname guard missing');
+for(const name of ['trip_page_open','trip_day_view','trip_plan_select','trip_navigation_click','trip_checklist_update'])assert.ok(tracking.includes(name),'Missing travel event: '+name);
+
 assert.ok(appSource.includes('const hotelReturnMode = day => day===3||day===4'), 'Hotel return navigation modes missing');
 assert.ok(appSource.includes('hotelReturnURL(hotel.search,selected)'), 'Overview return hotel must use day mode');
 assert.ok(appSource.includes('hotelReturnURL(hotel.search,state.day)'), 'Transport return hotel must use day mode');
